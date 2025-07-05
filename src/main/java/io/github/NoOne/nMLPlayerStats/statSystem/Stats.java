@@ -8,16 +8,21 @@ public class Stats {
     private double currentEnergy;
     private double maxEnergy;
 
-    public Stats(int level, int exp, double currentEnergy, double maxEnergy) {
+    private int currentOverhealth;
+    private int maxOverhealth;
+
+    public Stats(int level, int exp, double currentEnergy, double maxEnergy, int currentOverhealth, int maxOverhealth) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
+        this.currentOverhealth = currentOverhealth;
+        this.maxOverhealth = maxOverhealth;
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0, 100, 100);
+        return new Stats(1, 0, 100, 100,0,0);
     }
 
     public int getLevel() {
@@ -58,5 +63,21 @@ public class Stats {
 
     public void setMaxEnergy(double maxEnergy) {
         this.maxEnergy = maxEnergy;
+    }
+
+    public double getCurrentOverhealth() {
+        return currentOverhealth;
+    }
+
+    public void setCurrentOverhealth(int currentOverhealth) {
+        this.currentOverhealth = currentOverhealth;
+    }
+
+    public double getMaxOverhealth() {
+        return maxOverhealth;
+    }
+
+    public void setMaxOverhealth(int maxOverhealth) {
+        this.maxOverhealth = maxOverhealth;
     }
 }

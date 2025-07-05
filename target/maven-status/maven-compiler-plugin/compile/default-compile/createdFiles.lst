@@ -1,10 +1,12 @@
+io\github\NoOne\nMLPlayerStats\PlayerActionBar.class
+io\github\NoOne\nMLPlayerStats\PlayerActionBar$1.class
+io\github\NoOne\nMLPlayerStats\statSystem\StatsMenu.class
+io\github\NoOne\nMLPlayerStats\statSystem\Stats.class
+io\github\NoOne\nMLPlayerStats\profileSystem\ProfileManager.class
 io\github\NoOne\nMLPlayerStats\NMLPlayerStats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileConfig.class
-io\github\NoOne\nMLPlayerStats\statSystem\StatsMenu.class
 io\github\NoOne\nMLPlayerStats\statSystem\ViewStatsCommand.class
 io\github\NoOne\nMLPlayerStats\profileSystem\Profile.class
-io\github\NoOne\nMLPlayerStats\statSystem\Stats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileListener.class
-io\github\NoOne\nMLPlayerStats\profileSystem\ProfileManager.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ResetStatsCommand.class
 io\github\NoOne\nMLPlayerStats\statSystem\ResetStatsEvent.class

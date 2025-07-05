@@ -43,7 +43,9 @@ public class ProfileManager {
             int exp = config.getInt(id + ".stats.exp");
             double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
-            Stats stats = new Stats(level, exp, currentEnergy, maxEnergy);
+            int currentOverhealth = config.getInt(id + ".stats.currentOverhealth");
+            int maxOverhealth = config.getInt(id + ".stats.maxOverhealth");
+            Stats stats = new Stats(level, exp, currentEnergy, maxEnergy, currentOverhealth, maxOverhealth);
             Profile profile = new Profile(stats);
 
             profileMap.put(uuid, profile);
@@ -60,6 +62,8 @@ public class ProfileManager {
             config.set(id + ".stats.exp", stats.getExp());
             config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
             config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
+            config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
+            config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
         }
     }
 
@@ -73,5 +77,7 @@ public class ProfileManager {
         config.set(id + ".stats.exp2NextLevel", stats.getExp2NextLevel());
         config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
+        config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
+        config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
     }
 }
