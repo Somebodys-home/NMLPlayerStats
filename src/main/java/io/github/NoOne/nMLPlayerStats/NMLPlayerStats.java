@@ -11,6 +11,7 @@ public final class NMLPlayerStats extends JavaPlugin {
     private NMLPlayerStats instance;
     private ProfileManager profileManager;
     private ProfileConfig profileConfig;
+    private PlayerActionBar playerActionBar;
 
     @Override
     public void onEnable() {
@@ -21,6 +22,9 @@ public final class NMLPlayerStats extends JavaPlugin {
 
         profileManager = new ProfileManager(this);
         profileManager.loadProfilesFromConfig();
+
+        playerActionBar = new PlayerActionBar(this);
+        playerActionBar.actionBarsTask();
 
         getCommand("viewStats").setExecutor(new ViewStatsCommand(this));
         getCommand("resetStats").setExecutor(new ResetStatsCommand(this));

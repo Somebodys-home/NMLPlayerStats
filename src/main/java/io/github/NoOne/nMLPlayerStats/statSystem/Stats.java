@@ -5,14 +5,19 @@ public class Stats {
     private int exp;
     private int exp2NextLevel;
 
-    public Stats(int level, int exp) {
+    private double currentEnergy;
+    private double maxEnergy;
+
+    public Stats(int level, int exp, double currentEnergy, double maxEnergy) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
+        this.currentEnergy = currentEnergy;
+        this.maxEnergy = maxEnergy;
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0);
+        return new Stats(1, 0, 100, 100);
     }
 
     public int getLevel() {
@@ -37,5 +42,21 @@ public class Stats {
 
     public void setExp(int exp) {
         this.exp = exp;
+    }
+
+    public double getCurrentEnergy() {
+        return currentEnergy;
+    }
+
+    public void setCurrentEnergy(double currentEnergy) {
+        this.currentEnergy = currentEnergy;
+    }
+
+    public double getMaxEnergy() {
+        return maxEnergy;
+    }
+
+    public void setMaxEnergy(double maxEnergy) {
+        this.maxEnergy = maxEnergy;
     }
 }
