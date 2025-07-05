@@ -19,7 +19,7 @@ public class ProfileListener implements Listener {
         Profile profile = profileManager.getPlayerProfile(player.getUniqueId());
 
         if (profile == null) {
-            profileManager.createnewProfile(player);
+            profileManager.createNewbieProfile(player);
         }
     }
 }

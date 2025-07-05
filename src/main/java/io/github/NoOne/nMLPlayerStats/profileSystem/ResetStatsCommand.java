@@ -17,7 +17,7 @@ public class ResetStatsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
-            profileManager.createnewProfile(player);
+            profileManager.createNewbieProfile(player);
             profileManager.saveAProfileToConfig(player);
         }
 

@@ -1,7 +1,9 @@
 package io.github.NoOne.nMLPlayerStats.profileSystem;
 
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
+import io.github.NoOne.nMLPlayerStats.statSystem.ResetStatsEvent;
 import io.github.NoOne.nMLPlayerStats.statSystem.Stats;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
@@ -21,10 +23,11 @@ public class ProfileManager {
         config = profileConfig.getConfig();
     }
 
-    public Profile createnewProfile(Player player) {
+    public Profile createNewbieProfile(Player player) {
         Profile profile = new Profile(Stats.generateNewbieStats());
 
         profileMap.put(player.getUniqueId(), profile);
+        Bukkit.getPluginManager().callEvent(new ResetStatsEvent(player));
 
         return profile;
     }
