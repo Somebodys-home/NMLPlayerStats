@@ -93,13 +93,4 @@ public class ProfileManager {
         config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
     }
-
-    public void updateStatsFromProfile(Player player) {
-        Profile profile = profileMap.get(player.getUniqueId());
-        double currentOverhealth = profile.getStats().getCurrentOverhealth();
-        double maxOverhealth = profile.getStats().getMaxOverhealth();
-
-        player.setAbsorptionAmount(currentOverhealth);
-        player.getAttribute(Attribute.GENERIC_MAX_ABSORPTION).setBaseValue(maxOverhealth);
-    }
 }
