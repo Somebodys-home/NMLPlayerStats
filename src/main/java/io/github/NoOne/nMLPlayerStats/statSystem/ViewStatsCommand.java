@@ -17,7 +17,13 @@ public class ViewStatsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player) {
-            new StatsMenu(MenuSystem.getPlayerMenuUtility(player), nmlPlayerStats).open();
+            //new StatsMenu(MenuSystem.getPlayerMenuUtility(player), nmlPlayerStats).open();
+            Stats stats = nmlPlayerStats.getProfileManager().getPlayerProfile(player.getUniqueId()).getStats();
+
+            player.sendMessage("level: " + stats.getLevel());
+            player.sendMessage("exp: " + stats.getExp());
+            player.sendMessage("current overhealth: " + stats.getCurrentOverhealth());
+            player.sendMessage("max overhealth: " + stats.getMaxOverhealth());
         }
 
         return true;
