@@ -44,8 +44,8 @@ public class ProfileManager {
             int exp = config.getInt(id + ".stats.exp");
             double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
-            int currentOverhealth = config.getInt(id + ".stats.currentOverhealth");
-            int maxOverhealth = config.getInt(id + ".stats.maxOverhealth");
+            double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
+            double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
             Stats stats = new Stats(level, exp, currentEnergy, maxEnergy, currentOverhealth, maxOverhealth);
             Profile profile = new Profile(stats);
 
