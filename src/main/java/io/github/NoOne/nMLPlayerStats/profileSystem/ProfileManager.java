@@ -4,6 +4,7 @@ import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
 import io.github.NoOne.nMLPlayerStats.statSystem.ResetStatsEvent;
 import io.github.NoOne.nMLPlayerStats.statSystem.Stats;
 import org.bukkit.Bukkit;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
@@ -79,5 +80,14 @@ public class ProfileManager {
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
         config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
+    }
+
+    public void updateStatsFromProfile(Player player) {
+        Profile profile = profileMap.get(player.getUniqueId());
+        double currentOverhealth = profile.getStats().getCurrentOverhealth();
+        double maxOverhealth = profile.getStats().getMaxOverhealth();
+
+        player.setAbsorptionAmount(currentOverhealth);
+        player.getAttribute(Attribute.GENERIC_MAX_ABSORPTION).setBaseValue(maxOverhealth);
     }
 }
