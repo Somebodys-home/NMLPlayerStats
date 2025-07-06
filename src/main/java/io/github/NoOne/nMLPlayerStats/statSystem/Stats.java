@@ -1,20 +1,37 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 public class Stats {
+    // CORE STATS: stats that are saved to profiles.yml
     private int level;
     private int exp;
     private int exp2NextLevel;
 
+    private int attributePoints;
+    private int vitality;
+    private int strength;
+    private int deft;
+    private int arcane;
+
     private double currentEnergy;
     private double maxEnergy;
-
     private double currentOverhealth;
     private double maxOverhealth;
 
-    public Stats(int level, int exp, double currentEnergy, double maxEnergy, double currentOverhealth, double maxOverhealth) {
+    // todo: implement attribute bonuses
+
+    public Stats(int level, int exp,
+                 int vitality, int strength, int deft, int arcane,
+                 double currentEnergy, double maxEnergy, double currentOverhealth, double maxOverhealth) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
+
+        attributePoints = level - 1;
+        this.vitality = vitality;
+        this.strength = strength;
+        this.deft = deft;
+        this.arcane = arcane;
+
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
         this.currentOverhealth = currentOverhealth;
@@ -22,7 +39,7 @@ public class Stats {
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0, 100, 100,0,0);
+        return new Stats(1, 0, 0, 0, 0, 0, 100, 100,0,0);
     }
 
     public int getLevel() {
@@ -47,6 +64,46 @@ public class Stats {
 
     public void setExp(int exp) {
         this.exp = exp;
+    }
+
+    public int getAttributePoints() {
+        return attributePoints;
+    }
+
+    public void setAttributePoints(int attributePoints) {
+        this.attributePoints = attributePoints;
+    }
+
+    public int getVitality() {
+        return vitality;
+    }
+
+    public void setVitality(int vitality) {
+        this.vitality = vitality;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDeft() {
+        return deft;
+    }
+
+    public void setDeft(int deft) {
+        this.deft = deft;
+    }
+
+    public int getArcane() {
+        return arcane;
+    }
+
+    public void setArcane(int arcane) {
+        this.arcane = arcane;
     }
 
     public double getCurrentEnergy() {

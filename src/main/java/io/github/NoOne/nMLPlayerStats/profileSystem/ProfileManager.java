@@ -42,11 +42,15 @@ public class ProfileManager {
             UUID uuid = UUID.fromString(id);
             int level = config.getInt(id + ".stats.level");
             int exp = config.getInt(id + ".stats.exp");
+            int vitality = config.getInt(id + ".stats.vitality");
+            int strength = config.getInt(id + ".stats.strength");
+            int deft = config.getInt(id + ".stats.deft");
+            int arcane = config.getInt(id + ".stats.arcane");
             double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
-            Stats stats = new Stats(level, exp, currentEnergy, maxEnergy, currentOverhealth, maxOverhealth);
+            Stats stats = new Stats(level, exp, vitality, strength, deft, arcane, currentEnergy, maxEnergy, currentOverhealth, maxOverhealth);
             Profile profile = new Profile(stats);
 
             profileMap.put(uuid, profile);
@@ -61,6 +65,10 @@ public class ProfileManager {
 
             config.set(id + ".stats.level", stats.getLevel());
             config.set(id + ".stats.exp", stats.getExp());
+            config.set(id + ".stats.vitality", stats.getVitality());
+            config.set(id + ".stats.strength", stats.getStrength());
+            config.set(id + ".stats.deft", stats.getDeft());
+            config.set(id + ".stats.arcane", stats.getArcane());
             config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
             config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
             config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
@@ -75,6 +83,10 @@ public class ProfileManager {
 
         config.set(id + ".stats.level", stats.getLevel());
         config.set(id + ".stats.exp", stats.getExp());
+        config.set(id + ".stats.vitality", stats.getVitality());
+        config.set(id + ".stats.strength", stats.getStrength());
+        config.set(id + ".stats.deft", stats.getDeft());
+        config.set(id + ".stats.arcane", stats.getArcane());
         config.set(id + ".stats.exp2NextLevel", stats.getExp2NextLevel());
         config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
