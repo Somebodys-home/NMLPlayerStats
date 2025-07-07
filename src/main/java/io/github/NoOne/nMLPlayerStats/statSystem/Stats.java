@@ -15,12 +15,15 @@ public class Stats {
     // no need to do health, minecraft does that already
     private double currentEnergy;
     private double maxEnergy;
+    private double bonusEnergy;
     private double currentOverhealth;
     private double maxOverhealth;
+    private double bonusOverhealth;
 
     public Stats(int level, int exp,
                  int vitality, int strength, int deft, int arcane,
-                 double currentEnergy, double maxEnergy, double currentOverhealth, double maxOverhealth) {
+                 double currentEnergy, double maxEnergy, double bonusEnergy,
+                 double currentOverhealth, double maxOverhealth, double bonusOverhealth) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
@@ -33,12 +36,16 @@ public class Stats {
 
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
+        this.bonusEnergy = bonusEnergy;
+
         this.currentOverhealth = currentOverhealth;
         this.maxOverhealth = maxOverhealth;
+        this.bonusOverhealth = bonusOverhealth;
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0, 0, 0, 0, 0, 100, 100,0,0);
+        return new Stats(1, 0, 0, 0, 0, 0, 100, 100, 0, 0,0,
+                0);
     }
 
     public int getLevel() {
@@ -143,5 +150,21 @@ public class Stats {
         if (currentOverhealth > maxOverhealth) {
             currentOverhealth = maxOverhealth;
         }
+    }
+
+    public double getBonusEnergy() {
+        return bonusEnergy;
+    }
+
+    public void setBonusEnergy(double bonusEnergy) {
+        this.bonusEnergy = bonusEnergy;
+    }
+
+    public double getBonusOverhealth() {
+        return bonusOverhealth;
+    }
+
+    public void setBonusOverhealth(double bonusOverhealth) {
+        this.bonusOverhealth = bonusOverhealth;
     }
 }
