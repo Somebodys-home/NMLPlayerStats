@@ -49,7 +49,7 @@ public class ProfileManager {
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
-            Stats stats = new Stats(level, exp, vitality, strength, deft, arcane, currentEnergy, maxEnergy, currentOverhealth, maxOverhealth, );
+            Stats stats = new Stats(level, exp, vitality, strength, deft, arcane, currentEnergy, maxEnergy, currentOverhealth, maxOverhealth);
             Profile profile = new Profile(stats);
 
             profileMap.put(uuid, profile);
