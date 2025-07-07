@@ -136,5 +136,9 @@ public class Stats {
 
     public void setMaxOverhealth(double maxOverhealth) {
         this.maxOverhealth = maxOverhealth;
+
+        if (currentOverhealth > maxOverhealth) {
+            currentOverhealth = maxOverhealth;
+        }
     }
 }
