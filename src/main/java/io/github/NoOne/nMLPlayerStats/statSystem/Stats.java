@@ -46,9 +46,11 @@ public class Stats {
     }
 
     public void setLevel(int level) {
-        int prevLevel = this.level;
+        if (level > this.level) {
+            int gainedLevels = level - this.level;
+            attributePoints += gainedLevels;
+        }
         this.level = level;
-        attributePoints = (level - prevLevel) - 1;
     }
 
     public int getExp2NextLevel() {
