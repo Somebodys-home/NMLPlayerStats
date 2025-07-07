@@ -6,7 +6,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     strength: 0
     deft: 0
     arcane: 0
-    currentEnergy: 100.0
+    currentEnergy: 90.0
     maxEnergy: 100.0
     currentOverhealth: 10.0
-    maxOverhealth: 5.0
+    maxOverhealth: 10.0

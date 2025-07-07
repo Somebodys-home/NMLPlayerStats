@@ -1,7 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 public class Stats {
-    // CORE STATS: stats that are saved to profiles.yml
+    // player stats
     private int level;
     private int exp;
     private int exp2NextLevel;
@@ -12,12 +12,11 @@ public class Stats {
     private int deft;
     private int arcane;
 
+    // no need to do health, minecraft does that already
     private double currentEnergy;
     private double maxEnergy;
     private double currentOverhealth;
     private double maxOverhealth;
-
-    // todo: implement attribute bonuses
 
     public Stats(int level, int exp,
                  int vitality, int strength, int deft, int arcane,
@@ -48,6 +47,7 @@ public class Stats {
 
     public void setLevel(int level) {
         this.level = level;
+        attributePoints = level - 1;
     }
 
     public int getExp2NextLevel() {
