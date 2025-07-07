@@ -60,7 +60,13 @@ public class Stats {
             case "strength" -> this.strength += (int) amount;
             case "deft" -> this.deft += (int) amount;
             case "arcane" -> this.arcane += (int) amount;
-            case "currentenergy" -> this.currentEnergy += amount;
+            case "currentenergy" -> {
+                this.currentEnergy += amount;
+
+                if (currentEnergy > maxEnergy) {
+                    currentEnergy = maxEnergy;
+                }
+            }
             case "maxenergy" -> this.maxEnergy += amount;
             case "bonusenergy" -> this.bonusEnergy += amount;
             case "currentoverhealth" -> this.currentOverhealth += amount;
@@ -80,8 +86,20 @@ public class Stats {
             case "strength" -> this.strength -= (int) amount;
             case "deft" -> this.deft -= (int) amount;
             case "arcane" -> this.arcane -= (int) amount;
-            case "currentenergy" -> this.currentEnergy -= amount;
-            case "maxenergy" -> this.maxEnergy -= amount;
+            case "currentenergy" -> {
+                this.currentEnergy -= amount;
+
+                if (currentEnergy < 0) {
+                    currentEnergy = 0;
+                }
+            }
+            case "maxenergy" -> {
+                this.maxEnergy -= amount;
+
+                if (maxEnergy < 0) {
+                    maxEnergy = 0;
+                }
+            }
             case "bonusenergy" -> this.bonusEnergy -= amount;
             case "currentoverhealth" -> this.currentOverhealth -= amount;
             case "maxoverhealth" -> this.maxOverhealth -= amount;
