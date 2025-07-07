@@ -19,11 +19,12 @@ public class Stats {
     private double currentOverhealth;
     private double maxOverhealth;
     private double bonusOverhealth;
+    private double bonusHealth;
 
     public Stats(int level, int exp,
                  int vitality, int strength, int deft, int arcane,
                  double currentEnergy, double maxEnergy, double bonusEnergy,
-                 double currentOverhealth, double maxOverhealth, double bonusOverhealth) {
+                 double currentOverhealth, double maxOverhealth, double bonusOverhealth, double bonusHealth) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
@@ -41,11 +42,52 @@ public class Stats {
         this.currentOverhealth = currentOverhealth;
         this.maxOverhealth = maxOverhealth;
         this.bonusOverhealth = bonusOverhealth;
+        this.bonusHealth = bonusHealth;
     }
 
     public static Stats generateNewbieStats() {
         return new Stats(1, 0, 0, 0, 0, 0, 100, 100, 0, 0,0,
-                0);
+                0, 0);
+    }
+
+    public void add2Stat(String stat, double amount) {
+        switch (stat.toLowerCase()) {
+            case "level" -> this.level += (int) amount;
+            case "exp" -> this.exp += (int) amount;
+            case "exp2nextlevel" -> this.exp2NextLevel += (int) amount;
+            case "attributepoints" -> this.attributePoints += (int) amount;
+            case "vitality" -> this.vitality += (int) amount;
+            case "strength" -> this.strength += (int) amount;
+            case "deft" -> this.deft += (int) amount;
+            case "arcane" -> this.arcane += (int) amount;
+            case "currentenergy" -> this.currentEnergy += amount;
+            case "maxenergy" -> this.maxEnergy += amount;
+            case "bonusenergy" -> this.bonusEnergy += amount;
+            case "currentoverhealth" -> this.currentOverhealth += amount;
+            case "maxoverhealth" -> this.maxOverhealth += amount;
+            case "bonusoverhealth" -> this.bonusOverhealth += amount;
+            case "bonushealth" -> this.bonusHealth += amount;
+        }
+    }
+
+    public void removeFromStat(String stat, double amount) {
+        switch (stat.toLowerCase()) {
+            case "level" -> this.level -= (int) amount;
+            case "exp" -> this.exp -= (int) amount;
+            case "exp2nextlevel" -> this.exp2NextLevel -= (int) amount;
+            case "attributepoints" -> this.attributePoints -= (int) amount;
+            case "vitality" -> this.vitality -= (int) amount;
+            case "strength" -> this.strength -= (int) amount;
+            case "deft" -> this.deft -= (int) amount;
+            case "arcane" -> this.arcane -= (int) amount;
+            case "currentenergy" -> this.currentEnergy -= amount;
+            case "maxenergy" -> this.maxEnergy -= amount;
+            case "bonusenergy" -> this.bonusEnergy -= amount;
+            case "currentoverhealth" -> this.currentOverhealth -= amount;
+            case "maxoverhealth" -> this.maxOverhealth -= amount;
+            case "bonusoverhealth" -> this.bonusOverhealth -= amount;
+            case "bonushealth" -> this.bonusHealth -= amount;
+        }
     }
 
     public int getLevel() {
@@ -166,5 +208,13 @@ public class Stats {
 
     public void setBonusOverhealth(double bonusOverhealth) {
         this.bonusOverhealth = bonusOverhealth;
+    }
+
+    public double getBonusHealth() {
+        return bonusHealth;
+    }
+
+    public void setBonusHealth(double bonusHealth) {
+        this.bonusHealth = bonusHealth;
     }
 }
