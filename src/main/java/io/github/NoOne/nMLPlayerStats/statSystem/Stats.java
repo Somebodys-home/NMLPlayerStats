@@ -81,11 +81,11 @@ public class Stats {
             case "level" -> this.level -= (int) amount;
             case "exp" -> this.exp -= (int) amount;
             case "exp2nextlevel" -> this.exp2NextLevel -= (int) amount;
-            case "attributepoints" -> this.attributePoints -= Math.max(0, (int) amount);
-            case "vitality" -> this.vitality -= Math.max(0, (int) amount);
-            case "strength" -> this.strength -= Math.max(0, (int) amount);
-            case "deft" -> this.deft -= Math.max(0, (int) amount);
-            case "arcane" -> this.arcane -= Math.max(0, (int) amount);
+            case "attributepoints" -> this.attributePoints -= (int) amount;
+            case "vitality" -> this.vitality -= (int) amount;
+            case "strength" -> this.strength -= (int) amount;
+            case "deft" -> this.deft -= (int) amount;
+            case "arcane" -> this.arcane -= (int) amount;
             case "currentenergy" -> {
                 this.currentEnergy -= amount;
 
@@ -101,8 +101,8 @@ public class Stats {
                 }
             }
             case "bonusenergy" -> this.bonusEnergy -= amount;
-            case "currentoverhealth" -> this.currentOverhealth -= Math.max(0, (int) amount);
-            case "maxoverhealth" -> this.maxOverhealth -= Math.max(0, (int) amount);
+            case "currentoverhealth" -> this.currentOverhealth -= amount;
+            case "maxoverhealth" -> this.maxOverhealth -= amount;
             case "bonusoverhealth" -> this.bonusOverhealth -= amount;
             case "bonushealth" -> this.bonusHealth -= amount;
         }
