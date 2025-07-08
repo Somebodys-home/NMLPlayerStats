@@ -10,3 +10,4 @@ io\github\NoOne\nMLPlayerStats\profileSystem\Profile.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileListener.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ResetStatsCommand.class
 io\github\NoOne\nMLPlayerStats\statSystem\ResetStatsEvent.class
+io\github\NoOne\nMLPlayerStats\statSystem\StatChangeEvent.class

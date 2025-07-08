@@ -222,4 +222,8 @@ public class Stats {
     public void setBonusHealth(double bonusHealth) {
         this.bonusHealth = bonusHealth;
     }
+
+    public void setMaxOverhealth(double maxOverhealth) {
+        this.maxOverhealth = maxOverhealth;
+    }
 }
