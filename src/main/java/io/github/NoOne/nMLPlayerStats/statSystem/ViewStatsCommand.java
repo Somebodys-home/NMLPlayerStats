@@ -30,7 +30,7 @@ public class ViewStatsCommand implements CommandExecutor {
             player.sendMessage("vitality: " + stats.getVitality());
             player.sendMessage("strength: " + stats.getStrength());
             player.sendMessage("deft: " + stats.getDeft());
-            player.sendMessage("arcane: " + stats.getExp());
+            player.sendMessage("arcane: " + stats.getArcane());
         }
 
         return true;

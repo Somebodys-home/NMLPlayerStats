@@ -1,5 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
+import org.bukkit.Bukkit;
+
 public class Stats {
     // player stats
     private int level;
@@ -75,40 +77,22 @@ public class Stats {
             }
             case "maxenergy" -> maxEnergy += amount;
         }
+
+        Bukkit.getPluginManager().callEvent(new StatChangeEvent(stat));
     }
 
     public void removeFromStat(String stat, double amount) {
         switch (stat.toLowerCase()) {
-            case "level" -> {
-                if (level > 0) level -= (int) amount;
-            }
-            case "exp" -> {
-                exp -= (int) amount;
-            }
-            case "exp2nextlevel" -> {
-                exp2NextLevel -= (int) amount;
-            }
-            case "attributepoints" -> {
-                attributePoints -= (int) amount;
-            }
-            case "vitality" -> {
-                vitality -= (int) amount;
-            }
-            case "strength" -> {
-                strength -= (int) amount;
-            }
-            case "deft" -> {
-                deft -= (int) amount;
-            }
-            case "arcane" -> {
-                arcane -= (int) amount;
-            }
-            case "bonushealth" -> {
-                bonusHealth -= amount;
-            }
-            case "currentoverhealth" -> {
-                currentOverhealth -= amount;
-            }
+            case "level" -> level -= (int) amount;
+            case "exp" -> exp -= (int) amount;
+            case "exp2nextlevel" -> exp2NextLevel -= (int) amount;
+            case "attributepoints" -> attributePoints -= (int) amount;
+            case "vitality" -> vitality -= (int) amount;
+            case "strength" -> strength -= (int) amount;
+            case "deft" -> deft -= (int) amount;
+            case "arcane" -> arcane -= (int) amount;
+            case "bonushealth" -> bonusHealth -= amount;
+            case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
                 maxOverhealth -= amount;
 
@@ -134,6 +118,8 @@ public class Stats {
                 }
             }
         }
+
+        Bukkit.getPluginManager().callEvent(new StatChangeEvent(stat));
     }
 
 
