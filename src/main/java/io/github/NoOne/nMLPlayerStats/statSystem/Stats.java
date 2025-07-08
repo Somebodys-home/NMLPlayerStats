@@ -36,11 +36,11 @@ public class Stats {
         this.arcane = arcane;
 
         this.currentEnergy = currentEnergy;
-        this.maxEnergy = maxEnergy;
+        this.maxEnergy = maxEnergy + bonusEnergy;
         this.bonusEnergy = bonusEnergy;
 
         this.currentOverhealth = currentOverhealth;
-        this.maxOverhealth = maxOverhealth;
+        this.maxOverhealth = maxOverhealth + bonusOverhealth;
         this.bonusOverhealth = bonusOverhealth;
         this.bonusHealth = bonusHealth;
     }
@@ -96,13 +96,24 @@ public class Stats {
             case "maxenergy" -> {
                 this.maxEnergy -= amount;
 
-                if (maxEnergy < 0) {
-                    maxEnergy = 0;
+                if (this.maxEnergy < this.bonusEnergy) {
+                    this.maxEnergy = this.bonusEnergy;
                 }
             }
             case "bonusenergy" -> this.bonusEnergy -= amount;
             case "currentoverhealth" -> this.currentOverhealth -= amount;
-            case "maxoverhealth" -> this.maxOverhealth -= amount;
+            case "maxoverhealth" -> {
+                this.maxOverhealth -= amount;
+
+                if (this.maxOverhealth < this.bonusOverhealth) {
+                    this.maxOverhealth = this.bonusOverhealth;
+                }
+
+                if (this.currentOverhealth > this.maxOverhealth) {
+                    this.currentOverhealth = this.maxOverhealth;
+                }
+            }
+
             case "bonusoverhealth" -> this.bonusOverhealth -= amount;
             case "bonushealth" -> this.bonusHealth -= amount;
         }
@@ -189,7 +200,7 @@ public class Stats {
     }
 
     public void setMaxEnergy(double maxEnergy) {
-        this.maxEnergy = maxEnergy;
+        this.maxEnergy = Math.max(maxEnergy, bonusEnergy);
     }
 
     public double getCurrentOverhealth() {
@@ -205,7 +216,7 @@ public class Stats {
     }
 
     public void setMaxOverhealth(double maxOverhealth) {
-        this.maxOverhealth = maxOverhealth;
+        this.maxOverhealth = Math.max(maxOverhealth, bonusOverhealth);
 
         if (currentOverhealth > maxOverhealth) {
             currentOverhealth = maxOverhealth;
