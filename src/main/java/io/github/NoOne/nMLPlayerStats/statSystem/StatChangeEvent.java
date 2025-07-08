@@ -6,16 +6,21 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class StatChangeEvent extends Event {
-    private String stat;
+    private static final HandlerList handlers = new HandlerList();
+    private final Player player;
+    private final String stat;
 
-    public StatChangeEvent(String stat) {
+    public StatChangeEvent(@NotNull Player player, String stat) {
+        this.player = player;
         this.stat = stat;
     }
 
     @Override
-    public @NotNull HandlerList getHandlers() {
-        return null;
-    }
+    public HandlerList getHandlers() { return handlers; }
+
+    public static HandlerList getHandlerList() { return handlers; } // deleting this breaks things, apparently
+
+    public Player getPlayer() { return player; }
 
     public String getStat() {
         return stat;

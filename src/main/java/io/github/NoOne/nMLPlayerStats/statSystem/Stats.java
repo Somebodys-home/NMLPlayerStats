@@ -77,8 +77,6 @@ public class Stats {
             }
             case "maxenergy" -> maxEnergy += amount;
         }
-
-        Bukkit.getPluginManager().callEvent(new StatChangeEvent(stat));
     }
 
     public void removeFromStat(String stat, double amount) {
@@ -118,8 +116,6 @@ public class Stats {
                 }
             }
         }
-
-        Bukkit.getPluginManager().callEvent(new StatChangeEvent(stat));
     }
 
 
