@@ -45,15 +45,13 @@ public class ProfileManager {
             int strength = config.getInt(id + ".stats.strength");
             int deft = config.getInt(id + ".stats.deft");
             int arcane = config.getInt(id + ".stats.arcane");
+            double bonusHealth = config.getDouble(id + ".stats.bonusHealth");
             double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
-            double bonusEnergy = config.getDouble(id + ".stats.bonusEnergy");
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
-            double bonusOverhealth = config.getDouble(id + ".stats.bonusOverhealth");
-            double bonusHealth = config.getDouble(id + ".stats.bonusHealth");
-            Stats stats = new Stats(level, exp, vitality, strength, deft, arcane, currentEnergy, maxEnergy, bonusEnergy, currentOverhealth, maxOverhealth, bonusOverhealth,
-                                    bonusHealth);
+            Stats stats = new Stats(level, exp, vitality, strength, deft, arcane, bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy
+            );
             Profile profile = new Profile(stats);
 
             profileMap.put(uuid, profile);
@@ -72,13 +70,11 @@ public class ProfileManager {
             config.set(id + ".stats.strength", stats.getStrength());
             config.set(id + ".stats.deft", stats.getDeft());
             config.set(id + ".stats.arcane", stats.getArcane());
+            config.set(id + ".stats.bonusHealth", stats.getBonusHealth());
             config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
             config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
-            config.set(id + ".stats.bonusEnergy", stats.getBonusEnergy());
             config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
             config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
-            config.set(id + ".stats.bonusOverhealth", stats.getBonusOverhealth());
-            config.set(id + ".stats.bonusHealth", stats.getBonusHealth());
         }
     }
 
@@ -93,13 +89,10 @@ public class ProfileManager {
         config.set(id + ".stats.strength", stats.getStrength());
         config.set(id + ".stats.deft", stats.getDeft());
         config.set(id + ".stats.arcane", stats.getArcane());
-        config.set(id + ".stats.exp2NextLevel", stats.getExp2NextLevel());
+        config.set(id + ".stats.bonusHealth", stats.getBonusHealth());
         config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
-        config.set(id + ".stats.bonusEnergy", stats.getBonusEnergy());
         config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
-        config.set(id + ".stats.bonusOverhealth", stats.getBonusOverhealth());
-        config.set(id + ".stats.bonusHealth", stats.getBonusHealth());
     }
 }

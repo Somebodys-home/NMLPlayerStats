@@ -12,19 +12,16 @@ public class Stats {
     private int deft;
     private int arcane;
 
-    // no need to do health, minecraft does that already
-    private double currentEnergy;
-    private double maxEnergy;
-    private double bonusEnergy;
+    private double bonusHealth;
     private double currentOverhealth;
     private double maxOverhealth;
-    private double bonusOverhealth;
-    private double bonusHealth;
+    private double currentEnergy;
+    private double maxEnergy;
 
     public Stats(int level, int exp,
                  int vitality, int strength, int deft, int arcane,
-                 double currentEnergy, double maxEnergy, double bonusEnergy,
-                 double currentOverhealth, double maxOverhealth, double bonusOverhealth, double bonusHealth) {
+                 double bonusHealth, double currentOverhealth, double maxOverhealth,
+                 double currentEnergy, double maxEnergy) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
@@ -35,89 +32,107 @@ public class Stats {
         this.deft = deft;
         this.arcane = arcane;
 
-        this.currentEnergy = currentEnergy;
-        this.maxEnergy = maxEnergy + bonusEnergy;
-        this.bonusEnergy = bonusEnergy;
-
-        this.currentOverhealth = currentOverhealth;
-        this.maxOverhealth = maxOverhealth + bonusOverhealth;
-        this.bonusOverhealth = bonusOverhealth;
         this.bonusHealth = bonusHealth;
+        this.currentOverhealth = currentOverhealth;
+        this.maxOverhealth = maxOverhealth;
+        this.currentEnergy = currentEnergy;
+        this.maxEnergy = maxEnergy;
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0, 0, 0, 0, 0, 100, 100, 0, 0,0,
-                0, 0);
+        return new Stats(1, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100
+        );
     }
 
     public void add2Stat(String stat, double amount) {
         switch (stat.toLowerCase()) {
-            case "level" -> this.level += (int) amount;
-            case "exp" -> this.exp += (int) amount;
-            case "exp2nextlevel" -> this.exp2NextLevel += (int) amount;
-            case "attributepoints" -> this.attributePoints += (int) amount;
-            case "vitality" -> this.vitality += (int) amount;
-            case "strength" -> this.strength += (int) amount;
-            case "deft" -> this.deft += (int) amount;
-            case "arcane" -> this.arcane += (int) amount;
+            case "level" -> level += (int) amount;
+            case "exp" -> exp += (int) amount;
+            case "exp2nextlevel" -> exp2NextLevel += (int) amount;
+            case "attributepoints" -> attributePoints += (int) amount;
+            case "vitality" -> vitality += (int) amount;
+            case "strength" -> strength += (int) amount;
+            case "deft" -> deft += (int) amount;
+            case "arcane" -> arcane += (int) amount;
+            case "bonushealth" -> bonusHealth += amount;
+            case "currentoverhealth" -> {
+                currentOverhealth += amount;
+
+                if (currentOverhealth > maxOverhealth) {
+                    currentOverhealth = maxOverhealth;
+                }
+            }
+            case "maxoverhealth" -> maxOverhealth += amount;
             case "currentenergy" -> {
-                this.currentEnergy += amount;
+                currentEnergy += amount;
 
                 if (currentEnergy > maxEnergy) {
                     currentEnergy = maxEnergy;
                 }
             }
-            case "maxenergy" -> this.maxEnergy += amount;
-            case "bonusenergy" -> this.bonusEnergy += amount;
-            case "currentoverhealth" -> this.currentOverhealth += amount;
-            case "maxoverhealth" -> this.maxOverhealth += amount;
-            case "bonusoverhealth" -> this.bonusOverhealth += amount;
-            case "bonushealth" -> this.bonusHealth += amount;
+            case "maxenergy" -> maxEnergy += amount;
         }
     }
 
     public void removeFromStat(String stat, double amount) {
         switch (stat.toLowerCase()) {
-            case "level" -> this.level -= (int) amount;
-            case "exp" -> this.exp -= (int) amount;
-            case "exp2nextlevel" -> this.exp2NextLevel -= (int) amount;
-            case "attributepoints" -> this.attributePoints -= (int) amount;
-            case "vitality" -> this.vitality -= (int) amount;
-            case "strength" -> this.strength -= (int) amount;
-            case "deft" -> this.deft -= (int) amount;
-            case "arcane" -> this.arcane -= (int) amount;
+            case "level" -> {
+                if (level > 0) level -= (int) amount;
+            }
+            case "exp" -> {
+                exp -= (int) amount;
+            }
+            case "exp2nextlevel" -> {
+                exp2NextLevel -= (int) amount;
+            }
+            case "attributepoints" -> {
+                attributePoints -= (int) amount;
+            }
+            case "vitality" -> {
+                vitality -= (int) amount;
+            }
+            case "strength" -> {
+                strength -= (int) amount;
+            }
+            case "deft" -> {
+                deft -= (int) amount;
+            }
+            case "arcane" -> {
+                arcane -= (int) amount;
+            }
+            case "bonushealth" -> {
+                bonusHealth -= amount;
+            }
+            case "currentoverhealth" -> {
+                currentOverhealth -= amount;
+            }
+            case "maxoverhealth" -> {
+                maxOverhealth -= amount;
+
+                if (maxOverhealth < 0) {
+                    maxOverhealth = 0;
+                }
+                if (currentOverhealth > maxOverhealth) {
+                    currentOverhealth = maxOverhealth;
+                }
+            }
             case "currentenergy" -> {
-                this.currentEnergy -= amount;
+                currentEnergy -= amount;
 
                 if (currentEnergy < 0) {
                     currentEnergy = 0;
                 }
             }
             case "maxenergy" -> {
-                this.maxEnergy -= amount;
+                maxEnergy -= amount;
 
-                if (this.maxEnergy < this.bonusEnergy) {
-                    this.maxEnergy = this.bonusEnergy;
+                if (currentEnergy > maxEnergy) {
+                    currentEnergy = maxEnergy;
                 }
             }
-            case "bonusenergy" -> this.bonusEnergy -= amount;
-            case "currentoverhealth" -> this.currentOverhealth -= amount;
-            case "maxoverhealth" -> {
-                this.maxOverhealth -= amount;
-
-                if (this.maxOverhealth < this.bonusOverhealth) {
-                    this.maxOverhealth = this.bonusOverhealth;
-                }
-
-                if (this.currentOverhealth > this.maxOverhealth) {
-                    this.currentOverhealth = this.maxOverhealth;
-                }
-            }
-
-            case "bonusoverhealth" -> this.bonusOverhealth -= amount;
-            case "bonushealth" -> this.bonusHealth -= amount;
         }
     }
+
 
     public int getLevel() {
         return level;
@@ -200,7 +215,7 @@ public class Stats {
     }
 
     public void setMaxEnergy(double maxEnergy) {
-        this.maxEnergy = Math.max(maxEnergy, bonusEnergy);
+        this.maxEnergy = maxEnergy;
     }
 
     public double getCurrentOverhealth() {
@@ -213,30 +228,6 @@ public class Stats {
 
     public double getMaxOverhealth() {
         return maxOverhealth;
-    }
-
-    public void setMaxOverhealth(double maxOverhealth) {
-        this.maxOverhealth = Math.max(maxOverhealth, bonusOverhealth);
-
-        if (currentOverhealth > maxOverhealth) {
-            currentOverhealth = maxOverhealth;
-        }
-    }
-
-    public double getBonusEnergy() {
-        return bonusEnergy;
-    }
-
-    public void setBonusEnergy(double bonusEnergy) {
-        this.bonusEnergy = bonusEnergy;
-    }
-
-    public double getBonusOverhealth() {
-        return bonusOverhealth;
-    }
-
-    public void setBonusOverhealth(double bonusOverhealth) {
-        this.bonusOverhealth = bonusOverhealth;
     }
 
     public double getBonusHealth() {
