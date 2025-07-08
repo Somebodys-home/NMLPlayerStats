@@ -41,6 +41,7 @@ public class ProfileManager {
             UUID uuid = UUID.fromString(id);
             int level = config.getInt(id + ".stats.level");
             int exp = config.getInt(id + ".stats.exp");
+            int attributePoints = config.getInt(id + ".stats.attributePoints");
             int vitality = config.getInt(id + ".stats.vitality");
             int strength = config.getInt(id + ".stats.strength");
             int deft = config.getInt(id + ".stats.deft");
@@ -50,8 +51,7 @@ public class ProfileManager {
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
-            Stats stats = new Stats(level, exp, vitality, strength, deft, arcane, bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy
-            );
+            Stats stats = new Stats(level, exp, attributePoints, vitality, strength, deft, arcane, bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy);
             Profile profile = new Profile(stats);
 
             profileMap.put(uuid, profile);
@@ -66,6 +66,7 @@ public class ProfileManager {
 
             config.set(id + ".stats.level", stats.getLevel());
             config.set(id + ".stats.exp", stats.getExp());
+            config.set(id + ".stats.attributePoints", stats.getAttributePoints());
             config.set(id + ".stats.vitality", stats.getVitality());
             config.set(id + ".stats.strength", stats.getStrength());
             config.set(id + ".stats.deft", stats.getDeft());
@@ -85,6 +86,7 @@ public class ProfileManager {
 
         config.set(id + ".stats.level", stats.getLevel());
         config.set(id + ".stats.exp", stats.getExp());
+        config.set(id + ".stats.attributePoints", stats.getAttributePoints());
         config.set(id + ".stats.vitality", stats.getVitality());
         config.set(id + ".stats.strength", stats.getStrength());
         config.set(id + ".stats.deft", stats.getDeft());

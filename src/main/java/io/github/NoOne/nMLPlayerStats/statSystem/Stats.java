@@ -18,7 +18,7 @@ public class Stats {
     private double currentEnergy;
     private double maxEnergy;
 
-    public Stats(int level, int exp,
+    public Stats(int level, int exp, int attributePoints,
                  int vitality, int strength, int deft, int arcane,
                  double bonusHealth, double currentOverhealth, double maxOverhealth,
                  double currentEnergy, double maxEnergy) {
@@ -26,7 +26,7 @@ public class Stats {
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
 
-        attributePoints = level - 1;
+        this.attributePoints = attributePoints;
         this.vitality = vitality;
         this.strength = strength;
         this.deft = deft;
@@ -40,13 +40,16 @@ public class Stats {
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100
-        );
+        return new Stats(1, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 100, 100);
     }
 
     public void add2Stat(String stat, double amount) {
         switch (stat.toLowerCase()) {
-            case "level" -> level += (int) amount;
+            case "level" -> {
+                level += (int) amount;
+                attributePoints += (int) amount;
+            }
             case "exp" -> exp += (int) amount;
             case "exp2nextlevel" -> exp2NextLevel += (int) amount;
             case "attributepoints" -> attributePoints += (int) amount;
