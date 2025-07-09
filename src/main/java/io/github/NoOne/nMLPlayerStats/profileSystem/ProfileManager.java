@@ -52,8 +52,17 @@ public class ProfileManager {
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
             int evasion = config.getInt(id + ".stats.evasion");
+            int physicalDamage = config.getInt(id + "stats.physicalDamage");
+            int fireDamage = config.getInt(id + "stats.fireDamage");
+            int coldDamage = config.getInt(id + "stats.coldDamage");
+            int earthDamage = config.getInt(id + "stats.earthDamage");
+            int lightningDamage = config.getInt(id + "stats.lightningDamage");
+            int airDamage = config.getInt(id + "stats.airDamage");
+            int lightDamage = config.getInt(id + "stats.lightDamage");
+            int darkDamage = config.getInt(id + "stats.darkDamage");
+            int pureDamage = config.getInt(id + "stats.pureDamage");
             Stats stats = new Stats(level, exp, attributePoints, vitality, strength, deft, arcane, bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
-                                    evasion);
+                                    evasion, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage);
             Profile profile = new Profile(stats);
 
             profileMap.put(uuid, profile);
@@ -79,6 +88,15 @@ public class ProfileManager {
             config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
             config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
             config.set(id + ".stats.evasion", stats.getEvasion());
+            config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
+            config.set(id + ".stats.fireDamage", stats.getFireDamage());
+            config.set(id + ".stats.coldDamage", stats.getColdDamage());
+            config.set(id + ".stats.earthDamage", stats.getEarthDamage());
+            config.set(id + ".stats.lightningDamage", stats.getLightningDamage());
+            config.set(id + ".stats.airDamage", stats.getAirDamage());
+            config.set(id + ".stats.lightDamage", stats.getLightDamage());
+            config.set(id + ".stats.darkDamage", stats.getDarkDamage());
+            config.set(id + ".stats.pureDamage", stats.getPureDamage());
         }
     }
 
@@ -100,5 +118,14 @@ public class ProfileManager {
         config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
         config.set(id + ".stats.evasion", stats.getEvasion());
+        config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
+        config.set(id + ".stats.fireDamage", stats.getFireDamage());
+        config.set(id + ".stats.coldDamage", stats.getColdDamage());
+        config.set(id + ".stats.earthDamage", stats.getEarthDamage());
+        config.set(id + ".stats.lightningDamage", stats.getLightningDamage());
+        config.set(id + ".stats.airDamage", stats.getAirDamage());
+        config.set(id + ".stats.lightDamage", stats.getLightDamage());
+        config.set(id + ".stats.darkDamage", stats.getDarkDamage());
+        config.set(id + ".stats.pureDamage", stats.getPureDamage());
     }
 }

@@ -17,13 +17,23 @@ public class Stats {
     private double maxOverhealth;
     private double currentEnergy;
     private double maxEnergy;
-
     private int evasion;
+
+    private int physicalDamage;
+    private int fireDamage;
+    private int coldDamage;
+    private int earthDamage;
+    private int lightningDamage;
+    private int airDamage;
+    private int lightDamage;
+    private int darkDamage;
+    private int pureDamage;
 
     public Stats(int level, int exp, int attributePoints,
                  int vitality, int strength, int deft, int arcane,
                  double bonusHealth, double currentOverhealth, double maxOverhealth,
-                 double currentEnergy, double maxEnergy, int evasion) {
+                 double currentEnergy, double maxEnergy, int evasion,
+                int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
@@ -40,11 +50,22 @@ public class Stats {
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
         this.evasion = evasion;
+
+        this.physicalDamage = physicalDamage;
+        this.fireDamage = fireDamage;
+        this.coldDamage = coldDamage;
+        this.earthDamage = earthDamage;
+        this.lightningDamage = lightningDamage;
+        this.airDamage = airDamage;
+        this.lightDamage = lightDamage;
+        this.darkDamage = darkDamage;
+        this.pureDamage = pureDamage;
     }
 
     public static Stats generateNewbieStats() {
         return new Stats(1, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 100, 100, 0);
+                0, 0, 0, 100, 100, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
     public void add2Stat(String stat, double amount) {
@@ -63,21 +84,24 @@ public class Stats {
             case "bonushealth" -> bonusHealth += amount;
             case "currentoverhealth" -> {
                 currentOverhealth += amount;
-
-                if (currentOverhealth > maxOverhealth) {
-                    currentOverhealth = maxOverhealth;
-                }
+                if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
             }
             case "maxoverhealth" -> maxOverhealth += amount;
             case "currentenergy" -> {
                 currentEnergy += amount;
-
-                if (currentEnergy > maxEnergy) {
-                    currentEnergy = maxEnergy;
-                }
+                if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
             case "maxenergy" -> maxEnergy += amount;
             case "evasion" -> evasion += (int) amount;
+            case "physicaldamage" -> physicalDamage += (int) amount;
+            case "firedamage" -> fireDamage += (int) amount;
+            case "colddamage" -> coldDamage += (int) amount;
+            case "earthdamage" -> earthDamage += (int) amount;
+            case "lightningdamage" -> lightningDamage += (int) amount;
+            case "airdamage" -> airDamage += (int) amount;
+            case "lightdamage" -> lightDamage += (int) amount;
+            case "darkdamage" -> darkDamage += (int) amount;
+            case "puredamage" -> pureDamage += (int) amount;
         }
     }
 
@@ -95,32 +119,29 @@ public class Stats {
             case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
                 maxOverhealth -= amount;
-
-                if (maxOverhealth < 0) {
-                    maxOverhealth = 0;
-                }
-                if (currentOverhealth > maxOverhealth) {
-                    currentOverhealth = maxOverhealth;
-                }
+                if (maxOverhealth < 0) maxOverhealth = 0;
+                if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
             }
             case "currentenergy" -> {
                 currentEnergy -= amount;
-
-                if (currentEnergy < 0) {
-                    currentEnergy = 0;
-                }
+                if (currentEnergy < 0) currentEnergy = 0;
             }
             case "maxenergy" -> {
                 maxEnergy -= amount;
-
-                if (currentEnergy > maxEnergy) {
-                    currentEnergy = maxEnergy;
-                }
+                if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
             case "evasion" -> evasion -= (int) amount;
+            case "physicaldamage" -> physicalDamage -= (int) amount;
+            case "firedamage" -> fireDamage -= (int) amount;
+            case "colddamage" -> coldDamage -= (int) amount;
+            case "earthdamage" -> earthDamage -= (int) amount;
+            case "lightningdamage" -> lightningDamage -= (int) amount;
+            case "airdamage" -> airDamage -= (int) amount;
+            case "lightdamage" -> lightDamage -= (int) amount;
+            case "darkdamage" -> darkDamage -= (int) amount;
+            case "puredamage" -> pureDamage -= (int) amount;
         }
     }
-
 
     public int getLevel() {
         return level;
@@ -236,5 +257,77 @@ public class Stats {
 
     public void setEvasion(int evasion) {
         this.evasion = evasion;
+    }
+
+    public int getPhysicalDamage() {
+        return physicalDamage;
+    }
+
+    public void setPhysicalDamage(int physicalDamage) {
+        this.physicalDamage = physicalDamage;
+    }
+
+    public int getFireDamage() {
+        return fireDamage;
+    }
+
+    public void setFireDamage(int fireDamage) {
+        this.fireDamage = fireDamage;
+    }
+
+    public int getColdDamage() {
+        return coldDamage;
+    }
+
+    public void setColdDamage(int coldDamage) {
+        this.coldDamage = coldDamage;
+    }
+
+    public int getEarthDamage() {
+        return earthDamage;
+    }
+
+    public void setEarthDamage(int earthDamage) {
+        this.earthDamage = earthDamage;
+    }
+
+    public int getAirDamage() {
+        return airDamage;
+    }
+
+    public void setAirDamage(int airDamage) {
+        this.airDamage = airDamage;
+    }
+
+    public int getPureDamage() {
+        return pureDamage;
+    }
+
+    public void setPureDamage(int pureDamage) {
+        this.pureDamage = pureDamage;
+    }
+
+    public int getDarkDamage() {
+        return darkDamage;
+    }
+
+    public void setDarkDamage(int darkDamage) {
+        this.darkDamage = darkDamage;
+    }
+
+    public int getLightDamage() {
+        return lightDamage;
+    }
+
+    public void setLightDamage(int lightDamage) {
+        this.lightDamage = lightDamage;
+    }
+
+    public int getLightningDamage() {
+        return lightningDamage;
+    }
+
+    public void setLightningDamage(int lightningDamage) {
+        this.lightningDamage = lightningDamage;
     }
 }
