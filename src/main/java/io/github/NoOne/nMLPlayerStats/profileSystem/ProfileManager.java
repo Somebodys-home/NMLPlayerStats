@@ -51,7 +51,9 @@ public class ProfileManager {
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
-            Stats stats = new Stats(level, exp, attributePoints, vitality, strength, deft, arcane, bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy);
+            int evasion = config.getInt(id + ".stats.evasion");
+            Stats stats = new Stats(level, exp, attributePoints, vitality, strength, deft, arcane, bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
+                                    evasion);
             Profile profile = new Profile(stats);
 
             profileMap.put(uuid, profile);
@@ -76,6 +78,7 @@ public class ProfileManager {
             config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
             config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
             config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
+            config.set(id + ".stats.evasion", stats.getEvasion());
         }
     }
 
@@ -96,5 +99,6 @@ public class ProfileManager {
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
         config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
+        config.set(id + ".stats.evasion", stats.getEvasion());
     }
 }

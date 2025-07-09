@@ -1,7 +1,5 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
-import org.bukkit.Bukkit;
-
 public class Stats {
     // player stats
     private int level;
@@ -20,10 +18,12 @@ public class Stats {
     private double currentEnergy;
     private double maxEnergy;
 
+    private int evasion;
+
     public Stats(int level, int exp, int attributePoints,
                  int vitality, int strength, int deft, int arcane,
                  double bonusHealth, double currentOverhealth, double maxOverhealth,
-                 double currentEnergy, double maxEnergy) {
+                 double currentEnergy, double maxEnergy, int evasion) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
@@ -39,11 +39,12 @@ public class Stats {
         this.maxOverhealth = maxOverhealth;
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
+        this.evasion = evasion;
     }
 
     public static Stats generateNewbieStats() {
         return new Stats(1, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 100, 100);
+                0, 0, 0, 100, 100, 0);
     }
 
     public void add2Stat(String stat, double amount) {
@@ -225,5 +226,13 @@ public class Stats {
 
     public void setMaxOverhealth(double maxOverhealth) {
         this.maxOverhealth = maxOverhealth;
+    }
+
+    public int getEvasion() {
+        return evasion;
+    }
+
+    public void setEvasion(int evasion) {
+        this.evasion = evasion;
     }
 }

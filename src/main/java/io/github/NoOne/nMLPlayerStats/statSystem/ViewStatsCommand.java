@@ -31,6 +31,7 @@ public class ViewStatsCommand implements CommandExecutor {
             player.sendMessage("strength: " + stats.getStrength());
             player.sendMessage("deft: " + stats.getDeft());
             player.sendMessage("arcane: " + stats.getArcane());
+            player.sendMessage("evasion: " + stats.getEvasion());
         }
 
         return true;
