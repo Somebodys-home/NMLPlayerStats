@@ -77,6 +77,7 @@ public class Stats {
                 }
             }
             case "maxenergy" -> maxEnergy += amount;
+            case "evasion" -> evasion += (int) amount;
         }
     }
 
@@ -116,6 +117,7 @@ public class Stats {
                     currentEnergy = maxEnergy;
                 }
             }
+            case "evasion" -> evasion -= (int) amount;
         }
     }
 
