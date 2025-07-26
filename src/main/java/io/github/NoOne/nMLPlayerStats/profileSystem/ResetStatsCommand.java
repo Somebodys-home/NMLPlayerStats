@@ -25,17 +25,18 @@ public class ResetStatsCommand implements CommandExecutor {
 
             stats.setLevel(1);
             stats.setExp(0);
+
             stats.setAttributePoints(0);
             stats.setVitality(0);
             stats.setStrength(0);
             stats.setDeft(0);
             stats.setArcane(0);
+
             stats.setBonusHealth(0);
             stats.setMaxOverhealth(0);
             stats.setCurrentOverhealth(0);
             stats.setMaxEnergy(100);
             stats.setCurrentEnergy(100);
-            stats.setEvasion(0);
 
             stats.setPhysicalDamage(0);
             stats.setFireDamage(0);
@@ -47,12 +48,24 @@ public class ResetStatsCommand implements CommandExecutor {
             stats.setDarkDamage(0);
             stats.setPureDamage(0);
 
+            stats.setEvasion(0);
+            stats.setDefense(0);
+            stats.setPhysicalResist(0);
+            stats.setFireResist(0);
+            stats.setColdResist(0);
+            stats.setEarthResist(0);
+            stats.setLightningResist(0);
+            stats.setAirResist(0);
+            stats.setLightResist(0);
+            stats.setDarkResist(0);
+
             // Fire stat change events
             String[] resetStats = {
-                    "level", "exp", "attributepoints", "vitality", "strength", "deft", "arcane",
-                    "bonushealth", "maxoverhealth", "overhealth", "maxenergy", "currentenergy", "evasion",
-                    "physicaldamage", "firedamage", "colddamage", "earthdamage", "lightningdamage", "airdamage",
-                    "lightdamage", "darkdamage", "puredamage"
+                    "level", "exp",
+                    "attributepoints", "vitality", "strength", "deft", "arcane",
+                    "bonushealth", "maxoverhealth", "overhealth", "maxenergy", "currentenergy",
+                    "physicaldamage", "firedamage", "colddamage", "earthdamage", "lightningdamage", "airdamage", "lightdamage", "darkdamage", "puredamage",
+                    "evasion", "defense", "physicalresist", "fireresist", "coldresist", "earthresist", "lightningresist", "airresist", "lightresist", "darkresist",
             };
 
             for (String stat : resetStats) {

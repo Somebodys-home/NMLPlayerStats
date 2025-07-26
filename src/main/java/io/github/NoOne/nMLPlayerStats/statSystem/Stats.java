@@ -1,24 +1,26 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 public class Stats {
-    // player stats
+    // level stats
     private int level;
     private int exp;
     private int exp2NextLevel;
 
+    // attribute stats
     private int attributePoints;
     private int vitality;
     private int strength;
     private int deft;
     private int arcane;
 
+    // hotbar stats
     private double bonusHealth;
     private double currentOverhealth;
     private double maxOverhealth;
     private double currentEnergy;
     private double maxEnergy;
-    private int evasion;
 
+    // damage stats
     private int physicalDamage;
     private int fireDamage;
     private int coldDamage;
@@ -29,11 +31,23 @@ public class Stats {
     private int darkDamage;
     private int pureDamage;
 
-    public Stats(int level, int exp, int attributePoints,
-                 int vitality, int strength, int deft, int arcane,
-                 double bonusHealth, double currentOverhealth, double maxOverhealth,
-                 double currentEnergy, double maxEnergy, int evasion,
-                int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage) {
+    // defense stats
+    private int evasion;
+    private int defense;
+    private int physicalResist;
+    private int fireResist;
+    private int coldResist;
+    private int earthResist;
+    private int lightningResist;
+    private int airResist;
+    private int lightResist;
+    private int darkResist;
+
+    public Stats(int level, int exp,
+                 int attributePoints, int vitality, int strength, int deft, int arcane,
+                 double bonusHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
+                int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
+                 int evasion, int defense, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
@@ -49,7 +63,6 @@ public class Stats {
         this.maxOverhealth = maxOverhealth;
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
-        this.evasion = evasion;
 
         this.physicalDamage = physicalDamage;
         this.fireDamage = fireDamage;
@@ -60,12 +73,25 @@ public class Stats {
         this.lightDamage = lightDamage;
         this.darkDamage = darkDamage;
         this.pureDamage = pureDamage;
+
+        this.evasion = evasion;
+        this.defense = defense;
+        this.physicalResist = physicalResist;
+        this.fireResist = fireResist;
+        this.coldResist = coldResist;
+        this.earthResist = earthResist;
+        this.lightningResist = lightningResist;
+        this.airResist = airResist;
+        this.lightResist = lightResist;
+        this.darkResist = darkResist;
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 100, 100, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0);
+        return new Stats(1, 0,
+                0, 0, 0, 0, 0,
+                0, 0, 0, 100, 100,
+                0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
     public void add2Stat(String stat, double amount) {
@@ -76,11 +102,13 @@ public class Stats {
             }
             case "exp" -> exp += (int) amount;
             case "exp2nextlevel" -> exp2NextLevel += (int) amount;
+
             case "attributepoints" -> attributePoints += (int) amount;
             case "vitality" -> vitality += (int) amount;
             case "strength" -> strength += (int) amount;
             case "deft" -> deft += (int) amount;
             case "arcane" -> arcane += (int) amount;
+
             case "bonushealth" -> bonusHealth += amount;
             case "currentoverhealth" -> {
                 currentOverhealth += amount;
@@ -92,7 +120,7 @@ public class Stats {
                 if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
             case "maxenergy" -> maxEnergy += amount;
-            case "evasion" -> evasion += (int) amount;
+
             case "physicaldamage" -> physicalDamage += (int) amount;
             case "firedamage" -> fireDamage += (int) amount;
             case "colddamage" -> coldDamage += (int) amount;
@@ -102,6 +130,16 @@ public class Stats {
             case "lightdamage" -> lightDamage += (int) amount;
             case "darkdamage" -> darkDamage += (int) amount;
             case "puredamage" -> pureDamage += (int) amount;
+
+            case "evasion" -> evasion += (int) amount;
+            case "defense" -> defense += (int) amount;
+            case "physicalresist" -> physicalResist += (int) amount;
+            case "fireresist" -> fireResist += (int) amount;
+            case "coldresist" -> coldResist += (int) amount;
+            case "earthresist" -> earthResist += (int) amount;
+            case "lightningresist" -> lightningResist += (int) amount;
+            case "lightresist" -> lightResist += (int) amount;
+            case "darkresist" -> darkResist += (int) amount;
         }
     }
 
@@ -110,11 +148,13 @@ public class Stats {
             case "level" -> level -= (int) amount;
             case "exp" -> exp -= (int) amount;
             case "exp2nextlevel" -> exp2NextLevel -= (int) amount;
+
             case "attributepoints" -> attributePoints -= (int) amount;
             case "vitality" -> vitality -= (int) amount;
             case "strength" -> strength -= (int) amount;
             case "deft" -> deft -= (int) amount;
             case "arcane" -> arcane -= (int) amount;
+
             case "bonushealth" -> bonusHealth -= amount;
             case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
@@ -130,7 +170,7 @@ public class Stats {
                 maxEnergy -= amount;
                 if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
-            case "evasion" -> evasion -= (int) amount;
+
             case "physicaldamage" -> physicalDamage -= (int) amount;
             case "firedamage" -> fireDamage -= (int) amount;
             case "colddamage" -> coldDamage -= (int) amount;
@@ -140,6 +180,16 @@ public class Stats {
             case "lightdamage" -> lightDamage -= (int) amount;
             case "darkdamage" -> darkDamage -= (int) amount;
             case "puredamage" -> pureDamage -= (int) amount;
+
+            case "evasion" -> evasion -= (int) amount;
+            case "defense" -> defense -= (int) amount;
+            case "physicalresist" -> physicalResist -= (int) amount;
+            case "fireresist" -> fireResist -= (int) amount;
+            case "coldresist" -> coldResist -= (int) amount;
+            case "earthresist" -> earthResist -= (int) amount;
+            case "lightningresist" -> lightningResist -= (int) amount;
+            case "lightresist" -> lightResist -= (int) amount;
+            case "darkresist" -> darkResist -= (int) amount;
         }
     }
 
@@ -329,5 +379,77 @@ public class Stats {
 
     public void setLightningDamage(int lightningDamage) {
         this.lightningDamage = lightningDamage;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getDarkResist() {
+        return darkResist;
+    }
+
+    public void setDarkResist(int darkResist) {
+        this.darkResist = darkResist;
+    }
+
+    public int getLightResist() {
+        return lightResist;
+    }
+
+    public void setLightResist(int lightResist) {
+        this.lightResist = lightResist;
+    }
+
+    public int getLightningResist() {
+        return lightningResist;
+    }
+
+    public void setLightningResist(int lightningResist) {
+        this.lightningResist = lightningResist;
+    }
+
+    public int getAirResist() {
+        return airResist;
+    }
+
+    public void setAirResist(int airResist) {
+        this.airResist = airResist;
+    }
+
+    public int getEarthResist() {
+        return earthResist;
+    }
+
+    public void setEarthResist(int earthResist) {
+        this.earthResist = earthResist;
+    }
+
+    public int getColdResist() {
+        return coldResist;
+    }
+
+    public void setColdResist(int coldResist) {
+        this.coldResist = coldResist;
+    }
+
+    public int getFireResist() {
+        return fireResist;
+    }
+
+    public void setFireResist(int fireResist) {
+        this.fireResist = fireResist;
+    }
+
+    public int getPhysicalResist() {
+        return physicalResist;
+    }
+
+    public void setPhysicalResist(int physicalResist) {
+        this.physicalResist = physicalResist;
     }
 }

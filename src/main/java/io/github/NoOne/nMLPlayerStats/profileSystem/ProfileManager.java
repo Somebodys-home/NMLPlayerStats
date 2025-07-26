@@ -41,17 +41,19 @@ public class ProfileManager {
             UUID uuid = UUID.fromString(id);
             int level = config.getInt(id + ".stats.level");
             int exp = config.getInt(id + ".stats.exp");
+
             int attributePoints = config.getInt(id + ".stats.attributePoints");
             int vitality = config.getInt(id + ".stats.vitality");
             int strength = config.getInt(id + ".stats.strength");
             int deft = config.getInt(id + ".stats.deft");
             int arcane = config.getInt(id + ".stats.arcane");
+
             double bonusHealth = config.getDouble(id + ".stats.bonusHealth");
             double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
-            int evasion = config.getInt(id + ".stats.evasion");
+
             int physicalDamage = config.getInt(id + "stats.physicalDamage");
             int fireDamage = config.getInt(id + "stats.fireDamage");
             int coldDamage = config.getInt(id + "stats.coldDamage");
@@ -61,10 +63,24 @@ public class ProfileManager {
             int lightDamage = config.getInt(id + "stats.lightDamage");
             int darkDamage = config.getInt(id + "stats.darkDamage");
             int pureDamage = config.getInt(id + "stats.pureDamage");
-            Stats stats = new Stats(level, exp, attributePoints, vitality, strength, deft, arcane, bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
-                                    evasion, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage);
-            Profile profile = new Profile(stats);
 
+            int evasion = config.getInt(id + ".stats.evasion");
+            int defense = config.getInt(id + ".stats.defense");
+            int physicalResist = config.getInt(id + "stats.physicalResist");
+            int fireResist = config.getInt(id + "stats.fireResist");
+            int coldResist = config.getInt(id + "stats.coldResist");
+            int earthResist = config.getInt(id + "stats.earthResist");
+            int lightningResist = config.getInt(id + "stats.lightningResist");
+            int airResist = config.getInt(id + "stats.airResist");
+            int lightResist = config.getInt(id + "stats.lightResist");
+            int darkResist = config.getInt(id + "stats.darkResist");
+
+            Stats stats = new Stats(level, exp,
+                                    attributePoints, vitality, strength, deft, arcane,
+                                    bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
+                                    physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,
+                                    evasion, defense, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
+            Profile profile = new Profile(stats);
             profileMap.put(uuid, profile);
         }
     }
@@ -77,17 +93,19 @@ public class ProfileManager {
 
             config.set(id + ".stats.level", stats.getLevel());
             config.set(id + ".stats.exp", stats.getExp());
+
             config.set(id + ".stats.attributePoints", stats.getAttributePoints());
             config.set(id + ".stats.vitality", stats.getVitality());
             config.set(id + ".stats.strength", stats.getStrength());
             config.set(id + ".stats.deft", stats.getDeft());
             config.set(id + ".stats.arcane", stats.getArcane());
+
             config.set(id + ".stats.bonusHealth", stats.getBonusHealth());
             config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
             config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
             config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
             config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
-            config.set(id + ".stats.evasion", stats.getEvasion());
+
             config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
             config.set(id + ".stats.fireDamage", stats.getFireDamage());
             config.set(id + ".stats.coldDamage", stats.getColdDamage());
@@ -97,6 +115,16 @@ public class ProfileManager {
             config.set(id + ".stats.lightDamage", stats.getLightDamage());
             config.set(id + ".stats.darkDamage", stats.getDarkDamage());
             config.set(id + ".stats.pureDamage", stats.getPureDamage());
+
+            config.set(id + ".stats.evasion", stats.getEvasion());
+            config.set(id + ".stats.physicalResist", stats.getPhysicalResist());
+            config.set(id + ".stats.fireResist", stats.getFireResist());
+            config.set(id + ".stats.coldResist", stats.getColdResist());
+            config.set(id + ".stats.earthResist", stats.getEarthResist());
+            config.set(id + ".stats.lightningResist", stats.getLightningResist());
+            config.set(id + ".stats.airResist", stats.getAirResist());
+            config.set(id + ".stats.lightResist", stats.getLightResist());
+            config.set(id + ".stats.darkResist", stats.getDarkResist());
         }
     }
 
@@ -107,17 +135,19 @@ public class ProfileManager {
 
         config.set(id + ".stats.level", stats.getLevel());
         config.set(id + ".stats.exp", stats.getExp());
+
         config.set(id + ".stats.attributePoints", stats.getAttributePoints());
         config.set(id + ".stats.vitality", stats.getVitality());
         config.set(id + ".stats.strength", stats.getStrength());
         config.set(id + ".stats.deft", stats.getDeft());
         config.set(id + ".stats.arcane", stats.getArcane());
+
         config.set(id + ".stats.bonusHealth", stats.getBonusHealth());
         config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
         config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
-        config.set(id + ".stats.evasion", stats.getEvasion());
+
         config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
         config.set(id + ".stats.fireDamage", stats.getFireDamage());
         config.set(id + ".stats.coldDamage", stats.getColdDamage());
@@ -127,5 +157,15 @@ public class ProfileManager {
         config.set(id + ".stats.lightDamage", stats.getLightDamage());
         config.set(id + ".stats.darkDamage", stats.getDarkDamage());
         config.set(id + ".stats.pureDamage", stats.getPureDamage());
+
+        config.set(id + ".stats.evasion", stats.getEvasion());
+        config.set(id + ".stats.physicalResist", stats.getPhysicalResist());
+        config.set(id + ".stats.fireResist", stats.getFireResist());
+        config.set(id + ".stats.coldResist", stats.getColdResist());
+        config.set(id + ".stats.earthResist", stats.getEarthResist());
+        config.set(id + ".stats.lightningResist", stats.getLightningResist());
+        config.set(id + ".stats.airResist", stats.getAirResist());
+        config.set(id + ".stats.lightResist", stats.getLightResist());
+        config.set(id + ".stats.darkResist", stats.getDarkResist());
     }
 }
