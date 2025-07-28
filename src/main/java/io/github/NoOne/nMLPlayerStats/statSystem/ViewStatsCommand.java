@@ -18,7 +18,7 @@ public class ViewStatsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player) {
-            // todo: make the actual menu eventually
+            // todo: make the actual menu eventuall
             //new StatsMenu(MenuSystem.getPlayerMenuUtility(player), nmlPlayerStats).open();
             Stats stats = nmlPlayerStats.getProfileManager().getPlayerProfile(player.getUniqueId()).getStats();
 
