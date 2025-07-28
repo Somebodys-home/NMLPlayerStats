@@ -4,6 +4,9 @@ main: io.github.NoOne.nMLPlayerStats.NMLPlayerStats
 api-version: '1.21'
 authors: [ Gabriel Nicolas ]
 description: Plugin for No Man's Land to hold the player's stats
+loadbefore:
+  - DamagePlugin
+  - NMLWeapons
 commands:
   viewStats:
     description: Opens your stats menu

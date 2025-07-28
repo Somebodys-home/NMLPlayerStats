@@ -23,6 +23,9 @@ public class ViewStatsCommand implements CommandExecutor {
             Stats stats = nmlPlayerStats.getProfileManager().getPlayerProfile(player.getUniqueId()).getStats();
 
             player.sendMessage(ChatColor.GOLD + "YOUR STATS:");
+            player.sendMessage("defense: " + stats.getDefense());
+            player.sendMessage("evasion: " + stats.getEvasion());
+            player.sendMessage("max overhealth: " + stats.getMaxOverhealth());
             player.sendMessage("physical resist: " + stats.getPhysicalResist());
             player.sendMessage("fire resist: " + stats.getFireResist());
             player.sendMessage("cold resist: " + stats.getColdResist());

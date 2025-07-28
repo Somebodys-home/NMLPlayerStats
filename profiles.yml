@@ -1,8 +1,8 @@
 cf942050-e942-4990-a113-e3df70b289be:
   stats:
-    level: 100
+    level: 1
     exp: 0
-    attributePoints: 404
+    attributePoints: 0
     vitality: 0
     strength: 0
     deft: 0
@@ -22,3 +22,11 @@ cf942050-e942-4990-a113-e3df70b289be:
     lightDamage: 0
     darkDamage: 0
     pureDamage: 0
+    physicalResist: 0
+    fireResist: 0
+    coldResist: 0
+    earthResist: 0
+    lightningResist: 0
+    airResist: 0
+    lightResist: 0
+    darkResist: 0
