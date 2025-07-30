@@ -25,6 +25,7 @@ public class ViewStatsCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GOLD + "YOUR STATS:");
             player.sendMessage("defense: " + stats.getDefense());
             player.sendMessage("evasion: " + stats.getEvasion());
+            player.sendMessage("block: " + stats.getBlock());
             player.sendMessage("max overhealth: " + stats.getMaxOverhealth());
             player.sendMessage("physical resist: " + stats.getPhysicalResist());
             player.sendMessage("fire resist: " + stats.getFireResist());

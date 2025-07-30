@@ -34,6 +34,7 @@ public class Stats {
     // defense stats
     private int evasion;
     private int defense;
+    private int block;
     private int physicalResist;
     private int fireResist;
     private int coldResist;
@@ -47,7 +48,7 @@ public class Stats {
                  int attributePoints, int vitality, int strength, int deft, int arcane,
                  double bonusHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                 int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
-                 int evasion, int defense, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
+                 int evasion, int defense, int block, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
         this.level = level;
         this.exp = exp;
         exp2NextLevel = 100; // todo: come up with a formula for xp requirements
@@ -76,6 +77,7 @@ public class Stats {
 
         this.evasion = evasion;
         this.defense = defense;
+        this.block = block;
         this.physicalResist = physicalResist;
         this.fireResist = fireResist;
         this.coldResist = coldResist;
@@ -91,7 +93,7 @@ public class Stats {
                 0, 0, 0, 0, 0,
                 0, 0, 0, 100, 100,
                 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
     public void add2Stat(String stat, double amount) {
@@ -133,6 +135,7 @@ public class Stats {
 
             case "evasion" -> evasion += (int) amount;
             case "defense" -> defense += (int) amount;
+            case "block" -> block += (int) amount;
             case "physicalresist" -> physicalResist += (int) amount;
             case "fireresist" -> fireResist += (int) amount;
             case "coldresist" -> coldResist += (int) amount;
@@ -183,6 +186,7 @@ public class Stats {
 
             case "evasion" -> evasion -= (int) amount;
             case "defense" -> defense -= (int) amount;
+            case "block" -> block += (int) amount;
             case "physicalresist" -> physicalResist -= (int) amount;
             case "fireresist" -> fireResist -= (int) amount;
             case "coldresist" -> coldResist -= (int) amount;
@@ -451,5 +455,13 @@ public class Stats {
 
     public void setPhysicalResist(int physicalResist) {
         this.physicalResist = physicalResist;
+    }
+
+    public int getBlock() {
+        return block;
+    }
+
+    public void setBlock(int block) {
+        this.block = block;
     }
 }

@@ -66,6 +66,7 @@ public class ProfileManager {
 
             int evasion = config.getInt(id + ".stats.evasion");
             int defense = config.getInt(id + ".stats.defense");
+            int block = config.getInt(id + ".stats.block");
             int physicalResist = config.getInt(id + "stats.physicalResist");
             int fireResist = config.getInt(id + "stats.fireResist");
             int coldResist = config.getInt(id + "stats.coldResist");
@@ -79,7 +80,7 @@ public class ProfileManager {
                                     attributePoints, vitality, strength, deft, arcane,
                                     bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
                                     physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,
-                                    evasion, defense, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
+                                    evasion, defense, block, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
             Profile profile = new Profile(stats);
             profileMap.put(uuid, profile);
         }
@@ -117,6 +118,8 @@ public class ProfileManager {
             config.set(id + ".stats.pureDamage", stats.getPureDamage());
 
             config.set(id + ".stats.evasion", stats.getEvasion());
+            config.set(id + ".stats.defense", stats.getDefense());
+            config.set(id + ".stats.block", stats.getBlock());
             config.set(id + ".stats.physicalResist", stats.getPhysicalResist());
             config.set(id + ".stats.fireResist", stats.getFireResist());
             config.set(id + ".stats.coldResist", stats.getColdResist());
@@ -159,6 +162,8 @@ public class ProfileManager {
         config.set(id + ".stats.pureDamage", stats.getPureDamage());
 
         config.set(id + ".stats.evasion", stats.getEvasion());
+        config.set(id + ".stats.defense", stats.getDefense());
+        config.set(id + ".stats.block", stats.getBlock());
         config.set(id + ".stats.physicalResist", stats.getPhysicalResist());
         config.set(id + ".stats.fireResist", stats.getFireResist());
         config.set(id + ".stats.coldResist", stats.getColdResist());
