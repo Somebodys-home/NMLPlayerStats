@@ -186,7 +186,7 @@ public class Stats {
 
             case "evasion" -> evasion -= (int) amount;
             case "defense" -> defense -= (int) amount;
-            case "block" -> block += (int) amount;
+            case "block" -> block -= (int) amount;
             case "physicalresist" -> physicalResist -= (int) amount;
             case "fireresist" -> fireResist -= (int) amount;
             case "coldresist" -> coldResist -= (int) amount;

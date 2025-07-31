@@ -59,6 +59,8 @@ public class ResetStatsCommand implements CommandExecutor {
             stats.setLightResist(0);
             stats.setDarkResist(0);
 
+            stats.setBlock(0);
+
             // Fire stat change events
             String[] resetStats = {
                     "level", "exp",
@@ -66,6 +68,7 @@ public class ResetStatsCommand implements CommandExecutor {
                     "bonushealth", "maxoverhealth", "overhealth", "maxenergy", "currentenergy",
                     "physicaldamage", "firedamage", "colddamage", "earthdamage", "lightningdamage", "airdamage", "lightdamage", "darkdamage", "puredamage",
                     "evasion", "defense", "physicalresist", "fireresist", "coldresist", "earthresist", "lightningresist", "airresist", "lightresist", "darkresist",
+                    "block",
             };
 
             for (String stat : resetStats) {
