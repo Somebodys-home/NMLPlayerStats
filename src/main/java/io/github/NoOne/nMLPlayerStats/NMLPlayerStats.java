@@ -1,5 +1,6 @@
 package io.github.NoOne.nMLPlayerStats;
 
+import io.github.NoOne.menuSystem.MenuListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileConfig;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
@@ -30,6 +31,7 @@ public final class NMLPlayerStats extends JavaPlugin {
         getCommand("resetStats").setExecutor(new ResetStatsCommand(this));
 
         getServer().getPluginManager().registerEvents(new ProfileListener(this), this);
+        getServer().getPluginManager().registerEvents(new MenuListener(), this);
     }
 
     @Override

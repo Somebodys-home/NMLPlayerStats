@@ -23,7 +23,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     pureDamage: 0
     evasion: 0
     defense: 0
-    block: 6
+    block: 0
     physicalResist: 0
     fireResist: 0
     coldResist: 0

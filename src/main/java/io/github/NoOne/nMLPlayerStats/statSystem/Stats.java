@@ -141,6 +141,7 @@ public class Stats {
             case "coldresist" -> coldResist += (int) amount;
             case "earthresist" -> earthResist += (int) amount;
             case "lightningresist" -> lightningResist += (int) amount;
+            case "airresist" -> airResist += (int) amount;
             case "lightresist" -> lightResist += (int) amount;
             case "darkresist" -> darkResist += (int) amount;
         }
@@ -192,6 +193,7 @@ public class Stats {
             case "coldresist" -> coldResist -= (int) amount;
             case "earthresist" -> earthResist -= (int) amount;
             case "lightningresist" -> lightningResist -= (int) amount;
+            case "airresist" -> airResist -= (int) amount;
             case "lightresist" -> lightResist -= (int) amount;
             case "darkresist" -> darkResist -= (int) amount;
         }

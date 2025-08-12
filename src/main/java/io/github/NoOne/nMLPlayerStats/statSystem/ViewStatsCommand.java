@@ -1,6 +1,6 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
-import io.github.Gabriel.menuSystem.MenuSystem;
+import io.github.NoOne.menuSystem.MenuSystem;
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
