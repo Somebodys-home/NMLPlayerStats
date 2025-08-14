@@ -27,6 +27,11 @@ public class StatsMenu extends Menu { // todo: finalize menu when all the stats 
     }
 
     @Override
+    public void handlePlayerMenu(InventoryClickEvent inventoryClickEvent) {
+
+    }
+
+    @Override
     public void setMenuItems() {
         underConstruction();
     }

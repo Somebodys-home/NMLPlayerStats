@@ -1,6 +1,5 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
-import io.github.NoOne.menuSystem.MenuSystem;
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -18,14 +17,14 @@ public class ViewStatsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player) {
-            // todo: make the actual menu eventuall
+            // todo: make the actual menu eventually
             //new StatsMenu(MenuSystem.getPlayerMenuUtility(player), nmlPlayerStats).open();
             Stats stats = nmlPlayerStats.getProfileManager().getPlayerProfile(player.getUniqueId()).getStats();
 
             player.sendMessage(ChatColor.GOLD + "YOUR STATS:");
             player.sendMessage("defense: " + stats.getDefense());
             player.sendMessage("evasion: " + stats.getEvasion());
-            player.sendMessage("block: " + stats.getBlock());
+            player.sendMessage("guard: " + stats.getGuard());
             player.sendMessage("max overhealth: " + stats.getMaxOverhealth());
             player.sendMessage("physical resist: " + stats.getPhysicalResist());
             player.sendMessage("fire resist: " + stats.getFireResist());

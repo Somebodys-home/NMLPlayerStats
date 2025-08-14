@@ -59,7 +59,7 @@ public class ResetStatsCommand implements CommandExecutor {
             stats.setLightResist(0);
             stats.setDarkResist(0);
 
-            stats.setBlock(0);
+            stats.setGuard(0);
 
             // Fire stat change events
             String[] resetStats = {
