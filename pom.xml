@@ -44,7 +44,7 @@
                 <executions>
                     <execution>
                         <id>shade-if-needed</id>
-                        <phase>none</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>com.github.Somebodys-home</groupId>
             <artifactId>MenuSystem</artifactId>
-            <version>80dfed5099</version>
+            <version>d4d4a012c9</version>
         </dependency>
     </dependencies>
 </project>

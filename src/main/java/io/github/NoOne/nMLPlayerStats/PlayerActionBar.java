@@ -42,6 +42,6 @@ public class PlayerActionBar {
                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(actionBar[0] + "       " + actionBar[1]));
                 }
             }
-        }.runTaskTimer(nmlPlayerStats, 0, 20);
+        }.runTaskTimer(nmlPlayerStats, 0, 5);
     }
 }

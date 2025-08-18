@@ -77,10 +77,10 @@ public class ProfileManager {
             int darkResist = config.getInt(id + "stats.darkResist");
 
             Stats stats = new Stats(level, exp,
-                                    attributePoints, vitality, strength, deft, arcane,
-                                    bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
-                                    physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,
-                                    evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
+                    attributePoints, vitality, strength, deft, arcane,
+                    bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
+                    physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,
+                    evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
             Profile profile = new Profile(stats);
             profileMap.put(uuid, profile);
         }

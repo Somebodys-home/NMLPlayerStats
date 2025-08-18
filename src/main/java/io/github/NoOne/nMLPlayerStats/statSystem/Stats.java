@@ -1,10 +1,12 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 public class Stats {
+    private String title;
+
     // level stats
     private int level;
     private int exp;
-    private int exp2NextLevel;
+    private int exp2LvlUp;
 
     // attribute stats
     private int attributePoints;
@@ -51,7 +53,7 @@ public class Stats {
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
         this.level = level;
         this.exp = exp;
-        exp2NextLevel = 100; // todo: come up with a formula for xp requirements
+        exp2LvlUp = 100; // todo: come up with a formula for xp requirements
 
         this.attributePoints = attributePoints;
         this.vitality = vitality;
@@ -103,7 +105,7 @@ public class Stats {
                 attributePoints += (int) amount;
             }
             case "exp" -> exp += (int) amount;
-            case "exp2nextlevel" -> exp2NextLevel += (int) amount;
+            case "exp2lvlup" -> exp2LvlUp += (int) amount;
 
             case "attributepoints" -> attributePoints += (int) amount;
             case "vitality" -> vitality += (int) amount;
@@ -151,7 +153,7 @@ public class Stats {
         switch (stat.toLowerCase()) {
             case "level" -> level -= (int) amount;
             case "exp" -> exp -= (int) amount;
-            case "exp2nextlevel" -> exp2NextLevel -= (int) amount;
+            case "exp2lvlup" -> exp2LvlUp -= (int) amount;
 
             case "attributepoints" -> attributePoints -= (int) amount;
             case "vitality" -> vitality -= (int) amount;
@@ -211,12 +213,12 @@ public class Stats {
         this.level = level;
     }
 
-    public int getExp2NextLevel() {
-        return exp2NextLevel;
+    public int getExp2LvlUp() {
+        return exp2LvlUp;
     }
 
-    public void setExp2NextLevel(int exp2NextLevel) {
-        this.exp2NextLevel = exp2NextLevel;
+    public void setExp2LvlUp(int exp2LvlUp) {
+        this.exp2LvlUp = exp2LvlUp;
     }
 
     public int getExp() {

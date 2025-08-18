@@ -8,8 +8,8 @@ loadbefore:
   - DamagePlugin
   - NMLWeapons
 commands:
-  viewStats:
-    description: Opens your stats menu
+  profile:
+    description: Opens your profile
     usage: /<command>
   resetStats:
     description: Resets your stats
