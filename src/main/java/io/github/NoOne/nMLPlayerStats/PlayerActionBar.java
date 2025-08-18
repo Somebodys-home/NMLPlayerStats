@@ -35,13 +35,13 @@ public class PlayerActionBar {
 
     public void actionBarsTask() {
         new BukkitRunnable() {
-            public void run(){
+            public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     String[] actionBar = setPlayerActionBarParts(player);
 
                     player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(actionBar[0] + "       " + actionBar[1]));
                 }
             }
-        }.runTaskTimer(nmlPlayerStats, 0, 5);
+        }.runTaskTimer(nmlPlayerStats, 0, 5L);
     }
 }

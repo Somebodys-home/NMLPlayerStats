@@ -5,7 +5,7 @@ public class Stats {
 
     // level stats
     private int level;
-    private int exp;
+    private double exp;
     private int exp2LvlUp;
 
     // attribute stats
@@ -46,7 +46,7 @@ public class Stats {
     private int lightResist;
     private int darkResist;
 
-    public Stats(int level, int exp,
+    public Stats(int level, double exp,
                  int attributePoints, int vitality, int strength, int deft, int arcane,
                  double bonusHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
@@ -104,7 +104,7 @@ public class Stats {
                 level += (int) amount;
                 attributePoints += (int) amount;
             }
-            case "exp" -> exp += (int) amount;
+            case "exp" -> exp += amount;
             case "exp2lvlup" -> exp2LvlUp += (int) amount;
 
             case "attributepoints" -> attributePoints += (int) amount;
@@ -152,7 +152,7 @@ public class Stats {
     public void removeFromStat(String stat, double amount) {
         switch (stat.toLowerCase()) {
             case "level" -> level -= (int) amount;
-            case "exp" -> exp -= (int) amount;
+            case "exp" -> exp -= amount;
             case "exp2lvlup" -> exp2LvlUp -= (int) amount;
 
             case "attributepoints" -> attributePoints -= (int) amount;
@@ -221,11 +221,11 @@ public class Stats {
         this.exp2LvlUp = exp2LvlUp;
     }
 
-    public int getExp() {
+    public double getExp() {
         return exp;
     }
 
-    public void setExp(int exp) {
+    public void setExp(double exp) {
         this.exp = exp;
     }
 

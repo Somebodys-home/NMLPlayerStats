@@ -12,13 +12,11 @@ import java.util.Map;
 import java.util.UUID;
 
 public class ProfileManager {
-    private NMLPlayerStats nmlPlayerStats;
     private static Map<UUID, Profile> profileMap = new HashMap<>(); // hashmap of all the profiles of all the players online atm
     private FileConfiguration config;
     private ProfileConfig profileConfig;
 
     public ProfileManager(NMLPlayerStats nmlPlayerStats) {
-        this.nmlPlayerStats = nmlPlayerStats;
         profileConfig = nmlPlayerStats.getProfileConfig();
         config = profileConfig.getConfig();
     }
@@ -40,7 +38,7 @@ public class ProfileManager {
         for (String id : config.getConfigurationSection("").getKeys(false)) {
             UUID uuid = UUID.fromString(id);
             int level = config.getInt(id + ".stats.level");
-            int exp = config.getInt(id + ".stats.exp");
+            double exp = config.getInt(id + ".stats.exp");
 
             int attributePoints = config.getInt(id + ".stats.attributePoints");
             int vitality = config.getInt(id + ".stats.vitality");

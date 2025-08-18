@@ -31,7 +31,7 @@ public class ProfileMenu extends Menu {
 
         player = playerMenuUtility.getOwner();
         stats = nmlPlayerStats.getProfileManager().getPlayerProfile(player.getUniqueId()).getStats();
-        int exPercent = stats.getExp() / stats.getExp2LvlUp();
+        double exPercent = (stats.getExp() / stats.getExp2LvlUp()) * 100;
 
         playerPic = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
         ItemMeta meta = playerPic.getItemMeta();
@@ -132,14 +132,13 @@ public class ProfileMenu extends Menu {
     }
 
     public void updateLevelBar() {
-        int exp = stats.getExp();
+        double exp = stats.getExp();
         int exp2LvlUp = stats.getExp2LvlUp();
         int barFilled = 0;
 
-        player.sendMessage("exp: " + exp);
         // logic 2 get barFilled
-        int numerator = exp * 9;
-        barFilled = numerator / exp2LvlUp;
+        double numerator = exp * 9;
+        barFilled = Math.toIntExact(Math.round(numerator / exp2LvlUp));
 
         switch (barFilled) {
             case 1 -> levelBar1.setType(Material.GREEN_CONCRETE);
