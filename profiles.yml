@@ -1,8 +1,8 @@
 cf942050-e942-4990-a113-e3df70b289be:
   stats:
     level: 1
-    exp: 99
-    attributePoints: 10
+    exp: 95.0
+    attributePoints: 0
     vitality: 0
     strength: 0
     deft: 0
@@ -23,7 +23,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     pureDamage: 0
     evasion: 0
     defense: 0
-    guard: 15
+    guard: 0
     physicalResist: 0
     fireResist: 0
     coldResist: 0

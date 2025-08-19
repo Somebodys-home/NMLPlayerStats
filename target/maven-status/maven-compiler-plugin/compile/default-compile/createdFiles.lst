@@ -1,10 +1,8 @@
 io\github\NoOne\nMLPlayerStats\PlayerActionBar.class
 io\github\NoOne\nMLPlayerStats\PlayerActionBar$1.class
-io\github\NoOne\nMLPlayerStats\profileSystem\ProfileCommand.class
 io\github\NoOne\nMLPlayerStats\statSystem\Stats.class
 io\github\NoOne\nMLPlayerStats\statSystem\StatListener.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileManager.class
-io\github\NoOne\nMLPlayerStats\profileSystem\ProfileMenu.class
 io\github\NoOne\nMLPlayerStats\NMLPlayerStats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileConfig.class
 io\github\NoOne\nMLPlayerStats\profileSystem\Profile.class
