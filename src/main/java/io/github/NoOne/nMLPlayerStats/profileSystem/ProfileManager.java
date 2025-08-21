@@ -53,27 +53,27 @@ public class ProfileManager {
             double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
 
-            int physicalDamage = config.getInt(id + "stats.physicalDamage");
-            int fireDamage = config.getInt(id + "stats.fireDamage");
-            int coldDamage = config.getInt(id + "stats.coldDamage");
-            int earthDamage = config.getInt(id + "stats.earthDamage");
-            int lightningDamage = config.getInt(id + "stats.lightningDamage");
-            int airDamage = config.getInt(id + "stats.airDamage");
-            int lightDamage = config.getInt(id + "stats.lightDamage");
-            int darkDamage = config.getInt(id + "stats.darkDamage");
-            int pureDamage = config.getInt(id + "stats.pureDamage");
+            int physicalDamage = config.getInt(id + ".stats.physicalDamage");
+            int fireDamage = config.getInt(id + ".stats.fireDamage");
+            int coldDamage = config.getInt(id + ".stats.coldDamage");
+            int earthDamage = config.getInt(id + ".stats.earthDamage");
+            int lightningDamage = config.getInt(id + ".stats.lightningDamage");
+            int airDamage = config.getInt(id + ".stats.airDamage");
+            int lightDamage = config.getInt(id + ".stats.lightDamage");
+            int darkDamage = config.getInt(id + ".stats.darkDamage");
+            int pureDamage = config.getInt(id + ".stats.pureDamage");
 
             int evasion = config.getInt(id + ".stats.evasion");
             int defense = config.getInt(id + ".stats.defense");
             int guard = config.getInt(id + ".stats.guard");
-            int physicalResist = config.getInt(id + "stats.physicalResist");
-            int fireResist = config.getInt(id + "stats.fireResist");
-            int coldResist = config.getInt(id + "stats.coldResist");
-            int earthResist = config.getInt(id + "stats.earthResist");
-            int lightningResist = config.getInt(id + "stats.lightningResist");
-            int airResist = config.getInt(id + "stats.airResist");
-            int lightResist = config.getInt(id + "stats.lightResist");
-            int darkResist = config.getInt(id + "stats.darkResist");
+            int physicalResist = config.getInt(id + ".stats.physicalResist");
+            int fireResist = config.getInt(id + ".stats.fireResist");
+            int coldResist = config.getInt(id + ".stats.coldResist");
+            int earthResist = config.getInt(id + ".stats.earthResist");
+            int lightningResist = config.getInt(id + ".stats.lightningResist");
+            int airResist = config.getInt(id + ".stats.airResist");
+            int lightResist = config.getInt(id + ".stats.lightResist");
+            int darkResist = config.getInt(id + ".stats.darkResist");
 
             Stats stats = new Stats(level, exp,
                     attributePoints, vitality, strength, deft, arcane,

@@ -1,7 +1,6 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 public class Stats {
-    private String title;
 
     // level stats
     private int level;
