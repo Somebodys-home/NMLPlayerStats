@@ -62,6 +62,8 @@ public class ProfileManager {
             int lightDamage = config.getInt(id + ".stats.lightDamage");
             int darkDamage = config.getInt(id + ".stats.darkDamage");
             int pureDamage = config.getInt(id + ".stats.pureDamage");
+            int critchance = config.getInt(id + ".stats.critchance");
+            int critdamage = config.getInt(id + ".stats.critdamage");
 
             int evasion = config.getInt(id + ".stats.evasion");
             int defense = config.getInt(id + ".stats.defense");
@@ -78,6 +80,7 @@ public class ProfileManager {
             Stats stats = new Stats(level, exp,
                     attributePoints, vitality, strength, deft, arcane,
                     bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
+                    critchance, critdamage,
                     physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
             Profile profile = new Profile(stats);
@@ -115,6 +118,8 @@ public class ProfileManager {
             config.set(id + ".stats.lightDamage", stats.getLightDamage());
             config.set(id + ".stats.darkDamage", stats.getDarkDamage());
             config.set(id + ".stats.pureDamage", stats.getPureDamage());
+            config.set(id + ".stats.critchance", stats.getCritChance());
+            config.set(id + ".stats.critdamage", stats.getCritDamage());
 
             config.set(id + ".stats.evasion", stats.getEvasion());
             config.set(id + ".stats.defense", stats.getDefense());
@@ -159,6 +164,8 @@ public class ProfileManager {
         config.set(id + ".stats.lightDamage", stats.getLightDamage());
         config.set(id + ".stats.darkDamage", stats.getDarkDamage());
         config.set(id + ".stats.pureDamage", stats.getPureDamage());
+        config.set(id + ".stats.critchance", stats.getCritChance());
+        config.set(id + ".stats.critdamage", stats.getCritDamage());
 
         config.set(id + ".stats.evasion", stats.getEvasion());
         config.set(id + ".stats.defense", stats.getDefense());

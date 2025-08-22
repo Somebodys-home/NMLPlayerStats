@@ -31,6 +31,8 @@ public class Stats {
     private int lightDamage;
     private int darkDamage;
     private int pureDamage;
+    private int critChance;
+    private int critDamage;
 
     // defense stats
     private int evasion;
@@ -49,7 +51,9 @@ public class Stats {
                  int attributePoints, int vitality, int strength, int deft, int arcane,
                  double bonusHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
+                 int critChance, int critDamage,
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
+
         this.level = level;
         this.exp = exp;
         exp2LvlUp = 100; // todo: come up with a formula for xp requirements
@@ -75,6 +79,8 @@ public class Stats {
         this.lightDamage = lightDamage;
         this.darkDamage = darkDamage;
         this.pureDamage = pureDamage;
+        this.critChance = critChance;
+        this.critDamage = critDamage;
 
         this.evasion = evasion;
         this.defense = defense;
@@ -94,6 +100,7 @@ public class Stats {
                 0, 0, 0, 0, 0,
                 0, 0, 0, 100, 100,
                 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                10, 150,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
@@ -133,6 +140,8 @@ public class Stats {
             case "lightdamage" -> lightDamage += (int) amount;
             case "darkdamage" -> darkDamage += (int) amount;
             case "puredamage" -> pureDamage += (int) amount;
+            case "critchance" -> critChance += (int) amount;
+            case "critdamage" -> critDamage += (int) amount;
 
             case "evasion" -> evasion += (int) amount;
             case "defense" -> defense += (int) amount;
@@ -185,6 +194,8 @@ public class Stats {
             case "lightdamage" -> lightDamage -= (int) amount;
             case "darkdamage" -> darkDamage -= (int) amount;
             case "puredamage" -> pureDamage -= (int) amount;
+            case "critchance" -> critChance -= (int) amount;
+            case "critdamage" -> critDamage -= (int) amount;
 
             case "evasion" -> evasion -= (int) amount;
             case "defense" -> defense -= (int) amount;
@@ -466,5 +477,21 @@ public class Stats {
 
     public void setGuard(int guard) {
         this.guard = guard;
+    }
+
+    public int getCritChance() {
+        return critChance;
+    }
+
+    public void setCritChance(int critChance) {
+        this.critChance = critChance;
+    }
+
+    public int getCritDamage() {
+        return critDamage;
+    }
+
+    public void setCritDamage(int critDamage) {
+        this.critDamage = critDamage;
     }
 }
