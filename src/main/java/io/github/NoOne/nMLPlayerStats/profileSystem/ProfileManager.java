@@ -80,8 +80,8 @@ public class ProfileManager {
             Stats stats = new Stats(level, exp,
                     attributePoints, vitality, strength, deft, arcane,
                     bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
-                    critchance, critdamage,
                     physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,
+                    critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
             Profile profile = new Profile(stats);
             profileMap.put(uuid, profile);

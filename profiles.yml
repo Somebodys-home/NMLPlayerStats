@@ -21,14 +21,16 @@ cf942050-e942-4990-a113-e3df70b289be:
     lightDamage: 0
     darkDamage: 0
     pureDamage: 0
+    critchance: 10
+    critdamage: 150
     evasion: 0
-    defense: 12
+    defense: 0
     guard: 0
     physicalResist: 0
     fireResist: 0
-    coldResist: 1
+    coldResist: 0
     earthResist: 0
-    lightningResist: 1
-    airResist: 1
+    lightningResist: 0
+    airResist: 0
     lightResist: 0
-    darkResist: 1
+    darkResist: 0

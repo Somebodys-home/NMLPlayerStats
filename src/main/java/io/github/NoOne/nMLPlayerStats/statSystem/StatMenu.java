@@ -154,6 +154,8 @@ public class StatMenu extends Menu {
 
         lore.add("§7────────────────");
         lore.add("§cMax Energy: §6" + (int) stats.getMaxEnergy() + " ⚡");
+        lore.add("§cCrit Chance: §6" + stats.getCritChance() + " ⚡");
+        lore.add("§cCrit Damage: §6" + stats.getCritDamage() + " ☠");
 
         meta.setLore(lore);
         offenseStats.setItemMeta(meta);
@@ -201,7 +203,7 @@ public class StatMenu extends Menu {
         lore.add("§7────────────────");
         lore.add("§2Max Health: §c" + (int) player.getMaxHealth() + " ❤");
         lore.add("§2Max Overhealth: §1" + (int) stats.getMaxOverhealth() + " \uD83D\uDC99");
-        lore.add("§2Guard: §f" + stats.getGuard() + " \uD83D\uDEE1");
+        lore.add("§2Guard: §f" + stats.getGuard() + " ⛨");
 
         meta.setLore(lore);
         defenseStats.setItemMeta(meta);
