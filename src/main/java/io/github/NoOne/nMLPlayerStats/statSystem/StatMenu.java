@@ -130,15 +130,15 @@ public class StatMenu extends Menu {
             Map.Entry<String, Integer> damageEntry = damageMap.get(i);
 
             switch (damageEntry.getKey()) {
-                case "physical" -> line += "§4" + damageEntry + " ⚔";
-                case "fire" -> line += "§c" + damageEntry + " \uD83D\uDD25";
-                case "cold" -> line += "§b" + damageEntry + " ❄";
-                case "earth" -> line += "§2" + damageEntry + " \uD83E\uDEA8";
-                case "lightning" -> line += "§e" + damageEntry + " \uD83D\uDDF2";
-                case "air" -> line += "§7" + damageEntry + " ☁";
-                case "light" -> line += "§f" + damageEntry + " ✦";
-                case "dark" -> line += "§5" + damageEntry + " \uD83C\uDF00";
-                case "pure" -> line += "§f" + damageEntry + " \uD83D\uDCA2";
+                case "physical" -> line += "§4" + damageEntry.getValue() + " ⚔";
+                case "fire" -> line += "§c" + damageEntry.getValue() + " \uD83D\uDD25";
+                case "cold" -> line += "§b" + damageEntry.getValue() + " ❄";
+                case "earth" -> line += "§2" + damageEntry.getValue() + " \uD83E\uDEA8";
+                case "lightning" -> line += "§e" + damageEntry.getValue() + " \uD83D\uDDF2";
+                case "air" -> line += "§7" + damageEntry.getValue() + " ☁";
+                case "light" -> line += "§f" + damageEntry.getValue() + " ✦";
+                case "dark" -> line += "§5" + damageEntry.getValue() + " \uD83C\uDF00";
+                case "pure" -> line += "§f" + damageEntry.getValue() + " \uD83D\uDCA2";
             }
 
             if (i != damageMap.size() - 1) {
@@ -154,8 +154,8 @@ public class StatMenu extends Menu {
 
         lore.add("§7────────────────");
         lore.add("§cMax Energy: §6" + (int) stats.getMaxEnergy() + " ⚡");
-        lore.add("§cCrit Chance: §6" + stats.getCritChance() + " ⚡");
-        lore.add("§cCrit Damage: §6" + stats.getCritDamage() + " ☠");
+        lore.add("§cCrit Chance: §9" + stats.getCritChance() + " ☠");
+        lore.add("§cCrit Damage: §9" + stats.getCritDamage() + " ☠");
 
         meta.setLore(lore);
         offenseStats.setItemMeta(meta);
