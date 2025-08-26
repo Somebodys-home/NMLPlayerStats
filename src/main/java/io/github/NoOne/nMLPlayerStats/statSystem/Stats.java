@@ -224,8 +224,6 @@ public class Stats {
             damageStats.put("lightdamage", lightDamage);
             damageStats.put("darkdamage", darkDamage);
             damageStats.put("puredamage", pureDamage);
-            damageStats.put("critchance", critChance);
-            damageStats.put("critdamage", critDamage);
 
         return damageStats;
     }
