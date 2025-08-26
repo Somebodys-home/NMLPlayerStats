@@ -1,5 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
+import java.util.HashMap;
+
 public class Stats {
 
     // level stats
@@ -209,6 +211,23 @@ public class Stats {
             case "lightresist" -> lightResist -= (int) amount;
             case "darkresist" -> darkResist -= (int) amount;
         }
+    }
+
+    public HashMap<String, Integer> getAllDamageStats() {
+        HashMap<String, Integer> damageStats = new HashMap<>();
+            damageStats.put("physicaldamage", physicalDamage);
+            damageStats.put("firedamage", fireDamage);
+            damageStats.put("colddamage", coldDamage);
+            damageStats.put("earthdamage", earthDamage);
+            damageStats.put("lightningdamage", lightningDamage);
+            damageStats.put("airdamage", airDamage);
+            damageStats.put("lightdamage", lightDamage);
+            damageStats.put("darkdamage", darkDamage);
+            damageStats.put("puredamage", pureDamage);
+            damageStats.put("critchance", critChance);
+            damageStats.put("critdamage", critDamage);
+
+        return damageStats;
     }
 
     public int getLevel() {

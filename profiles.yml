@@ -17,12 +17,12 @@ cf942050-e942-4990-a113-e3df70b289be:
     coldDamage: 0
     earthDamage: 0
     lightningDamage: 0
-    airDamage: 0
-    lightDamage: 1
+    airDamage: 1
+    lightDamage: 0
     darkDamage: 0
     pureDamage: 0
-    critchance: 16
-    critdamage: 160
+    critchance: 12
+    critdamage: 180
     evasion: 0
     defense: 0
     guard: 0
