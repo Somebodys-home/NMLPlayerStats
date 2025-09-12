@@ -1,7 +1,7 @@
 name: NMLPlayerStats
 version: '1.0'
 main: io.github.NoOne.nMLPlayerStats.NMLPlayerStats
-api-version: '1.21'
+api-version: '1.21.8'
 authors: [ Gabriel Nicolas ]
 description: Plugin for No Man's Land to hold the player's stats
 loadbefore:

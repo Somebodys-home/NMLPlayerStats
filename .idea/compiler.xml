@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="nmlplayerstats" />
+        <module name="nmlplayerstats (1)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="nmlplayerstats" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
