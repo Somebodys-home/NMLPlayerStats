@@ -3,12 +3,6 @@ package io.github.NoOne.nMLPlayerStats.statSystem;
 import java.util.HashMap;
 
 public class Stats {
-
-    // level stats
-    private int level;
-    private double exp;
-    private int exp2LvlUp;
-
     // attribute stats
     private int attributePoints;
     private int vitality;
@@ -55,10 +49,6 @@ public class Stats {
                  int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
                  int critChance, int critDamage,
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
-
-        this.level = level;
-        this.exp = exp;
-        exp2LvlUp = 100; // todo: come up with a formula for xp requirements
 
         this.attributePoints = attributePoints;
         this.vitality = vitality;
@@ -108,13 +98,6 @@ public class Stats {
 
     public void add2Stat(String stat, double amount) {
         switch (stat.toLowerCase()) {
-            case "level" -> {
-                level += (int) amount;
-                attributePoints += (int) amount;
-            }
-            case "exp" -> exp += amount;
-            case "exp2lvlup" -> exp2LvlUp += (int) amount;
-
             case "attributepoints" -> attributePoints += (int) amount;
             case "vitality" -> vitality += (int) amount;
             case "strength" -> strength += (int) amount;
@@ -161,10 +144,6 @@ public class Stats {
 
     public void removeFromStat(String stat, double amount) {
         switch (stat.toLowerCase()) {
-            case "level" -> level -= (int) amount;
-            case "exp" -> exp -= amount;
-            case "exp2lvlup" -> exp2LvlUp -= (int) amount;
-
             case "attributepoints" -> attributePoints -= (int) amount;
             case "vitality" -> vitality -= (int) amount;
             case "strength" -> strength -= (int) amount;
@@ -226,34 +205,6 @@ public class Stats {
             damageStats.put("puredamage", pureDamage);
 
         return damageStats;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        if (level > this.level) {
-            int gainedLevels = level - this.level;
-            attributePoints += gainedLevels;
-        }
-        this.level = level;
-    }
-
-    public int getExp2LvlUp() {
-        return exp2LvlUp;
-    }
-
-    public void setExp2LvlUp(int exp2LvlUp) {
-        this.exp2LvlUp = exp2LvlUp;
-    }
-
-    public double getExp() {
-        return exp;
-    }
-
-    public void setExp(double exp) {
-        this.exp = exp;
     }
 
     public int getAttributePoints() {

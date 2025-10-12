@@ -94,9 +94,6 @@ public class ProfileManager {
             Profile profile = profileMap.get(uuid);
             Stats stats = profile.getStats();
 
-            config.set(id + ".stats.level", stats.getLevel());
-            config.set(id + ".stats.exp", stats.getExp());
-
             config.set(id + ".stats.attributePoints", stats.getAttributePoints());
             config.set(id + ".stats.vitality", stats.getVitality());
             config.set(id + ".stats.strength", stats.getStrength());
@@ -139,9 +136,6 @@ public class ProfileManager {
         String id = player.getUniqueId().toString();
         Profile profile = profileMap.get(player.getUniqueId());
         Stats stats = profile.getStats();
-
-        config.set(id + ".stats.level", stats.getLevel());
-        config.set(id + ".stats.exp", stats.getExp());
 
         config.set(id + ".stats.attributePoints", stats.getAttributePoints());
         config.set(id + ".stats.vitality", stats.getVitality());
