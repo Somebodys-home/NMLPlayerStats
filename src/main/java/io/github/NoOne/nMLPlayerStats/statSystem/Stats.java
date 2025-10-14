@@ -140,8 +140,6 @@ public class Stats {
             case "lightresist" -> lightResist += (int) amount;
             case "darkresist" -> darkResist += (int) amount;
         }
-
-        Bukkit.getPluginManager().callEvent(new StatChangeEvent(player, stat, amount));
     }
 
     public void removeFromStat(Player player, String stat, double amount) {
@@ -192,8 +190,6 @@ public class Stats {
             case "lightresist" -> lightResist -= (int) amount;
             case "darkresist" -> darkResist -= (int) amount;
         }
-
-        Bukkit.getPluginManager().callEvent(new StatChangeEvent(player, stat, -amount));
     }
 
     public HashMap<String, Integer> getAllDamageStats() {
