@@ -1,5 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 public class Stats {
@@ -43,8 +45,7 @@ public class Stats {
     private int lightResist;
     private int darkResist;
 
-    public Stats(int level, double exp,
-                 int attributePoints, int vitality, int strength, int deft, int arcane,
+    public Stats(int attributePoints, int vitality, int strength, int deft, int arcane,
                  double bonusHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
                  int critChance, int critDamage,
@@ -88,15 +89,14 @@ public class Stats {
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(1, 0,
-                0, 0, 0, 0, 0,
+        return new Stats(0, 0, 0, 0, 0,
                 0, 0, 0, 100, 100,
                 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 10, 150,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
-    public void add2Stat(String stat, double amount) {
+    public void add2Stat(Player player, String stat, double amount) {
         switch (stat.toLowerCase()) {
             case "attributepoints" -> attributePoints += (int) amount;
             case "vitality" -> vitality += (int) amount;
@@ -140,9 +140,11 @@ public class Stats {
             case "lightresist" -> lightResist += (int) amount;
             case "darkresist" -> darkResist += (int) amount;
         }
+
+        Bukkit.getPluginManager().callEvent(new StatChangeEvent(player, stat, amount));
     }
 
-    public void removeFromStat(String stat, double amount) {
+    public void removeFromStat(Player player, String stat, double amount) {
         switch (stat.toLowerCase()) {
             case "attributepoints" -> attributePoints -= (int) amount;
             case "vitality" -> vitality -= (int) amount;
@@ -190,6 +192,8 @@ public class Stats {
             case "lightresist" -> lightResist -= (int) amount;
             case "darkresist" -> darkResist -= (int) amount;
         }
+
+        Bukkit.getPluginManager().callEvent(new StatChangeEvent(player, stat, -amount));
     }
 
     public HashMap<String, Integer> getAllDamageStats() {

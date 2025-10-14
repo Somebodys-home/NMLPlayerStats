@@ -9,10 +9,12 @@ public class StatChangeEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final String stat;
+    private final double change;
 
-    public StatChangeEvent(@NotNull Player player, String stat) {
+    public StatChangeEvent(@NotNull Player player, String stat, double change) {
         this.player = player;
         this.stat = stat;
+        this.change = change;
     }
 
     @Override
@@ -24,5 +26,9 @@ public class StatChangeEvent extends Event {
 
     public String getStat() {
         return stat;
+    }
+
+    public double getChange() {
+        return change;
     }
 }

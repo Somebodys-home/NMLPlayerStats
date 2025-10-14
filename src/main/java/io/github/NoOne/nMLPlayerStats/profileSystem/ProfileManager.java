@@ -6,7 +6,6 @@ import io.github.NoOne.nMLPlayerStats.statSystem.Stats;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,8 +37,6 @@ public class ProfileManager {
     public void loadProfilesFromConfig() {
         for (String id : config.getConfigurationSection("").getKeys(false)) {
             UUID uuid = UUID.fromString(id);
-            int level = config.getInt(id + ".stats.level");
-            double exp = config.getInt(id + ".stats.exp");
 
             int attributePoints = config.getInt(id + ".stats.attributePoints");
             int vitality = config.getInt(id + ".stats.vitality");
@@ -77,7 +74,7 @@ public class ProfileManager {
             int lightResist = config.getInt(id + ".stats.lightResist");
             int darkResist = config.getInt(id + ".stats.darkResist");
 
-            Stats stats = new Stats(level, exp,
+            Stats stats = new Stats(
                     attributePoints, vitality, strength, deft, arcane,
                     bonusHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
                     physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,

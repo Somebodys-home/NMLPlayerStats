@@ -3,9 +3,7 @@ package io.github.NoOne.nMLPlayerStats.statSystem;
 import io.github.NoOne.menuSystem.Menu;
 import io.github.NoOne.menuSystem.PlayerMenuUtility;
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
@@ -17,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StatMenu extends Menu {
+public class StatsMenu extends Menu {
     private Player player;
     private Stats stats;
 
@@ -25,7 +23,7 @@ public class StatMenu extends Menu {
     private ItemStack defenseStats;
     private ItemStack gatheringStats;
 
-    public StatMenu(PlayerMenuUtility playerMenuUtility, NMLPlayerStats nmlPlayerStats) {
+    public StatsMenu(PlayerMenuUtility playerMenuUtility, NMLPlayerStats nmlPlayerStats) {
         super(playerMenuUtility);
 
         player = playerMenuUtility.getOwner();

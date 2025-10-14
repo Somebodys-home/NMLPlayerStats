@@ -4,9 +4,9 @@ import io.github.NoOne.menuSystem.MenuListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileConfig;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
-import io.github.NoOne.nMLPlayerStats.statSystem.ResetStatsCommand;
-import io.github.NoOne.nMLPlayerStats.statSystem.StatListener;
-import io.github.NoOne.nMLPlayerStats.statSystem.StatsCommand;
+import io.github.NoOne.nMLPlayerStats.statSystem.commands.ResetStatsCommand;
+import io.github.NoOne.nMLPlayerStats.statSystem.StatsListener;
+import io.github.NoOne.nMLPlayerStats.statSystem.commands.StatsCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NMLPlayerStats extends JavaPlugin {
@@ -28,10 +28,10 @@ public final class NMLPlayerStats extends JavaPlugin {
         playerActionBar = new PlayerActionBar(this);
         playerActionBar.actionBarsTask();
 
-        getCommand("resetStats").setExecutor(new ResetStatsCommand(this));
+        getCommand("resetStats").setExecutor(new ResetStatsCommand());
         getCommand("stats").setExecutor(new StatsCommand(this));
         getServer().getPluginManager().registerEvents(new ProfileListener(this), this);
-        getServer().getPluginManager().registerEvents(new StatListener(this), this);
+        getServer().getPluginManager().registerEvents(new StatsListener(this), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
     }
 

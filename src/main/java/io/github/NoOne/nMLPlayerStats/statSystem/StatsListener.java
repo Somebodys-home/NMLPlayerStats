@@ -7,10 +7,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class StatListener implements Listener {
+public class StatsListener implements Listener {
     private ProfileManager profileManager;
 
-    public StatListener(NMLPlayerStats nmlPlayerStats) {
+    public StatsListener(NMLPlayerStats nmlPlayerStats) {
         profileManager = nmlPlayerStats.getProfileManager();
     }
 
@@ -21,7 +21,7 @@ public class StatListener implements Listener {
     }
 
     @EventHandler
-    public void updateStatsOnPlayerJoin(PlayerJoinEvent event) {
+    public void updateBonusHealthOnPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         double bonusHealth = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getBonusHealth();
 
@@ -29,12 +29,9 @@ public class StatListener implements Listener {
     }
 
     @EventHandler
-    public void updateStatsWhenChanged(StatChangeEvent event) {
+    public void updateBonusHealthChanges(StatChangeEvent event) {
         Player player = event.getPlayer();
-        if (event.getStat().equals("bonushealth")) {
-            double bonusHealth = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getBonusHealth();
 
-            player.setMaxHealth(20 + bonusHealth);
-        }
+        if (event.getStat().equals("bonushealth")) player.setMaxHealth(20 + event.getChange());
     }
 }
