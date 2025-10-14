@@ -1,11 +1,12 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class StatChangeEvent extends Event {
+public class StatChangeEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final String stat;
@@ -30,5 +31,15 @@ public class StatChangeEvent extends Event {
 
     public double getChange() {
         return change;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return false;
+    }
+
+    @Override
+    public void setCancelled(boolean b) {
+
     }
 }

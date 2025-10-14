@@ -13,7 +13,7 @@ public class Stats {
     private int arcane;
 
     // hotbar stats
-    private double bonusHealth;
+    private double maxHealth;
     private double currentOverhealth;
     private double maxOverhealth;
     private double currentEnergy;
@@ -46,7 +46,7 @@ public class Stats {
     private int darkResist;
 
     public Stats(int attributePoints, int vitality, int strength, int deft, int arcane,
-                 double bonusHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
+                 double maxHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
                  int critChance, int critDamage,
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
@@ -57,7 +57,7 @@ public class Stats {
         this.deft = deft;
         this.arcane = arcane;
 
-        this.bonusHealth = bonusHealth;
+        this.maxHealth = maxHealth;
         this.currentOverhealth = currentOverhealth;
         this.maxOverhealth = maxOverhealth;
         this.currentEnergy = currentEnergy;
@@ -104,7 +104,7 @@ public class Stats {
             case "deft" -> deft += (int) amount;
             case "arcane" -> arcane += (int) amount;
 
-            case "bonushealth" -> bonusHealth += amount;
+            case "maxHealth" -> maxHealth += amount;
             case "currentoverhealth" -> {
                 currentOverhealth += amount;
                 if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
@@ -152,7 +152,7 @@ public class Stats {
             case "deft" -> deft -= (int) amount;
             case "arcane" -> arcane -= (int) amount;
 
-            case "bonushealth" -> bonusHealth -= amount;
+            case "maxHealth" -> maxHealth -= amount;
             case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
                 maxOverhealth -= amount;
@@ -279,12 +279,12 @@ public class Stats {
         return maxOverhealth;
     }
 
-    public double getBonusHealth() {
-        return bonusHealth;
+    public double getmaxHealth() {
+        return maxHealth;
     }
 
-    public void setBonusHealth(double bonusHealth) {
-        this.bonusHealth = bonusHealth;
+    public void setmaxHealth(double maxHealth) {
+        this.maxHealth = maxHealth;
     }
 
     public void setMaxOverhealth(double maxOverhealth) {
