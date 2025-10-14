@@ -23,8 +23,10 @@ public class StatsListener implements Listener {
             event.setCancelled(true);
         } else if (change < 0) {
             profileManager.getPlayerProfile(player.getUniqueId()).getStats().removeFromStat(player, event.getStat(), event.getChange());
+            player.sendMessage("a");
         } else {
             profileManager.getPlayerProfile(player.getUniqueId()).getStats().add2Stat(player, event.getStat(), event.getChange());
+            player.sendMessage("b");
         }
     }
 
