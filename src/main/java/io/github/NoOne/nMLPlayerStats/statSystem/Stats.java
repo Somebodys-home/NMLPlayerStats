@@ -2,6 +2,7 @@ package io.github.NoOne.nMLPlayerStats.statSystem;
 
 import org.bukkit.entity.Player;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Stats {
     // attribute stats
@@ -199,9 +200,23 @@ public class Stats {
             damageStats.put("earthdamage", earthDamage);
             damageStats.put("lightningdamage", lightningDamage);
             damageStats.put("airdamage", airDamage);
-            damageStats.put("radiantDamage", radiantDamage);
-            damageStats.put("necroticDamage", necroticDamage);
+            damageStats.put("radiantdamage", radiantDamage);
+            damageStats.put("necroticdamage", necroticDamage);
             damageStats.put("puredamage", pureDamage);
+
+        return damageStats;
+    }
+
+    public HashMap<String, Integer> getAllDefenseStats() {
+        HashMap<String, Integer> damageStats = new HashMap<>();
+            damageStats.put("physicalresist", physicalResist);
+            damageStats.put("fireresist", fireResist);
+            damageStats.put("coldresist", coldResist);
+            damageStats.put("earthresist", earthResist);
+            damageStats.put("lightningresist", lightningResist);
+            damageStats.put("airresist", airResist);
+            damageStats.put("radiantresist", radiantResist);
+            damageStats.put("necroticresist", necroticResist);
 
         return damageStats;
     }
