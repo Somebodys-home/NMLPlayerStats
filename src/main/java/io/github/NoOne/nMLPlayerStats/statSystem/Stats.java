@@ -1,6 +1,5 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import java.util.HashMap;
 
@@ -26,8 +25,8 @@ public class Stats {
     private int earthDamage;
     private int lightningDamage;
     private int airDamage;
-    private int lightDamage;
-    private int darkDamage;
+    private int radiantDamage;
+    private int necroticDamage;
     private int pureDamage;
     private int critChance;
     private int critDamage;
@@ -42,14 +41,14 @@ public class Stats {
     private int earthResist;
     private int lightningResist;
     private int airResist;
-    private int lightResist;
-    private int darkResist;
+    private int radiantResist;
+    private int necroticResist;
 
     public Stats(int attributePoints, int vitality, int strength, int deft, int arcane,
                  double maxHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
-                 int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int lightDamage, int darkDamage, int pureDamage,
+                 int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage, int necroticDamage, int pureDamage,
                  int critChance, int critDamage,
-                 int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int lightResist, int darkResist) {
+                 int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int radiantResist, int necroticResist) {
 
         this.attributePoints = attributePoints;
         this.vitality = vitality;
@@ -69,8 +68,8 @@ public class Stats {
         this.earthDamage = earthDamage;
         this.lightningDamage = lightningDamage;
         this.airDamage = airDamage;
-        this.lightDamage = lightDamage;
-        this.darkDamage = darkDamage;
+        this.radiantDamage = radiantDamage;
+        this.necroticDamage = necroticDamage;
         this.pureDamage = pureDamage;
         this.critChance = critChance;
         this.critDamage = critDamage;
@@ -84,8 +83,8 @@ public class Stats {
         this.earthResist = earthResist;
         this.lightningResist = lightningResist;
         this.airResist = airResist;
-        this.lightResist = lightResist;
-        this.darkResist = darkResist;
+        this.radiantResist = radiantResist;
+        this.necroticResist = necroticResist;
     }
 
     public static Stats generateNewbieStats() {
@@ -122,8 +121,8 @@ public class Stats {
             case "earthdamage" -> earthDamage += (int) amount;
             case "lightningdamage" -> lightningDamage += (int) amount;
             case "airdamage" -> airDamage += (int) amount;
-            case "lightdamage" -> lightDamage += (int) amount;
-            case "darkdamage" -> darkDamage += (int) amount;
+            case "radiantDamage" -> radiantDamage += (int) amount;
+            case "necroticDamage" -> necroticDamage += (int) amount;
             case "puredamage" -> pureDamage += (int) amount;
             case "critchance" -> critChance += (int) amount;
             case "critdamage" -> critDamage += (int) amount;
@@ -137,8 +136,8 @@ public class Stats {
             case "earthresist" -> earthResist += (int) amount;
             case "lightningresist" -> lightningResist += (int) amount;
             case "airresist" -> airResist += (int) amount;
-            case "lightresist" -> lightResist += (int) amount;
-            case "darkresist" -> darkResist += (int) amount;
+            case "radiantResist" -> radiantResist += (int) amount;
+            case "darkresist" -> necroticResist += (int) amount;
         }
     }
 
@@ -172,8 +171,8 @@ public class Stats {
             case "earthdamage" -> earthDamage -= (int) amount;
             case "lightningdamage" -> lightningDamage -= (int) amount;
             case "airdamage" -> airDamage -= (int) amount;
-            case "lightdamage" -> lightDamage -= (int) amount;
-            case "darkdamage" -> darkDamage -= (int) amount;
+            case "radiantDamage" -> radiantDamage -= (int) amount;
+            case "necroticDamage" -> necroticDamage -= (int) amount;
             case "puredamage" -> pureDamage -= (int) amount;
             case "critchance" -> critChance -= (int) amount;
             case "critdamage" -> critDamage -= (int) amount;
@@ -187,8 +186,8 @@ public class Stats {
             case "earthresist" -> earthResist -= (int) amount;
             case "lightningresist" -> lightningResist -= (int) amount;
             case "airresist" -> airResist -= (int) amount;
-            case "lightresist" -> lightResist -= (int) amount;
-            case "darkresist" -> darkResist -= (int) amount;
+            case "radiantResist" -> radiantResist -= (int) amount;
+            case "darkresist" -> necroticResist -= (int) amount;
         }
     }
 
@@ -200,8 +199,8 @@ public class Stats {
             damageStats.put("earthdamage", earthDamage);
             damageStats.put("lightningdamage", lightningDamage);
             damageStats.put("airdamage", airDamage);
-            damageStats.put("lightdamage", lightDamage);
-            damageStats.put("darkdamage", darkDamage);
+            damageStats.put("radiantDamage", radiantDamage);
+            damageStats.put("necroticDamage", necroticDamage);
             damageStats.put("puredamage", pureDamage);
 
         return damageStats;
@@ -343,20 +342,20 @@ public class Stats {
         this.pureDamage = pureDamage;
     }
 
-    public int getDarkDamage() {
-        return darkDamage;
+    public int getNecroticDamage() {
+        return necroticDamage;
     }
 
-    public void setDarkDamage(int darkDamage) {
-        this.darkDamage = darkDamage;
+    public void setNecroticDamage(int necroticDamage) {
+        this.necroticDamage = necroticDamage;
     }
 
-    public int getLightDamage() {
-        return lightDamage;
+    public int getRadiantDamage() {
+        return radiantDamage;
     }
 
-    public void setLightDamage(int lightDamage) {
-        this.lightDamage = lightDamage;
+    public void setRadiantDamage(int radiantDamage) {
+        this.radiantDamage = radiantDamage;
     }
 
     public int getLightningDamage() {
@@ -375,20 +374,20 @@ public class Stats {
         this.defense = defense;
     }
 
-    public int getDarkResist() {
-        return darkResist;
+    public int getNecroticResist() {
+        return necroticResist;
     }
 
-    public void setDarkResist(int darkResist) {
-        this.darkResist = darkResist;
+    public void setNecroticResist(int necroticResist) {
+        this.necroticResist = necroticResist;
     }
 
-    public int getLightResist() {
-        return lightResist;
+    public int getRadiantResist() {
+        return radiantResist;
     }
 
-    public void setLightResist(int lightResist) {
-        this.lightResist = lightResist;
+    public void setRadiantResist(int radiantResist) {
+        this.radiantResist = radiantResist;
     }
 
     public int getLightningResist() {

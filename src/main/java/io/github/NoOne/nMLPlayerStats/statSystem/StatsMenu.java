@@ -134,8 +134,8 @@ public class StatsMenu extends Menu {
                 case "earth" -> line += "§2" + damageEntry.getValue() + " \uD83E\uDEA8";
                 case "lightning" -> line += "§e" + damageEntry.getValue() + " \uD83D\uDDF2";
                 case "air" -> line += "§7" + damageEntry.getValue() + " ☁";
-                case "light" -> line += "§f" + damageEntry.getValue() + " ✦";
-                case "dark" -> line += "§5" + damageEntry.getValue() + " \uD83C\uDF00";
+                case "radiant" -> line += "§f" + damageEntry.getValue() + " ✦";
+                case "necrotic" -> line += "§5" + damageEntry.getValue() + " \uD83C\uDF00";
                 case "pure" -> line += "§f" + damageEntry.getValue() + " \uD83D\uDCA2";
             }
 
@@ -183,8 +183,8 @@ public class StatsMenu extends Menu {
                 case "earth" -> line += "§2" + defenseEntry.getValue() + " \uD83E\uDEA8";
                 case "lightning" -> line += "§e" + defenseEntry.getValue() + " \uD83D\uDDF2";
                 case "air" -> line += "§7" + defenseEntry.getValue() + " ☁";
-                case "light" -> line += "§f" + defenseEntry.getValue() + " ✦";
-                case "dark" -> line += "§5" + defenseEntry.getValue() + " \uD83C\uDF00";
+                case "radiant" -> line += "§f" + defenseEntry.getValue() + " ✦";
+                case "necrotic" -> line += "§5" + defenseEntry.getValue() + " \uD83C\uDF00";
             }
 
             if (i != defenseMap.size() - 1) {
@@ -240,11 +240,11 @@ public class StatsMenu extends Menu {
         if (stats.getAirDamage() != 0) {
             damageStats.put("air", stats.getAirDamage());
         }
-        if (stats.getLightDamage() != 0) {
-            damageStats.put("light", stats.getLightDamage());
+        if (stats.getRadiantDamage() != 0) {
+            damageStats.put("radiant", stats.getRadiantDamage());
         }
-        if (stats.getDarkDamage() != 0) {
-            damageStats.put("dark", stats.getDarkDamage());
+        if (stats.getNecroticDamage() != 0) {
+            damageStats.put("necrotic", stats.getNecroticDamage());
         }
         if (stats.getPureDamage() != 0) {
             damageStats.put("pure", stats.getPureDamage());
@@ -280,14 +280,13 @@ public class StatsMenu extends Menu {
         if (stats.getAirResist() != 0) {
             defenseStats.put("air", stats.getAirResist());
         }
-        if (stats.getLightResist() != 0) {
-            defenseStats.put("light", stats.getLightResist());
+        if (stats.getRadiantResist() != 0) {
+            defenseStats.put("radiant", stats.getRadiantResist());
         }
-        if (stats.getDarkResist() != 0) {
-            defenseStats.put("dark", stats.getDarkResist());
+        if (stats.getNecroticResist() != 0) {
+            defenseStats.put("necrotic", stats.getNecroticResist());
         }
 
-        
         return defenseStats;
     }
 }

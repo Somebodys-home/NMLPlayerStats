@@ -56,8 +56,8 @@ public class ProfileManager {
             int earthDamage = config.getInt(id + ".stats.earthDamage");
             int lightningDamage = config.getInt(id + ".stats.lightningDamage");
             int airDamage = config.getInt(id + ".stats.airDamage");
-            int lightDamage = config.getInt(id + ".stats.lightDamage");
-            int darkDamage = config.getInt(id + ".stats.darkDamage");
+            int radiantDamage = config.getInt(id + ".stats.radiantDamage");
+            int necroticDamage = config.getInt(id + ".stats.necroticDamage");
             int pureDamage = config.getInt(id + ".stats.pureDamage");
             int critchance = config.getInt(id + ".stats.critchance");
             int critdamage = config.getInt(id + ".stats.critdamage");
@@ -71,15 +71,15 @@ public class ProfileManager {
             int earthResist = config.getInt(id + ".stats.earthResist");
             int lightningResist = config.getInt(id + ".stats.lightningResist");
             int airResist = config.getInt(id + ".stats.airResist");
-            int lightResist = config.getInt(id + ".stats.lightResist");
-            int darkResist = config.getInt(id + ".stats.darkResist");
+            int radiantResist = config.getInt(id + ".stats.radiantResist");
+            int necroticResist = config.getInt(id + ".stats.necroticResist");
 
             Stats stats = new Stats(
                     attributePoints, vitality, strength, deft, arcane,
                     maxHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
-                    physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, lightDamage, darkDamage, pureDamage,
+                    physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
-                    evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, lightResist, darkResist);
+                    evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist);
             Profile profile = new Profile(stats);
             profileMap.put(uuid, profile);
         }
@@ -109,8 +109,8 @@ public class ProfileManager {
             config.set(id + ".stats.earthDamage", stats.getEarthDamage());
             config.set(id + ".stats.lightningDamage", stats.getLightningDamage());
             config.set(id + ".stats.airDamage", stats.getAirDamage());
-            config.set(id + ".stats.lightDamage", stats.getLightDamage());
-            config.set(id + ".stats.darkDamage", stats.getDarkDamage());
+            config.set(id + ".stats.radiantDamage", stats.getRadiantDamage());
+            config.set(id + ".stats.necroticDamage", stats.getNecroticDamage());
             config.set(id + ".stats.pureDamage", stats.getPureDamage());
             config.set(id + ".stats.critchance", stats.getCritChance());
             config.set(id + ".stats.critdamage", stats.getCritDamage());
@@ -124,8 +124,8 @@ public class ProfileManager {
             config.set(id + ".stats.earthResist", stats.getEarthResist());
             config.set(id + ".stats.lightningResist", stats.getLightningResist());
             config.set(id + ".stats.airResist", stats.getAirResist());
-            config.set(id + ".stats.lightResist", stats.getLightResist());
-            config.set(id + ".stats.darkResist", stats.getDarkResist());
+            config.set(id + ".stats.radiantResist", stats.getRadiantResist());
+            config.set(id + ".stats.darkResist", stats.getNecroticResist());
         }
     }
 
@@ -152,8 +152,8 @@ public class ProfileManager {
         config.set(id + ".stats.earthDamage", stats.getEarthDamage());
         config.set(id + ".stats.lightningDamage", stats.getLightningDamage());
         config.set(id + ".stats.airDamage", stats.getAirDamage());
-        config.set(id + ".stats.lightDamage", stats.getLightDamage());
-        config.set(id + ".stats.darkDamage", stats.getDarkDamage());
+        config.set(id + ".stats.radiantDamage", stats.getRadiantDamage());
+        config.set(id + ".stats.necroticDamage", stats.getNecroticDamage());
         config.set(id + ".stats.pureDamage", stats.getPureDamage());
         config.set(id + ".stats.critchance", stats.getCritChance());
         config.set(id + ".stats.critdamage", stats.getCritDamage());
@@ -167,7 +167,7 @@ public class ProfileManager {
         config.set(id + ".stats.earthResist", stats.getEarthResist());
         config.set(id + ".stats.lightningResist", stats.getLightningResist());
         config.set(id + ".stats.airResist", stats.getAirResist());
-        config.set(id + ".stats.lightResist", stats.getLightResist());
-        config.set(id + ".stats.darkResist", stats.getDarkResist());
+        config.set(id + ".stats.radiantResist", stats.getRadiantResist());
+        config.set(id + ".stats.darkResist", stats.getNecroticResist());
     }
 }
