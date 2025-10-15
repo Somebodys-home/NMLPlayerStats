@@ -104,7 +104,7 @@ public class Stats {
             case "deft" -> deft += (int) amount;
             case "arcane" -> arcane += (int) amount;
 
-            case "maxHealth" -> maxHealth += amount;
+            case "maxhealth" -> maxHealth += amount;
             case "currentoverhealth" -> {
                 currentOverhealth += amount;
                 if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
@@ -122,8 +122,8 @@ public class Stats {
             case "earthdamage" -> earthDamage += (int) amount;
             case "lightningdamage" -> lightningDamage += (int) amount;
             case "airdamage" -> airDamage += (int) amount;
-            case "radiantDamage" -> radiantDamage += (int) amount;
-            case "necroticDamage" -> necroticDamage += (int) amount;
+            case "radiantdamage" -> radiantDamage += (int) amount;
+            case "necroticdamage" -> necroticDamage += (int) amount;
             case "puredamage" -> pureDamage += (int) amount;
             case "critchance" -> critChance += (int) amount;
             case "critdamage" -> critDamage += (int) amount;
@@ -137,8 +137,8 @@ public class Stats {
             case "earthresist" -> earthResist += (int) amount;
             case "lightningresist" -> lightningResist += (int) amount;
             case "airresist" -> airResist += (int) amount;
-            case "radiantResist" -> radiantResist += (int) amount;
-            case "darkresist" -> necroticResist += (int) amount;
+            case "radiantresist" -> radiantResist += (int) amount;
+            case "necroticresist" -> necroticResist += (int) amount;
         }
     }
 
@@ -150,7 +150,7 @@ public class Stats {
             case "deft" -> deft -= (int) amount;
             case "arcane" -> arcane -= (int) amount;
 
-            case "maxHealth" -> maxHealth -= amount;
+            case "maxhealth" -> maxHealth -= amount;
             case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
                 maxOverhealth -= amount;
@@ -172,8 +172,8 @@ public class Stats {
             case "earthdamage" -> earthDamage -= (int) amount;
             case "lightningdamage" -> lightningDamage -= (int) amount;
             case "airdamage" -> airDamage -= (int) amount;
-            case "radiantDamage" -> radiantDamage -= (int) amount;
-            case "necroticDamage" -> necroticDamage -= (int) amount;
+            case "radiantdamage" -> radiantDamage -= (int) amount;
+            case "necroticdamage" -> necroticDamage -= (int) amount;
             case "puredamage" -> pureDamage -= (int) amount;
             case "critchance" -> critChance -= (int) amount;
             case "critdamage" -> critDamage -= (int) amount;
@@ -187,38 +187,52 @@ public class Stats {
             case "earthresist" -> earthResist -= (int) amount;
             case "lightningresist" -> lightningResist -= (int) amount;
             case "airresist" -> airResist -= (int) amount;
-            case "radiantResist" -> radiantResist -= (int) amount;
-            case "darkresist" -> necroticResist -= (int) amount;
+            case "radiantresist" -> radiantResist -= (int) amount;
+            case "necroticresist" -> necroticResist -= (int) amount;
         }
     }
 
-    public HashMap<String, Integer> getAllDamageStats() {
-        HashMap<String, Integer> damageStats = new HashMap<>();
-            damageStats.put("physicaldamage", physicalDamage);
-            damageStats.put("firedamage", fireDamage);
-            damageStats.put("colddamage", coldDamage);
-            damageStats.put("earthdamage", earthDamage);
-            damageStats.put("lightningdamage", lightningDamage);
-            damageStats.put("airdamage", airDamage);
-            damageStats.put("radiantdamage", radiantDamage);
-            damageStats.put("necroticdamage", necroticDamage);
-            damageStats.put("puredamage", pureDamage);
+    public HashMap<String, Integer> getAllDamages() {
+        HashMap<String, Integer> damages = new HashMap<>();
 
-        return damageStats;
+        damages.put("physicaldamage", physicalDamage);
+        damages.put("firedamage", fireDamage);
+        damages.put("colddamage", coldDamage);
+        damages.put("earthdamage", earthDamage);
+        damages.put("lightningdamage", lightningDamage);
+        damages.put("airdamage", airDamage);
+        damages.put("radiantdamage", radiantDamage);
+        damages.put("necroticdamage", necroticDamage);
+        damages.put("puredamage", pureDamage);
+
+        for (Map.Entry<String, Integer> damageEntry : damages.entrySet()) {
+            if (damageEntry.getValue() <= 0) {
+                damages.remove(damageEntry.getKey());
+            }
+        }
+
+        return damages;
     }
 
-    public HashMap<String, Integer> getAllDefenseStats() {
-        HashMap<String, Integer> damageStats = new HashMap<>();
-            damageStats.put("physicalresist", physicalResist);
-            damageStats.put("fireresist", fireResist);
-            damageStats.put("coldresist", coldResist);
-            damageStats.put("earthresist", earthResist);
-            damageStats.put("lightningresist", lightningResist);
-            damageStats.put("airresist", airResist);
-            damageStats.put("radiantresist", radiantResist);
-            damageStats.put("necroticresist", necroticResist);
+    public HashMap<String, Integer> getAllResists() {
+        HashMap<String, Integer> resists = new HashMap<>();
 
-        return damageStats;
+        resists.put("physicalresist", physicalResist);
+        resists.put("fireresist", fireResist);
+        resists.put("coldresist", coldResist);
+        resists.put("earthresist", earthResist);
+        resists.put("lightningresist", lightningResist);
+        resists.put("airresist", airResist);
+        resists.put("radiantresist", radiantResist);
+        resists.put("necroticresist", necroticResist);
+
+        for (Map.Entry<String, Integer> reistEntry : resists.entrySet()) {
+            if (reistEntry.getValue() <= 0) {
+                resists.remove(reistEntry.getKey());
+            }
+        }
+
+        return resists;
     }
 
     public int getAttributePoints() {
