@@ -1,6 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
+import io.github.NoOne.nMLPlayerStats.profileSystem.Profile;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,6 +32,9 @@ public class StatsListener implements Listener {
     @EventHandler
     public void resetStats(ResetStatsEvent event) {
         Player player = event.getPlayer();
+        Profile profile = profileManager.getPlayerProfile(player.getUniqueId());
+
+        profile.setStats(Stats.generateNewbieStats());
         profileManager.saveAProfileToConfig(player);
     }
 

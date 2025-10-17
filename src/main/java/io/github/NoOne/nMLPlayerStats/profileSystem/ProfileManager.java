@@ -125,7 +125,7 @@ public class ProfileManager {
             config.set(id + ".stats.lightningResist", stats.getLightningResist());
             config.set(id + ".stats.airResist", stats.getAirResist());
             config.set(id + ".stats.radiantResist", stats.getRadiantResist());
-            config.set(id + ".stats.darkResist", stats.getNecroticResist());
+            config.set(id + ".stats.necroticResist", stats.getNecroticResist());
         }
     }
 
@@ -168,6 +168,6 @@ public class ProfileManager {
         config.set(id + ".stats.lightningResist", stats.getLightningResist());
         config.set(id + ".stats.airResist", stats.getAirResist());
         config.set(id + ".stats.radiantResist", stats.getRadiantResist());
-        config.set(id + ".stats.darkResist", stats.getNecroticResist());
+        config.set(id + ".stats.necroticResist", stats.getNecroticResist());
     }
 }
