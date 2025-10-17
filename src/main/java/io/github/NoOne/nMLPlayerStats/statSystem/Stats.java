@@ -198,12 +198,7 @@ public class Stats {
         damages.put("necroticdamage", necroticDamage);
         damages.put("puredamage", pureDamage);
 
-        for (Map.Entry<String, Integer> damageEntry : damages.entrySet()) {
-            if (damageEntry.getValue() <= 0) {
-                damages.remove(damageEntry.getKey());
-            }
-        }
-
+        damages.entrySet().removeIf(entry -> entry.getValue() <= 0);
         return damages;
     }
 
@@ -219,12 +214,7 @@ public class Stats {
         resists.put("radiantresist", radiantResist);
         resists.put("necroticresist", necroticResist);
 
-        for (Map.Entry<String, Integer> reistEntry : resists.entrySet()) {
-            if (reistEntry.getValue() <= 0) {
-                resists.remove(reistEntry.getKey());
-            }
-        }
-
+        resists.entrySet().removeIf(entry -> entry.getValue() <= 0);
         return resists;
     }
 
