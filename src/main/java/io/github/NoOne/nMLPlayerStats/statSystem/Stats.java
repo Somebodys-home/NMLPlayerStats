@@ -1,6 +1,5 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
-import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,14 +95,13 @@ public class Stats {
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
-    public void add2Stat(Player player, String stat, double amount) {
+    public void add2Stat(String stat, double amount) {
         switch (stat.toLowerCase()) {
             case "attributepoints" -> attributePoints += (int) amount;
             case "vitality" -> vitality += (int) amount;
             case "strength" -> strength += (int) amount;
             case "deft" -> deft += (int) amount;
             case "arcane" -> arcane += (int) amount;
-
             case "maxhealth" -> maxHealth += amount;
             case "currentoverhealth" -> {
                 currentOverhealth += amount;
@@ -115,7 +113,6 @@ public class Stats {
                 if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
             case "maxenergy" -> maxEnergy += amount;
-
             case "physicaldamage" -> physicalDamage += (int) amount;
             case "firedamage" -> fireDamage += (int) amount;
             case "colddamage" -> coldDamage += (int) amount;
@@ -127,7 +124,6 @@ public class Stats {
             case "puredamage" -> pureDamage += (int) amount;
             case "critchance" -> critChance += (int) amount;
             case "critdamage" -> critDamage += (int) amount;
-
             case "evasion" -> evasion += (int) amount;
             case "defense" -> defense += (int) amount;
             case "guard" -> guard += (int) amount;
@@ -142,14 +138,13 @@ public class Stats {
         }
     }
 
-    public void removeFromStat(Player player, String stat, double amount) {
+    public void removeFromStat(String stat, double amount) {
         switch (stat.toLowerCase()) {
             case "attributepoints" -> attributePoints -= (int) amount;
             case "vitality" -> vitality -= (int) amount;
             case "strength" -> strength -= (int) amount;
             case "deft" -> deft -= (int) amount;
             case "arcane" -> arcane -= (int) amount;
-
             case "maxhealth" -> maxHealth -= amount;
             case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
@@ -165,7 +160,6 @@ public class Stats {
                 maxEnergy -= amount;
                 if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
-
             case "physicaldamage" -> physicalDamage -= (int) amount;
             case "firedamage" -> fireDamage -= (int) amount;
             case "colddamage" -> coldDamage -= (int) amount;
@@ -177,7 +171,6 @@ public class Stats {
             case "puredamage" -> pureDamage -= (int) amount;
             case "critchance" -> critChance -= (int) amount;
             case "critdamage" -> critDamage -= (int) amount;
-
             case "evasion" -> evasion -= (int) amount;
             case "defense" -> defense -= (int) amount;
             case "guard" -> guard -= (int) amount;
@@ -233,6 +226,47 @@ public class Stats {
         }
 
         return resists;
+    }
+
+    public double getStatValue(String stat) {
+        double value = 0;
+
+        switch (stat.toLowerCase()) {
+            case "attributepoints" -> value = attributePoints;
+            case "vitality" -> value = vitality;
+            case "strength" -> value = strength;
+            case "deft" -> value = deft;
+            case "arcane" -> value = arcane;
+            case "maxhealth" -> value = maxHealth;
+            case "currentoverhealth" -> value = currentOverhealth;
+            case "maxoverhealth" -> value = maxOverhealth;
+            case "currentenergy" -> value = currentEnergy;
+            case "maxenergy" -> value = maxEnergy;
+            case "physicaldamage" -> value = physicalDamage;
+            case "firedamage" -> value = fireDamage;
+            case "colddamage" -> value = coldDamage;
+            case "earthdamage" -> value = earthDamage;
+            case "lightningdamage" -> value = lightningDamage;
+            case "airdamage" -> value = airDamage;
+            case "radiantdamage" -> value = radiantDamage;
+            case "necroticdamage" -> value = necroticDamage;
+            case "puredamage" -> value = pureDamage;
+            case "critchance" -> value = critChance;
+            case "critdamage" -> value = critDamage;
+            case "evasion" -> value = evasion;
+            case "defense" -> value = defense;
+            case "guard" -> value = guard;
+            case "physicalresist" -> value = physicalResist;
+            case "fireresist" -> value = fireResist;
+            case "coldresist" -> value = coldResist;
+            case "earthresist" -> value = earthResist;
+            case "lightningresist" -> value = lightningResist;
+            case "airresist" -> value = airResist;
+            case "radiantresist" -> value = radiantResist;
+            case "necroticresist" -> value = necroticResist;
+        }
+
+        return value;
     }
 
     public int getAttributePoints() {
