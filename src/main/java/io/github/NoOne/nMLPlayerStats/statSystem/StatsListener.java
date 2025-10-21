@@ -47,7 +47,7 @@ public class StatsListener implements Listener {
     }
 
     @EventHandler
-    public void updateBonusHealthChanges(StatChangeEvent event) {
+    public void updateMaxHealthChanges(StatChangeEvent event) {
         Player player = event.getPlayer();
 
         if (event.getStat().equals("maxhealth")) player.setMaxHealth(20 + event.getChange());

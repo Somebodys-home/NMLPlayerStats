@@ -1,5 +1,8 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -102,7 +105,6 @@ public class Stats {
             case "strength" -> strength += (int) amount;
             case "deft" -> deft += (int) amount;
             case "arcane" -> arcane += (int) amount;
-            case "maxhealth" -> maxHealth += amount;
             case "currentoverhealth" -> {
                 currentOverhealth += amount;
                 if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
@@ -145,7 +147,6 @@ public class Stats {
             case "strength" -> strength -= (int) amount;
             case "deft" -> deft -= (int) amount;
             case "arcane" -> arcane -= (int) amount;
-            case "maxhealth" -> maxHealth -= amount;
             case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
                 maxOverhealth -= amount;
@@ -183,6 +184,11 @@ public class Stats {
             case "radiantresist" -> radiantResist -= (int) amount;
             case "necroticresist" -> necroticResist -= (int) amount;
         }
+    }
+
+    public void changeMaxHealth(Player player, double change) {
+        maxHealth += change;
+        Bukkit.getPluginManager().callEvent(new StatChangeEvent(player, "maxhealth", change));
     }
 
     public HashMap<String, Integer> getAllDamages() {
