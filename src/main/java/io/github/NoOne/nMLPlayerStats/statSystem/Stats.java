@@ -187,7 +187,6 @@ public class Stats {
     }
 
     public void changeMaxHealth(Player player, double change) {
-        maxHealth += change;
         Bukkit.getPluginManager().callEvent(new StatChangeEvent(player, "maxhealth", change));
     }
 
