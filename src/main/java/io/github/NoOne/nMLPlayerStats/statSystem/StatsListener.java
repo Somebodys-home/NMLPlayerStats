@@ -36,6 +36,7 @@ public class StatsListener implements Listener {
 
         profile.setStats(Stats.generateNewbieStats());
         profileManager.saveAProfileToConfig(player);
+        player.setMaxHealth(20);
     }
 
     @EventHandler
