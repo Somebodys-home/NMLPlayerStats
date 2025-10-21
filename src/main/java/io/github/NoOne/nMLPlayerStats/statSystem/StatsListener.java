@@ -23,7 +23,7 @@ public class StatsListener implements Listener {
         if (change == 0) {
             event.setCancelled(true);
         } else if (change < 0) {
-            profileManager.getPlayerProfile(player.getUniqueId()).getStats().removeFromStat(event.getStat(), -event.getChange());
+            profileManager.getPlayerProfile(player.getUniqueId()).getStats().removeFromStat(event.getStat(), event.getChange());
             if (event.getStat().equals("maxhealth")) player.setMaxHealth(player.getMaxHealth() - event.getChange());
         } else {
             profileManager.getPlayerProfile(player.getUniqueId()).getStats().add2Stat(event.getStat(), event.getChange());
