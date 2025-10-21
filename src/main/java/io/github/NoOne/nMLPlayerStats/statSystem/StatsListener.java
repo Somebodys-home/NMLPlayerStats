@@ -24,8 +24,10 @@ public class StatsListener implements Listener {
             event.setCancelled(true);
         } else if (change < 0) {
             profileManager.getPlayerProfile(player.getUniqueId()).getStats().removeFromStat(event.getStat(), -event.getChange());
+            if (event.getStat().equals("maxhealth")) player.setMaxHealth(player.getMaxHealth() + -event.getChange());
         } else {
             profileManager.getPlayerProfile(player.getUniqueId()).getStats().add2Stat(event.getStat(), event.getChange());
+            if (event.getStat().equals("maxhealth")) player.setMaxHealth(player.getMaxHealth() + event.getChange());
         }
     }
 
@@ -45,12 +47,5 @@ public class StatsListener implements Listener {
         double bonusHealth = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getmaxHealth();
 
         player.setMaxHealth(20 + bonusHealth);
-    }
-
-    @EventHandler
-    public void updateMaxHealthChanges(StatChangeEvent event) {
-        Player player = event.getPlayer();
-
-        if (event.getStat().equals("maxhealth")) player.setMaxHealth(20 + event.getChange());
     }
 }
