@@ -1,12 +1,12 @@
 cf942050-e942-4990-a113-e3df70b289be:
   stats:
-    attributePoints: 1
+    attributePoints: 0
     vitality: 0
     strength: 0
     deft: 0
     arcane: 0
     maxHealth: 0.0
-    currentEnergy: 115.0
+    currentEnergy: 179.49999999999815
     maxEnergy: 100.0
     currentOverhealth: 0.0
     maxOverhealth: 0.0
@@ -23,7 +23,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     critdamage: 150
     evasion: 0
     defense: 0
-    guard: 0
+    guard: 15
     physicalResist: 0
     fireResist: 0
     coldResist: 0
