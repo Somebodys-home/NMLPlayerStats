@@ -114,41 +114,59 @@ public class StatsMenu extends Menu {
 
     public void setOffenseItem() {
         offenseStats = new ItemStack(Material.NETHERITE_SWORD);
+
         ItemMeta meta = offenseStats.getItemMeta();
         ArrayList<String> lore = new ArrayList<>();
+        String damageLine = "";
+        List<Map.Entry<String, Integer>> damageMap = new ArrayList<>(getDamageStats().entrySet());
+        int elementalDamage = stats.getElementalDamage();
 
         meta.setDisplayName("§4§lDamage Stats:");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        damageMap.sort((a, b) -> b.getValue().compareTo(a.getValue())); // sorted highest to lowest
 
-        String line = "";
-        List<Map.Entry<String, Integer>> damageMap = new ArrayList<>(getDamageStats().entrySet());
-        damageMap.sort((a, b) -> b.getValue().compareTo(a.getValue()));
+        if (damageMap.isEmpty()) {
+            if (elementalDamage > 0) damageLine += "§d" + stats.getElementalDamage() + " ✰";
+        } else {
+            for (int i = 0; i < damageMap.size(); i++) {
+                Map.Entry<String, Integer> damageEntry = damageMap.get(i);
 
-        for (int i = 0; i < damageMap.size(); i++) {
-            Map.Entry<String, Integer> damageEntry = damageMap.get(i);
+                if (i == 0) {
+                    if (elementalDamage > 0) {
+                        switch (damageEntry.getKey()) {
+                            case "fire" -> damageLine += "§c" + damageEntry.getValue() + "§d" + "+" + elementalDamage + " §c\uD83D\uDD25§d✰";
+                            case "cold" -> damageLine += "§b" + damageEntry.getValue() + "§d" + "+" + elementalDamage + " ❄§d✰";
+                            case "earth" -> damageLine += "§2" + damageEntry.getValue() + "§d" + "+" + elementalDamage + " \uD83E\uDEA8§d✰";
+                            case "lightning" -> damageLine += "§e" + damageEntry.getValue() + "§d" + "+" + elementalDamage + " \uD83D\uDDF2§d✰";
+                            case "air" -> damageLine += "§7" + damageEntry.getValue() + "§d" + "+" + elementalDamage + " ☁§d✰";
+                            case "radiant" -> damageLine += "§f" + damageEntry.getValue() + "§d" + "+" + elementalDamage + " ✦§d✰";
+                            case "necrotic" -> damageLine += "§5" + damageEntry.getValue() + "§d" + "+" + elementalDamage + " \uD83C\uDF00§d✰";
+                        }
+                    }
+                } else {
+                    switch (damageEntry.getKey()) {
+                        case "physical" -> damageLine += "§4" + damageEntry.getValue() + " ⚔";
+                        case "fire" -> damageLine += "§c" + damageEntry.getValue() + " \uD83D\uDD25";
+                        case "cold" -> damageLine += "§b" + damageEntry.getValue() + " ❄";
+                        case "earth" -> damageLine += "§2" + damageEntry.getValue() + " \uD83E\uDEA8";
+                        case "lightning" -> damageLine += "§e" + damageEntry.getValue() + " \uD83D\uDDF2";
+                        case "air" -> damageLine += "§7" + damageEntry.getValue() + " ☁";
+                        case "radiant" -> damageLine += "§f" + damageEntry.getValue() + " ✦";
+                        case "necrotic" -> damageLine += "§5" + damageEntry.getValue() + " \uD83C\uDF00";
+                        case "pure" -> damageLine += "§f" + damageEntry.getValue() + " \uD83D\uDCA2";
+                    }
+                }
 
-            switch (damageEntry.getKey()) {
-                case "physical" -> line += "§4" + damageEntry.getValue() + " ⚔";
-                case "elemental" -> line += "§d" + damageEntry.getValue() + " ✰";
-                case "fire" -> line += "§c" + damageEntry.getValue() + " \uD83D\uDD25";
-                case "cold" -> line += "§b" + damageEntry.getValue() + " ❄";
-                case "earth" -> line += "§2" + damageEntry.getValue() + " \uD83E\uDEA8";
-                case "lightning" -> line += "§e" + damageEntry.getValue() + " \uD83D\uDDF2";
-                case "air" -> line += "§7" + damageEntry.getValue() + " ☁";
-                case "radiant" -> line += "§f" + damageEntry.getValue() + " ✦";
-                case "necrotic" -> line += "§5" + damageEntry.getValue() + " \uD83C\uDF00";
-                case "pure" -> line += "§f" + damageEntry.getValue() + " \uD83D\uDCA2";
-            }
-
-            if (i != damageMap.size() - 1) {
-                line += "  ";
+                if (i != damageMap.size() - 1) {
+                    damageLine += "  ";
+                }
             }
         }
 
-        if (line.isEmpty()) {
+        if (damageLine.isEmpty()) {
             lore.add("§7Damn, you ain't s§khit§r§7.");
         } else {
-            lore.add(line);
+            lore.add(damageLine);
         }
 
         lore.add("§7────────────────");
@@ -232,7 +250,6 @@ public class StatsMenu extends Menu {
         if (stats.getRadiantDamage() != 0) damageStats.put("radiant", stats.getRadiantDamage());
         if (stats.getNecroticDamage() != 0) damageStats.put("necrotic", stats.getNecroticDamage());
         if (stats.getPureDamage() != 0) damageStats.put("pure", stats.getPureDamage());
-        if (stats.getElementalDamage() != 0) damageStats.put("elemental", stats.getElementalDamage());
 
         return damageStats;
     }
