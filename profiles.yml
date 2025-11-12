@@ -1,6 +1,6 @@
 cf942050-e942-4990-a113-e3df70b289be:
   stats:
-    attributePoints: 0
+    attributePoints: 98
     vitality: 0
     strength: 0
     deft: 0
@@ -20,7 +20,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     radiantDamage: 0
     necroticDamage: 1
     pureDamage: 0
-    critchance: 16
+    critchance: 16.0
     critdamage: 160
     evasion: 0
     defense: 0
@@ -32,5 +32,4 @@ cf942050-e942-4990-a113-e3df70b289be:
     lightningResist: 0
     airResist: 0
     radiantResist: 0
-    darkResist: 0
     necroticResist: 0

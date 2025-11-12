@@ -32,7 +32,7 @@ public class Stats {
     private int radiantDamage;
     private int necroticDamage;
     private int pureDamage;
-    private int critChance;
+    private double critChance;
     private int critDamage;
 
     // defense stats
@@ -52,7 +52,7 @@ public class Stats {
                  double maxHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int elementalDamage, int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage,
                  int necroticDamage, int pureDamage,
-                 int critChance, int critDamage,
+                 double critChance, int critDamage,
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int radiantResist, int necroticResist) {
 
         this.attributePoints = attributePoints;
@@ -128,7 +128,7 @@ public class Stats {
             case "radiantdamage" -> radiantDamage += (int) amount;
             case "necroticdamage" -> necroticDamage += (int) amount;
             case "puredamage" -> pureDamage += (int) amount;
-            case "critchance" -> critChance += (int) amount;
+            case "critchance" -> critChance += amount;
             case "critdamage" -> critDamage += (int) amount;
             case "evasion" -> evasion += (int) amount;
             case "defense" -> defense += (int) amount;
@@ -175,7 +175,7 @@ public class Stats {
             case "radiantdamage" -> radiantDamage -= (int) amount;
             case "necroticdamage" -> necroticDamage -= (int) amount;
             case "puredamage" -> pureDamage -= (int) amount;
-            case "critchance" -> critChance -= (int) amount;
+            case "critchance" -> critChance -= amount;
             case "critdamage" -> critDamage -= (int) amount;
             case "evasion" -> evasion -= (int) amount;
             case "defense" -> defense -= (int) amount;
@@ -510,7 +510,7 @@ public class Stats {
         this.guard = guard;
     }
 
-    public int getCritChance() {
+    public double getCritChance() {
         return critChance;
     }
 

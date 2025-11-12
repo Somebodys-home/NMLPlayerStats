@@ -60,7 +60,7 @@ public class ProfileManager {
             int radiantDamage = config.getInt(id + ".stats.radiantDamage");
             int necroticDamage = config.getInt(id + ".stats.necroticDamage");
             int pureDamage = config.getInt(id + ".stats.pureDamage");
-            int critchance = config.getInt(id + ".stats.critchance");
+            double critchance = config.getDouble(id + ".stats.critchance");
             int critdamage = config.getInt(id + ".stats.critdamage");
 
             int evasion = config.getInt(id + ".stats.evasion");
