@@ -23,6 +23,7 @@ public class Stats {
 
     // damage stats
     private int physicalDamage;
+    private int elementalDamage;
     private int fireDamage;
     private int coldDamage;
     private int earthDamage;
@@ -49,7 +50,8 @@ public class Stats {
 
     public Stats(int attributePoints, int vitality, int strength, int deft, int arcane,
                  double maxHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
-                 int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage, int necroticDamage, int pureDamage,
+                 int elementalDamage, int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage,
+                 int necroticDamage, int pureDamage,
                  int critChance, int critDamage,
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist, int radiantResist, int necroticResist) {
 
@@ -65,6 +67,7 @@ public class Stats {
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
 
+        this.elementalDamage = elementalDamage;
         this.physicalDamage = physicalDamage;
         this.fireDamage = fireDamage;
         this.coldDamage = coldDamage;
@@ -93,7 +96,7 @@ public class Stats {
     public static Stats generateNewbieStats() {
         return new Stats(0, 0, 0, 0, 0,
                 0, 0, 0, 100, 100,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 10, 150,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
@@ -115,6 +118,7 @@ public class Stats {
                 if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
             case "maxenergy" -> maxEnergy += amount;
+            case "elementaldamage" -> elementalDamage += (int) amount;
             case "physicaldamage" -> physicalDamage += (int) amount;
             case "firedamage" -> fireDamage += (int) amount;
             case "colddamage" -> coldDamage += (int) amount;
@@ -161,6 +165,7 @@ public class Stats {
                 maxEnergy -= amount;
                 if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
+            case "elementaldamage" -> elementalDamage -= (int) amount;
             case "physicaldamage" -> physicalDamage -= (int) amount;
             case "firedamage" -> fireDamage -= (int) amount;
             case "colddamage" -> coldDamage -= (int) amount;
@@ -238,6 +243,7 @@ public class Stats {
             case "currentenergy" -> value = currentEnergy;
             case "maxenergy" -> value = maxEnergy;
             case "physicaldamage" -> value = physicalDamage;
+            case "elementaldamage" -> value = elementalDamage;
             case "firedamage" -> value = fireDamage;
             case "colddamage" -> value = coldDamage;
             case "earthdamage" -> value = earthDamage;
@@ -518,5 +524,13 @@ public class Stats {
 
     public void setCritDamage(int critDamage) {
         this.critDamage = critDamage;
+    }
+
+    public int getElementalDamage() {
+        return elementalDamage;
+    }
+
+    public void setElementalDamage(int elementalDamage) {
+        this.elementalDamage = elementalDamage;
     }
 }

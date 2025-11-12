@@ -129,6 +129,7 @@ public class StatsMenu extends Menu {
 
             switch (damageEntry.getKey()) {
                 case "physical" -> line += "§4" + damageEntry.getValue() + " ⚔";
+                case "elemental" -> line += "§d" + damageEntry.getValue() + " ✰";
                 case "fire" -> line += "§c" + damageEntry.getValue() + " \uD83D\uDD25";
                 case "cold" -> line += "§b" + damageEntry.getValue() + " ❄";
                 case "earth" -> line += "§2" + damageEntry.getValue() + " \uD83E\uDEA8";
@@ -222,33 +223,16 @@ public class StatsMenu extends Menu {
     public HashMap<String, Integer> getDamageStats() {
         HashMap<String, Integer> damageStats = new HashMap<>();
 
-        if (stats.getPhysicalDamage() != 0) {
-            damageStats.put("physical", stats.getPhysicalDamage());
-        }
-        if (stats.getFireDamage() != 0) {
-            damageStats.put("fire", stats.getFireDamage());
-        }
-        if (stats.getColdDamage() != 0) {
-            damageStats.put("cold", stats.getColdDamage());
-        }
-        if (stats.getEarthDamage() != 0) {
-            damageStats.put("earth", stats.getEarthDamage());
-        }
-        if (stats.getLightningDamage() != 0) {
-            damageStats.put("lightning", stats.getLightningDamage());
-        }
-        if (stats.getAirDamage() != 0) {
-            damageStats.put("air", stats.getAirDamage());
-        }
-        if (stats.getRadiantDamage() != 0) {
-            damageStats.put("radiant", stats.getRadiantDamage());
-        }
-        if (stats.getNecroticDamage() != 0) {
-            damageStats.put("necrotic", stats.getNecroticDamage());
-        }
-        if (stats.getPureDamage() != 0) {
-            damageStats.put("pure", stats.getPureDamage());
-        }
+        if (stats.getPhysicalDamage() != 0) damageStats.put("physical", stats.getPhysicalDamage());
+        if (stats.getFireDamage() != 0) damageStats.put("fire", stats.getFireDamage());
+        if (stats.getColdDamage() != 0) damageStats.put("cold", stats.getColdDamage());
+        if (stats.getEarthDamage() != 0) damageStats.put("earth", stats.getEarthDamage());
+        if (stats.getLightningDamage() != 0) damageStats.put("lightning", stats.getLightningDamage());
+        if (stats.getAirDamage() != 0) damageStats.put("air", stats.getAirDamage());
+        if (stats.getRadiantDamage() != 0) damageStats.put("radiant", stats.getRadiantDamage());
+        if (stats.getNecroticDamage() != 0) damageStats.put("necrotic", stats.getNecroticDamage());
+        if (stats.getPureDamage() != 0) damageStats.put("pure", stats.getPureDamage());
+        if (stats.getElementalDamage() != 0) damageStats.put("elemental", stats.getElementalDamage());
 
         return damageStats;
     }
@@ -256,36 +240,16 @@ public class StatsMenu extends Menu {
     public HashMap<String, Integer> getDefenseStats() {
         HashMap<String, Integer> defenseStats = new HashMap<>();
         
-        if (stats.getDefense() != 0) {
-            defenseStats.put("defense", stats.getDefense());
-        }
-        if (stats.getEvasion() != 0) {
-            defenseStats.put("evasion", stats.getEvasion());
-        }
-        if (stats.getPhysicalResist() != 0) {
-            defenseStats.put("physical", stats.getPhysicalResist());
-        }
-        if (stats.getFireResist() != 0) {
-            defenseStats.put("fire", stats.getFireResist());
-        }
-        if (stats.getColdResist() != 0) {
-            defenseStats.put("cold", stats.getColdResist());
-        }
-        if (stats.getEarthResist() != 0) {
-            defenseStats.put("earth", stats.getEarthResist());
-        }
-        if (stats.getLightningResist() != 0) {
-            defenseStats.put("lightning", stats.getLightningResist());
-        }
-        if (stats.getAirResist() != 0) {
-            defenseStats.put("air", stats.getAirResist());
-        }
-        if (stats.getRadiantResist() != 0) {
-            defenseStats.put("radiant", stats.getRadiantResist());
-        }
-        if (stats.getNecroticResist() != 0) {
-            defenseStats.put("necrotic", stats.getNecroticResist());
-        }
+        if (stats.getDefense() != 0) defenseStats.put("defense", stats.getDefense());
+        if (stats.getEvasion() != 0) defenseStats.put("evasion", stats.getEvasion());
+        if (stats.getPhysicalResist() != 0) defenseStats.put("physical", stats.getPhysicalResist());
+        if (stats.getFireResist() != 0) defenseStats.put("fire", stats.getFireResist());
+        if (stats.getColdResist() != 0) defenseStats.put("cold", stats.getColdResist());
+        if (stats.getEarthResist() != 0) defenseStats.put("earth", stats.getEarthResist());
+        if (stats.getLightningResist() != 0) defenseStats.put("lightning", stats.getLightningResist());
+        if (stats.getAirResist() != 0) defenseStats.put("air", stats.getAirResist());
+        if (stats.getRadiantResist() != 0) defenseStats.put("radiant", stats.getRadiantResist());
+        if (stats.getNecroticResist() != 0) defenseStats.put("necrotic", stats.getNecroticResist());
 
         return defenseStats;
     }

@@ -51,6 +51,7 @@ public class ProfileManager {
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
 
             int physicalDamage = config.getInt(id + ".stats.physicalDamage");
+            int elementalDamage = config.getInt(id + ".stats.elementalDamage");
             int fireDamage = config.getInt(id + ".stats.fireDamage");
             int coldDamage = config.getInt(id + ".stats.coldDamage");
             int earthDamage = config.getInt(id + ".stats.earthDamage");
@@ -77,7 +78,7 @@ public class ProfileManager {
             Stats stats = new Stats(
                     attributePoints, vitality, strength, deft, arcane,
                     maxHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
-                    physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
+                    physicalDamage, elementalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist);
             Profile profile = new Profile(stats);
@@ -104,6 +105,7 @@ public class ProfileManager {
             config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
 
             config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
+            config.set(id + ".stats.elementalDamage", stats.getElementalDamage());
             config.set(id + ".stats.fireDamage", stats.getFireDamage());
             config.set(id + ".stats.coldDamage", stats.getColdDamage());
             config.set(id + ".stats.earthDamage", stats.getEarthDamage());
@@ -147,6 +149,7 @@ public class ProfileManager {
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
 
         config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
+        config.set(id + ".stats.elementalDamage", stats.getElementalDamage());
         config.set(id + ".stats.fireDamage", stats.getFireDamage());
         config.set(id + ".stats.coldDamage", stats.getColdDamage());
         config.set(id + ".stats.earthDamage", stats.getEarthDamage());
