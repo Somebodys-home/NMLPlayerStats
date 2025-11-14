@@ -128,13 +128,15 @@ public class StatsMenu extends Menu {
             Map.Entry<String, Integer> entry = damageMap.get(i);
             String key = entry.getKey();
             int value = entry.getValue();
-
-            boolean isElemental = key.equals("fire") || key.equals("cold") || key.equals("earth") ||
-                    key.equals("lightning") || key.equals("air") ||
-                    key.equals("radiant") || key.equals("necrotic");
+            boolean isElemental = key.equals("fire") ||
+                                    key.equals("cold") ||
+                                    key.equals("earth") ||
+                                    key.equals("lightning") ||
+                                    key.equals("air") ||
+                                    key.equals("radiant") ||
+                                    key.equals("necrotic");
 
             if (isElemental) hasElementalDamage = true;
-
             if (isElemental && !elementalBonusApplied && elementalDamage > 0) {
                 switch (key) {
                     case "fire" -> damageLine += "§c" + value + "§d+" + elementalDamage + " §c🔥§d✰";
@@ -145,6 +147,7 @@ public class StatsMenu extends Menu {
                     case "radiant" -> damageLine += "§f" + value + "§d+" + elementalDamage + " ✦§d✰";
                     case "necrotic" -> damageLine += "§5" + value + "§d+" + elementalDamage + " 🌀§d✰";
                 }
+
                 elementalBonusApplied = true;
             } else {
                 switch (key) {
@@ -165,6 +168,7 @@ public class StatsMenu extends Menu {
 
         if (!hasElementalDamage && elementalDamage > 0) {
             if (!damageLine.isEmpty()) damageLine += "  ";
+
             damageLine += "§d" + elementalDamage + " ✰";
         }
 
@@ -212,9 +216,7 @@ public class StatsMenu extends Menu {
                 case "necrotic" -> line += "§5" + defenseEntry.getValue() + " \uD83C\uDF00";
             }
 
-            if (i != defenseMap.size() - 1) {
-                line += "  ";
-            }
+            if (i != defenseMap.size() - 1) line += "  ";
         }
 
         if (line.isEmpty()) {
