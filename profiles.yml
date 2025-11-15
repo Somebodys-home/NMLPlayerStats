@@ -2,17 +2,17 @@ cf942050-e942-4990-a113-e3df70b289be:
   stats:
     attributePoints: 0
     vitality: 0
-    strength: 5
+    strength: 0
     deft: 0
-    arcane: 4
+    arcane: 0
     maxHealth: 0.0
-    currentEnergy: 100.0
+    currentEnergy: 67.66666666666684
     maxEnergy: 100.0
-    currentOverhealth: 4.0
-    maxOverhealth: 4.0
+    currentOverhealth: 0.0
+    maxOverhealth: 0.0
     physicalDamage: 3
-    elementalDamage: 6
-    fireDamage: 0
+    elementalDamage: 0
+    fireDamage: 1
     coldDamage: 0
     earthDamage: 0
     lightningDamage: 0
@@ -20,12 +20,12 @@ cf942050-e942-4990-a113-e3df70b289be:
     radiantDamage: 0
     necroticDamage: 0
     pureDamage: 0
-    critchance: 10.0
-    critdamage: 150
+    critchance: 14.0
+    critdamage: 170
     evasion: 0
     defense: 0
     guard: 0
-    physicalResist: 5
+    physicalResist: 0
     fireResist: 0
     coldResist: 0
     earthResist: 0

@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class ProfileManager {
-    private static Map<UUID, Profile> profileMap = new HashMap<>(); // hashmap of all the profiles of all the players online atm
+    private static Map<UUID, Stats> statsMap = new HashMap<>(); // hashmap of all the profiles of all the players online atm
     private FileConfiguration config;
     private ProfileConfig profileConfig;
 
@@ -21,17 +21,19 @@ public class ProfileManager {
         config = profileConfig.getConfig();
     }
 
-    public Profile createNewbieProfile(Player player) {
-        Profile profile = new Profile(Stats.generateNewbieStats());
-
-        profileMap.put(player.getUniqueId(), profile);
+    public Stats createNewbieStats(Player player) {
+        statsMap.put(player.getUniqueId(), Stats.generateNewbieStats());
         Bukkit.getPluginManager().callEvent(new ResetStatsEvent(player));
 
-        return profile;
+        return Stats.generateNewbieStats();
     }
 
-    public Profile getPlayerProfile(UUID uuid) {
-        return profileMap.get(uuid);
+    public Stats getPlayerStats(UUID uuid) {
+        return statsMap.get(uuid);
+    }
+
+    public void addPlayerStats(UUID uuid, Stats stats) {
+        statsMap.put(uuid, stats);
     }
 
     public void loadProfilesFromConfig() {
@@ -81,16 +83,15 @@ public class ProfileManager {
                     physicalDamage, elementalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist);
-            Profile profile = new Profile(stats);
-            profileMap.put(uuid, profile);
+
+            statsMap.put(uuid, stats);
         }
     }
 
     public void saveProfilesToConfig() {
-        for (UUID uuid : profileMap.keySet()) {
+        for (UUID uuid : statsMap.keySet()) {
             String id = uuid.toString();
-            Profile profile = profileMap.get(uuid);
-            Stats stats = profile.getStats();
+            Stats stats = statsMap.get(uuid);
 
             config.set(id + ".stats.attributePoints", stats.getAttributePoints());
             config.set(id + ".stats.vitality", stats.getVitality());
@@ -133,8 +134,7 @@ public class ProfileManager {
 
     public void saveAProfileToConfig(Player player) {
         String id = player.getUniqueId().toString();
-        Profile profile = profileMap.get(player.getUniqueId());
-        Stats stats = profile.getStats();
+        Stats stats = statsMap.get(player.getUniqueId());
 
         config.set(id + ".stats.attributePoints", stats.getAttributePoints());
         config.set(id + ".stats.vitality", stats.getVitality());

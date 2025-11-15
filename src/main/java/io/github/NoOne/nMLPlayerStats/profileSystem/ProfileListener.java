@@ -17,10 +17,10 @@ public class ProfileListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        Profile profile = profileManager.getPlayerProfile(player.getUniqueId());
+        Stats stats = profileManager.getPlayerStats(player.getUniqueId());
         
-        if (profile == null) {
-            profileManager.createNewbieProfile(player);
+        if (stats == null) {
+            profileManager.createNewbieStats(player);
         }
     }
 }

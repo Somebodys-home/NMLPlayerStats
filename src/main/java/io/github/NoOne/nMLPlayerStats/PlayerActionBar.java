@@ -20,8 +20,8 @@ public class PlayerActionBar {
     public String[] setPlayerActionBarParts(Player player) {
         double totalhealth = player.getHealth() + player.getAbsorptionAmount();
         char healthColor = 'c';
-        double currentEnergy = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getCurrentEnergy();
-        double maxEnergy = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getMaxEnergy();
+        double currentEnergy = profileManager.getPlayerStats(player.getUniqueId()).getCurrentEnergy();
+        double maxEnergy = profileManager.getPlayerStats(player.getUniqueId()).getMaxEnergy();
 
         if (player.getAbsorptionAmount() > 0) {
             healthColor = '9';

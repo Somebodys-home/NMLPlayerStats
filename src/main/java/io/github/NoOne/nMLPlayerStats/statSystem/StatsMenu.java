@@ -24,7 +24,7 @@ public class StatsMenu extends Menu {
         super(playerMenuUtility);
 
         player = playerMenuUtility.getOwner();
-        stats = nmlPlayerStats.getProfileManager().getPlayerProfile(player.getUniqueId()).getStats();
+        stats = nmlPlayerStats.getProfileManager().getPlayerStats(player.getUniqueId());
     }
 
     @Override
@@ -140,12 +140,12 @@ public class StatsMenu extends Menu {
             if (isElemental && !elementalBonusApplied && elementalDamage > 0) {
                 switch (key) {
                     case "fire" -> damageLine += "§c" + value + "§d+" + elementalDamage + " §c🔥§d✰";
-                    case "cold" -> damageLine += "§b" + value + "§d+" + elementalDamage + " ❄§d✰";
-                    case "earth" -> damageLine += "§2" + value + "§d+" + elementalDamage + " 🪨§d✰";
-                    case "lightning" -> damageLine += "§e" + value + "§d+" + elementalDamage + " 🗲§d✰";
-                    case "air" -> damageLine += "§7" + value + "§d+" + elementalDamage + " ☁§d✰";
-                    case "radiant" -> damageLine += "§f" + value + "§d+" + elementalDamage + " ✦§d✰";
-                    case "necrotic" -> damageLine += "§5" + value + "§d+" + elementalDamage + " 🌀§d✰";
+                    case "cold" -> damageLine += "§b" + value + "§d+" + elementalDamage + " §b❄§d✰";
+                    case "earth" -> damageLine += "§2" + value + "§d+" + elementalDamage + " §2🪨§d✰";
+                    case "lightning" -> damageLine += "§e" + value + "§d+" + elementalDamage + " §e🗲§d✰";
+                    case "air" -> damageLine += "§7" + value + "§d+" + elementalDamage + " §7☁§d✰";
+                    case "radiant" -> damageLine += "§f" + value + "§d+" + elementalDamage + " §f✦§d✰";
+                    case "necrotic" -> damageLine += "§5" + value + "§d+" + elementalDamage + " §5🌀§d✰";
                 }
 
                 elementalBonusApplied = true;
@@ -180,7 +180,7 @@ public class StatsMenu extends Menu {
 
         lore.add("§7────────────────");
         lore.add("§cMax Energy: §6" + (int) stats.getMaxEnergy() + " ⚡");
-        lore.add("§cCrit Chance: §9" + stats.getCritChance() + " ☠");
+        lore.add("§cCrit Chance: §9" + Math.round(stats.getCritChance() * 10.0) / 10.0 + "% ☠");
         lore.add("§cCrit Damage: §9" + stats.getCritDamage() + " ☠");
 
         meta.setLore(lore);
