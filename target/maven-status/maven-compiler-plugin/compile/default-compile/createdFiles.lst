@@ -7,6 +7,7 @@ io\github\NoOne\nMLPlayerStats\statSystem\commands\ResetStatsCommand.class
 io\github\NoOne\nMLPlayerStats\statSystem\StatsListener.class
 io\github\NoOne\nMLPlayerStats\NMLPlayerStats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileConfig.class
+io\github\NoOne\nMLPlayerStats\profileSystem\Profile.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileListener.class
 io\github\NoOne\nMLPlayerStats\statSystem\ResetStatsEvent.class
 io\github\NoOne\nMLPlayerStats\statSystem\commands\StatsCommand.class

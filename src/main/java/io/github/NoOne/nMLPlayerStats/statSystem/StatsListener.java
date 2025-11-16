@@ -1,6 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
+import io.github.NoOne.nMLPlayerStats.profileSystem.Profile;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,9 +23,9 @@ public class StatsListener implements Listener {
         if (change == 0) {
             event.setCancelled(true);
         } else if (change < 0) {
-            profileManager.getPlayerStats(player.getUniqueId()).removeFromStat(event.getStat(), Math.abs(change));
+            profileManager.getPlayerProfile(player.getUniqueId()).getStats().removeFromStat(event.getStat(), Math.abs(change));
         } else {
-            profileManager.getPlayerStats(player.getUniqueId()).add2Stat(event.getStat(), change);
+            profileManager.getPlayerProfile(player.getUniqueId()).getStats().add2Stat(event.getStat(), change);
         }
 
         if (event.getStat().equals("maxhealth")) player.setMaxHealth(player.getMaxHealth() + event.getChange());
@@ -33,17 +34,18 @@ public class StatsListener implements Listener {
     @EventHandler
     public void resetStats(ResetStatsEvent event) {
         Player player = event.getPlayer();
+        Profile profile = profileManager.getPlayerProfile(player.getUniqueId());
 
-        profileManager.addPlayerStats(player.getUniqueId(), Stats.generateNewbieStats());
+        profile.setStats(Stats.generateNewbieStats());
         profileManager.saveAProfileToConfig(player);
         player.setMaxHealth(20);
     }
 
     @EventHandler
-    public void updateMaxHealthOnPlayerJoin(PlayerJoinEvent event) {
+    public void updateBonusHealthOnPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        double maxHealth = profileManager.getPlayerStats(player.getUniqueId()).getmaxHealth();
+        double bonusHealth = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getmaxHealth();
 
-        player.setMaxHealth(20 + maxHealth);
+        player.setMaxHealth(20 + bonusHealth);
     }
 }
