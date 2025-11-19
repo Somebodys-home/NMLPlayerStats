@@ -11,6 +11,7 @@ io\github\NoOne\nMLPlayerStats\NMLPlayerStats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileConfig.class
 io\github\NoOne\nMLPlayerStats\profileSystem\Profile.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileListener.class
+io\github\NoOne\nMLPlayerStats\statSystem\Stats$3.class
 io\github\NoOne\nMLPlayerStats\statSystem\ResetStatsEvent.class
 io\github\NoOne\nMLPlayerStats\statSystem\commands\StatsCommand.class
 io\github\NoOne\nMLPlayerStats\statSystem\StatChangeEvent.class

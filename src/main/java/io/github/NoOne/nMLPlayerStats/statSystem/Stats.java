@@ -230,7 +230,9 @@ public class Stats {
         List<Map.Entry<String, Integer>> highest = new ArrayList<>(damages.entrySet()); // create variable of damages
         highest.sort((a, b) -> b.getValue().compareTo(a.getValue())); // sort by highest
 
-        return new HashMap<>((Map) highest.getFirst());
+        return new HashMap<>(){{
+            put(highest.getFirst().getKey(), highest.getFirst().getValue());
+        }};
     }
 
     public HashMap<String, Integer> getAllResists() {
