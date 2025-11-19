@@ -3,7 +3,9 @@ package io.github.NoOne.nMLPlayerStats.statSystem;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Stats {
@@ -196,20 +198,39 @@ public class Stats {
     }
 
     public HashMap<String, Integer> getAllDamages() {
-        HashMap<String, Integer> damages = new HashMap<>();
-
-        damages.put("physicaldamage", physicalDamage);
-        damages.put("firedamage", fireDamage);
-        damages.put("colddamage", coldDamage);
-        damages.put("earthdamage", earthDamage);
-        damages.put("lightningdamage", lightningDamage);
-        damages.put("airdamage", airDamage);
-        damages.put("radiantdamage", radiantDamage);
-        damages.put("necroticdamage", necroticDamage);
-        damages.put("puredamage", pureDamage);
+        HashMap<String, Integer> damages = new HashMap<>() {{
+            put("physicaldamage", physicalDamage);
+            put("firedamage", fireDamage);
+            put("colddamage", coldDamage);
+            put("earthdamage", earthDamage);
+            put("lightningdamage", lightningDamage);
+            put("airdamage", airDamage);
+            put("radiantdamage", radiantDamage);
+            put("necroticdamage", necroticDamage);
+            put("puredamage", pureDamage);
+        }};
 
         damages.entrySet().removeIf(entry -> entry.getValue() <= 0);
+
         return damages;
+    }
+
+    public HashMap<String, Integer> getHighestElementalDamage() {
+        HashMap<String, Integer> damages = new HashMap<>() {{
+            put("firedamage", fireDamage);
+            put("colddamage", coldDamage);
+            put("earthdamage", earthDamage);
+            put("lightningdamage", lightningDamage);
+            put("airdamage", airDamage);
+            put("radiantdamage", radiantDamage);
+            put("necroticdamage", necroticDamage);
+        }};
+
+        damages.entrySet().removeIf(entry -> entry.getValue() <= 0); // removes all 0 damages
+        List<Map.Entry<String, Integer>> highest = new ArrayList<>(damages.entrySet()); // create variable of damages
+        highest.sort((a, b) -> b.getValue().compareTo(a.getValue())); // sort by highest
+
+        return new HashMap<>((Map) highest.getFirst());
     }
 
     public HashMap<String, Integer> getAllResists() {

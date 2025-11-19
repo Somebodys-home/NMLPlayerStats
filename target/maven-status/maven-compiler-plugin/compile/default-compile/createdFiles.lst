@@ -4,7 +4,9 @@ io\github\NoOne\nMLPlayerStats\statSystem\StatsMenu.class
 io\github\NoOne\nMLPlayerStats\statSystem\Stats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileManager.class
 io\github\NoOne\nMLPlayerStats\statSystem\commands\ResetStatsCommand.class
+io\github\NoOne\nMLPlayerStats\statSystem\Stats$2.class
 io\github\NoOne\nMLPlayerStats\statSystem\StatsListener.class
+io\github\NoOne\nMLPlayerStats\statSystem\Stats$1.class
 io\github\NoOne\nMLPlayerStats\NMLPlayerStats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileConfig.class
 io\github\NoOne\nMLPlayerStats\profileSystem\Profile.class

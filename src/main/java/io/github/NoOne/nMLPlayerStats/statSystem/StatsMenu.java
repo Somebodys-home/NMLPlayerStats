@@ -185,7 +185,6 @@ public class StatsMenu extends Menu {
 
         meta.setLore(lore);
         offenseStats.setItemMeta(meta);
-
     }
 
     public void setDefenseItem() {
