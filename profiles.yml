@@ -4,14 +4,14 @@ cf942050-e942-4990-a113-e3df70b289be:
     vitality: 0
     strength: 0
     deft: 0
-    arcane: 4
+    arcane: 1
     maxHealth: 0.0
     currentEnergy: 100.0
     maxEnergy: 100.0
-    currentOverhealth: 4.0
-    maxOverhealth: 4.0
-    physicalDamage: 7
-    elementalDamage: 0
+    currentOverhealth: 1.0
+    maxOverhealth: 1.0
+    physicalDamage: 1
+    elementalDamage: 3
     fireDamage: 1
     coldDamage: 0
     earthDamage: 0

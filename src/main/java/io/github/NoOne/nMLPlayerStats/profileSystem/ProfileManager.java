@@ -78,7 +78,7 @@ public class ProfileManager {
             Stats stats = new Stats(
                     attributePoints, vitality, strength, deft, arcane,
                     maxHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
-                    physicalDamage, elementalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
+                    elementalDamage, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist);
             Profile profile = new Profile(stats);
