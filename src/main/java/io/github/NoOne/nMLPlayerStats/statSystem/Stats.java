@@ -227,12 +227,17 @@ public class Stats {
         }};
 
         damages.entrySet().removeIf(entry -> entry.getValue() <= 0); // removes all 0 damages
+
         List<Map.Entry<String, Integer>> highest = new ArrayList<>(damages.entrySet()); // create variable of damages
+        HashMap<String, Integer> highestHash = new HashMap<>();
+
         highest.sort((a, b) -> b.getValue().compareTo(a.getValue())); // sort by highest
 
-        return new HashMap<>(){{
-            put(highest.getFirst().getKey(), highest.getFirst().getValue());
-        }};
+        if (!highest.isEmpty()) {
+            highestHash.put(highest.getFirst().getKey(), highest.getFirst().getValue());
+        }
+
+        return highestHash;
     }
 
     public HashMap<String, Integer> getAllResists() {
