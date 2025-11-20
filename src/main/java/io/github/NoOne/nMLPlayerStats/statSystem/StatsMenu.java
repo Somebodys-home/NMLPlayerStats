@@ -180,7 +180,7 @@ public class StatsMenu extends Menu {
 
         lore.add("§7────────────────");
         lore.add("§cMax Energy: §6" + (int) stats.getMaxEnergy() + " ⚡");
-        lore.add("§cCrit Chance: §9" + stats.getCritChance() + " ☠");
+        lore.add("§cCrit Chance: §9" + Math.round(stats.getCritChance() * 10.0) / 10.0 + " ☠");
         lore.add("§cCrit Damage: §9" + stats.getCritDamage() + " ☠");
 
         meta.setLore(lore);
