@@ -241,6 +241,10 @@ public class StatsMenu extends Menu {
         gatheringMeta.setDisplayName("§b§lGathering Stats:");
         gatheringMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
+        gatheringLore.add("§aHarvest: §1" + stats.getHarvest() + " §a\uD83D\uDE21");
+        gatheringLore.add("§aYield: §1" + stats.getYield() + " §a\uD83E\uDD55");
+        gatheringLore.add("§aAcre: §1" + stats.getAcre() + " §a⚂");
+
         gatheringMeta.setLore(gatheringLore);
         gatheringStats.setItemMeta(gatheringMeta);
     }
