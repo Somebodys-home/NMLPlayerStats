@@ -51,8 +51,8 @@ public class Stats {
     private int necroticResist;
 
     // skill stats
-    private int harvest;
     private int yield;
+    private int harvest;
     private int acre;
 
     public Stats(int attributePoints, int vitality, int strength, int deft, int arcane,
@@ -62,7 +62,7 @@ public class Stats {
                  double critChance, int critDamage,
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist,
                  int radiantResist, int necroticResist,
-                 int harvest, int yield, int acre) {
+                 int yield, int harvest, int acre) {
 
         this.attributePoints = attributePoints;
         this.vitality = vitality;
@@ -101,8 +101,8 @@ public class Stats {
         this.radiantResist = radiantResist;
         this.necroticResist = necroticResist;
 
-        this.harvest = harvest;
         this.yield = yield;
+        this.harvest = harvest;
         this.acre = acre;
     }
 
@@ -112,7 +112,7 @@ public class Stats {
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 10, 150,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0);
+                0, 0, 10);
     }
 
     public void add2Stat(String stat, double amount) {
@@ -155,8 +155,8 @@ public class Stats {
             case "airresist" -> airResist += (int) amount;
             case "radiantresist" -> radiantResist += (int) amount;
             case "necroticresist" -> necroticResist += (int) amount;
-            case "harvest" -> harvest += (int) amount;
             case "yield" -> yield += (int) amount;
+            case "harvest" -> harvest += (int) amount;
             case "acre" -> acre += (int) amount;
         }
     }
@@ -205,8 +205,8 @@ public class Stats {
             case "airresist" -> airResist -= (int) amount;
             case "radiantresist" -> radiantResist -= (int) amount;
             case "necroticresist" -> necroticResist -= (int) amount;
-            case "harvest" -> harvest -= (int) amount;
             case "yield" -> yield -= (int) amount;
+            case "harvest" -> harvest -= (int) amount;
             case "acre" -> acre -= (int) amount;
         }
     }
@@ -311,8 +311,8 @@ public class Stats {
             case "airresist" -> value = airResist;
             case "radiantresist" -> value = radiantResist;
             case "necroticresist" -> value = necroticResist;
-            case "harvest" -> value = harvest;
             case "yield" -> value = yield;
+            case "harvest" -> value = harvest;
             case "acre" -> value = acre;
         }
 
@@ -583,20 +583,20 @@ public class Stats {
         this.elementalDamage = elementalDamage;
     }
 
-    public int getHarvest() {
-        return harvest;
-    }
-
-    public void setHarvest(int harvest) {
-        this.harvest = harvest;
-    }
-
     public int getYield() {
         return yield;
     }
 
     public void setYield(int yield) {
         this.yield = yield;
+    }
+
+    public int getHarvest() {
+        return harvest;
+    }
+
+    public void setHarvest(int harvest) {
+        this.harvest = harvest;
     }
 
     public int getAcre() {

@@ -75,8 +75,8 @@ public class ProfileManager {
             int radiantResist = config.getInt(id + ".stats.radiantResist");
             int necroticResist = config.getInt(id + ".stats.necroticResist");
 
-            int harvest = config.getInt(id + ".stats.harvest");
             int yield = config.getInt(id + ".stats.yield");
+            int harvest = config.getInt(id + ".stats.harvest");
             int acre = config.getInt(id + ".stats.acre");
 
             Stats stats = new Stats(
@@ -85,7 +85,7 @@ public class ProfileManager {
                     elementalDamage, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist,
-                    harvest, yield, acre);
+                    yield, harvest, acre);
             Profile profile = new Profile(stats);
             profileMap.put(uuid, profile);
         }
@@ -134,8 +134,8 @@ public class ProfileManager {
             config.set(id + ".stats.radiantResist", stats.getRadiantResist());
             config.set(id + ".stats.necroticResist", stats.getNecroticResist());
 
-            config.set(id + ".stats.harvest", stats.getHarvest());
             config.set(id + ".stats.yield", stats.getYield());
+            config.set(id + ".stats.harvest", stats.getHarvest());
             config.set(id + ".stats.acre", stats.getAcre());
         }
     }
@@ -182,8 +182,8 @@ public class ProfileManager {
         config.set(id + ".stats.radiantResist", stats.getRadiantResist());
         config.set(id + ".stats.necroticResist", stats.getNecroticResist());
 
-        config.set(id + ".stats.harvest", stats.getHarvest());
         config.set(id + ".stats.yield", stats.getYield());
+        config.set(id + ".stats.harvest", stats.getHarvest());
         config.set(id + ".stats.acre", stats.getAcre());
     }
 }
