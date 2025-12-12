@@ -180,7 +180,7 @@ public class StatsMenu extends Menu {
 
         lore.add("§7────────────────");
         lore.add("§cMax Energy: §6" + (int) stats.getMaxEnergy() + " ⚡");
-        lore.add("§cCrit Chance: §9" + Math.round(stats.getCritChance() * 10.0) / 10.0 + " ☠");
+        lore.add("§cCrit Chance: §9" + (int) (Math.round(stats.getCritChance() * 10.0) / 10.0) + "% ☠");
         lore.add("§cCrit Damage: §9" + stats.getCritDamage() + " ☠");
 
         meta.setLore(lore);
@@ -192,7 +192,7 @@ public class StatsMenu extends Menu {
         ItemMeta meta = defenseStats.getItemMeta();
         ArrayList<String> lore = new ArrayList<>();
 
-        meta.setDisplayName("§a§lDefense Stats:");
+        meta.setDisplayName("§2§lDefense Stats:");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         String line = "";
@@ -225,9 +225,9 @@ public class StatsMenu extends Menu {
         }
 
         lore.add("§7────────────────");
-        lore.add("§2Max Health: §c" + (int) player.getMaxHealth() + " ❤");
-        lore.add("§2Max Overhealth: §1" + (int) stats.getMaxOverhealth() + " \uD83D\uDC99");
-        lore.add("§2Guard: §f" + stats.getGuard() + " ⛨");
+        lore.add("§aMax Health: §c" + (int) player.getMaxHealth() + " ❤");
+        lore.add("§aMax Overhealth: §1" + (int) stats.getMaxOverhealth() + " \uD83D\uDC99");
+        lore.add("§aGuard: §f" + stats.getGuard() + " ⛨");
 
         meta.setLore(lore);
         defenseStats.setItemMeta(meta);
@@ -238,12 +238,13 @@ public class StatsMenu extends Menu {
         ItemMeta gatheringMeta = gatheringStats.getItemMeta();
         ArrayList<String> gatheringLore = new ArrayList<>();
 
-        gatheringMeta.setDisplayName("§b§lGathering Stats:");
+        gatheringMeta.setDisplayName("§3§lGathering Stats:");
         gatheringMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        gatheringLore.add("§aYield: §a" + stats.getYield() + " \uD83E\uDD55");
-        gatheringLore.add("§aHarvest: §a" + stats.getHarvest() + " (add emoji eventually)");
-        gatheringLore.add("§aAcre: §a" + stats.getAcre() + " ⚂");
+        gatheringLore.add("§7────────────────");
+        gatheringLore.add("§bYield: §a" + stats.getYield() + " \uD83E\uDD55");
+        gatheringLore.add("§bHarvest: §a" + stats.getHarvest() + " \uD83E\uDEB4");
+        gatheringLore.add("§bAcre: §a" + stats.getAcre() + " ⚂");
 
         gatheringMeta.setLore(gatheringLore);
         gatheringStats.setItemMeta(gatheringMeta);
