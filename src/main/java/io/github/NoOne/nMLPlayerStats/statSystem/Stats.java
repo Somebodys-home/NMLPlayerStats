@@ -55,6 +55,9 @@ public class Stats {
     private int harvest;
     private int acre;
 
+    // misc stats
+    private int speed;
+
     public Stats(int attributePoints, int vitality, int strength, int deft, int arcane,
                  double maxHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int elementalDamage, int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage,
@@ -62,7 +65,8 @@ public class Stats {
                  double critChance, int critDamage,
                  int evasion, int defense, int guard, int physicalResist, int fireResist, int coldResist, int earthResist, int lightningResist, int airResist,
                  int radiantResist, int necroticResist,
-                 int yield, int harvest, int acre) {
+                 int yield, int harvest, int acre,
+                 int speed) {
 
         this.attributePoints = attributePoints;
         this.vitality = vitality;
@@ -104,6 +108,8 @@ public class Stats {
         this.yield = yield;
         this.harvest = harvest;
         this.acre = acre;
+
+        this.speed = speed;
     }
 
     public static Stats generateNewbieStats() {
@@ -112,7 +118,8 @@ public class Stats {
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 10, 150,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 10);
+                0, 0, 10,
+                100);
     }
 
     public void add2Stat(String stat, double amount) {
@@ -158,6 +165,7 @@ public class Stats {
             case "yield" -> yield += (int) amount;
             case "harvest" -> harvest += (int) amount;
             case "acre" -> acre += (int) amount;
+            case "speed" -> speed += (int) amount;
         }
     }
 
@@ -208,6 +216,7 @@ public class Stats {
             case "yield" -> yield -= (int) amount;
             case "harvest" -> harvest -= (int) amount;
             case "acre" -> acre -= (int) amount;
+            case "speed" -> speed -= (int) amount;
         }
     }
 
@@ -605,5 +614,13 @@ public class Stats {
 
     public void setAcre(int acre) {
         this.acre = acre;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

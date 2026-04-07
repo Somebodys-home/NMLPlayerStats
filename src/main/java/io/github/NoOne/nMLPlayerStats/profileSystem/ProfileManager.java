@@ -79,13 +79,16 @@ public class ProfileManager {
             int harvest = config.getInt(id + ".stats.harvest");
             int acre = config.getInt(id + ".stats.acre");
 
+            int speed = config.getInt(id + ".stats.speed");
+
             Stats stats = new Stats(
                     attributePoints, vitality, strength, deft, arcane,
                     maxHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
                     elementalDamage, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist,
-                    yield, harvest, acre);
+                    yield, harvest, acre,
+                    speed);
             Profile profile = new Profile(stats);
             profileMap.put(uuid, profile);
         }
@@ -137,6 +140,8 @@ public class ProfileManager {
             config.set(id + ".stats.yield", stats.getYield());
             config.set(id + ".stats.harvest", stats.getHarvest());
             config.set(id + ".stats.acre", stats.getAcre());
+
+            config.set(id + ".stats.speed", stats.getSpeed());
         }
     }
 
@@ -185,5 +190,7 @@ public class ProfileManager {
         config.set(id + ".stats.yield", stats.getYield());
         config.set(id + ".stats.harvest", stats.getHarvest());
         config.set(id + ".stats.acre", stats.getAcre());
+
+        config.set(id + ".stats.speed", stats.getSpeed());
     }
 }

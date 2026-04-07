@@ -28,7 +28,12 @@ public class StatsListener implements Listener {
             profileManager.getPlayerProfile(player.getUniqueId()).getStats().add2Stat(event.getStat(), change);
         }
 
-        if (event.getStat().equals("maxhealth")) player.setMaxHealth(player.getMaxHealth() + event.getChange());
+        Stats stats = profileManager.getPlayerProfile(player.getUniqueId()).getStats();
+
+        switch (event.getStat()) {
+            case "maxhealth" -> player.setMaxHealth(player.getMaxHealth() + change);
+            case "speed" -> player.setWalkSpeed((float) (.2 * (stats.getSpeed() / 100.0)));
+        }
     }
 
     @EventHandler
@@ -42,10 +47,12 @@ public class StatsListener implements Listener {
     }
 
     @EventHandler
-    public void updateBonusHealthOnPlayerJoin(PlayerJoinEvent event) {
+    public void setStatEffectsOnJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        double bonusHealth = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getmaxHealth();
+        Stats stats = profileManager.getPlayerProfile(player.getUniqueId()).getStats();
+        double maxHealth = stats.getmaxHealth();
 
-        player.setMaxHealth(20 + bonusHealth);
+        player.setMaxHealth(20 + maxHealth);
+        player.setWalkSpeed((float) (.2 * (stats.getSpeed() / 100.0)));
     }
 }

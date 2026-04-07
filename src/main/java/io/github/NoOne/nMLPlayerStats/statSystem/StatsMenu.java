@@ -128,13 +128,8 @@ public class StatsMenu extends Menu {
             Map.Entry<String, Integer> entry = damageMap.get(i);
             String key = entry.getKey();
             int value = entry.getValue();
-            boolean isElemental = key.equals("fire") ||
-                                    key.equals("cold") ||
-                                    key.equals("earth") ||
-                                    key.equals("lightning") ||
-                                    key.equals("air") ||
-                                    key.equals("radiant") ||
-                                    key.equals("necrotic");
+            boolean isElemental = key.equals("fire") || key.equals("cold") || key.equals("earth") || key.equals("lightning") || key.equals("air") ||
+                    key.equals("radiant") || key.equals("necrotic");
 
             if (isElemental) hasElementalDamage = true;
             if (isElemental && !elementalBonusApplied && elementalDamage > 0) {
@@ -181,7 +176,8 @@ public class StatsMenu extends Menu {
         lore.add("§7────────────────");
         lore.add("§cMax Energy: §6" + (int) stats.getMaxEnergy() + " ⚡");
         lore.add("§cCrit Chance: §9" + (int) (Math.round(stats.getCritChance() * 10.0) / 10.0) + "% ☠");
-        lore.add("§cCrit Damage: §9" + stats.getCritDamage() + " ☠");
+        lore.add("§cCrit Damage: §9" + stats.getCritDamage() + "% ☠");
+        lore.add("§cSpeed: §f" + stats.getSpeed() + "% ✦");
 
         meta.setLore(lore);
         offenseStats.setItemMeta(meta);
