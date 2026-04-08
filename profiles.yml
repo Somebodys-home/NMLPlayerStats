@@ -6,11 +6,11 @@ cf942050-e942-4990-a113-e3df70b289be:
     deft: 0
     arcane: 0
     maxHealth: 0.0
-    currentEnergy: 30.66666666666626
+    currentEnergy: 100.0
     maxEnergy: 100.0
     currentOverhealth: 0.0
     maxOverhealth: 0.0
-    physicalDamage: -8
+    physicalDamage: -20
     elementalDamage: 0
     fireDamage: 0
     coldDamage: 2
