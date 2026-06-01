@@ -49,7 +49,7 @@ public class StatsListener implements Listener {
     public void setStatEffectsOnJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         Stats stats = profileManager.getPlayerProfile(player.getUniqueId()).getStats();
-        double maxHealth = stats.getmaxHealth();
+        double maxHealth = stats.getMaxHealth();
 
         player.setMaxHealth(20 + maxHealth);
         player.setWalkSpeed((float) (.2 * (stats.getSpeed() / 100.0)));

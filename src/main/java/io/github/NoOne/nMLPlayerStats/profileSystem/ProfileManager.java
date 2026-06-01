@@ -107,7 +107,7 @@ public class ProfileManager {
             config.set(id + ".stats.intelligence", stats.getIntelligence());
             config.set(id + ".stats.charisma", stats.getCharisma());
 
-            config.set(id + ".stats.maxHealth", stats.getmaxHealth());
+            config.set(id + ".stats.maxHealth", stats.getMaxHealth());
             config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
             config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
             config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
@@ -157,7 +157,7 @@ public class ProfileManager {
         config.set(id + ".stats.intelligence", stats.getIntelligence());
         config.set(id + ".stats.charisma", stats.getCharisma());
 
-        config.set(id + ".stats.maxHealth", stats.getmaxHealth());
+        config.set(id + ".stats.maxHealth", stats.getMaxHealth());
         config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
         config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
