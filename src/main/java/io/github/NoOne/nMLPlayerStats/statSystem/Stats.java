@@ -11,10 +11,11 @@ import java.util.Map;
 public class Stats {
     // attribute stats
     private int attributePoints;
-    private int vitality;
+    private int constitution;
     private int strength;
-    private int deft;
-    private int arcane;
+    private int dexterity;
+    private int intelligence;
+    private int charisma;
 
     // hotbar stats
     private double maxHealth;
@@ -58,7 +59,7 @@ public class Stats {
     // misc stats
     private int speed;
 
-    public Stats(int attributePoints, int vitality, int strength, int deft, int arcane,
+    public Stats(int attributePoints, int constitution, int strength, int dexterity, int intelligence, int charisma,
                  double maxHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int elementalDamage, int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage,
                  int necroticDamage, int pureDamage,
@@ -69,10 +70,11 @@ public class Stats {
                  int speed) {
 
         this.attributePoints = attributePoints;
-        this.vitality = vitality;
+        this.constitution = constitution;
         this.strength = strength;
-        this.deft = deft;
-        this.arcane = arcane;
+        this.dexterity = dexterity;
+        this.intelligence = intelligence;
+        this.charisma = charisma;
 
         this.maxHealth = maxHealth;
         this.currentOverhealth = currentOverhealth;
@@ -113,7 +115,7 @@ public class Stats {
     }
 
     public static Stats generateNewbieStats() {
-        return new Stats(0, 0, 0, 0, 0,
+        return new Stats(0, 1, 1, 1, 1, 1,
                 0, 0, 0, 100, 100,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 10, 150,
@@ -125,10 +127,11 @@ public class Stats {
     public void add2Stat(String stat, double amount) {
         switch (stat.toLowerCase()) {
             case "attributepoints" -> attributePoints += (int) amount;
-            case "vitality" -> vitality += (int) amount;
+            case "constitution" -> constitution += (int) amount;
             case "strength" -> strength += (int) amount;
-            case "deft" -> deft += (int) amount;
-            case "arcane" -> arcane += (int) amount;
+            case "dexterity" -> dexterity += (int) amount;
+            case "intelligence" -> intelligence += (int) amount;
+            case "charisma" -> charisma += (int) amount;
             case "currentoverhealth" -> {
                 currentOverhealth += amount;
                 if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
@@ -172,10 +175,11 @@ public class Stats {
     public void removeFromStat(String stat, double amount) {
         switch (stat.toLowerCase()) {
             case "attributepoints" -> attributePoints -= (int) amount;
-            case "vitality" -> vitality -= (int) amount;
+            case "constitution" -> constitution -= (int) amount;
             case "strength" -> strength -= (int) amount;
-            case "deft" -> deft -= (int) amount;
-            case "arcane" -> arcane -= (int) amount;
+            case "dexterity" -> dexterity -= (int) amount;
+            case "intelligence" -> intelligence -= (int) amount;
+            case "charisma" -> charisma -= (int) amount;
             case "currentoverhealth" -> currentOverhealth -= amount;
             case "maxoverhealth" -> {
                 maxOverhealth -= amount;
@@ -288,10 +292,10 @@ public class Stats {
 
         switch (stat.toLowerCase()) {
             case "attributepoints" -> value = attributePoints;
-            case "vitality" -> value = vitality;
+            case "constitution" -> value = constitution;
             case "strength" -> value = strength;
-            case "deft" -> value = deft;
-            case "arcane" -> value = arcane;
+            case "dexterity" -> value = dexterity;
+            case "intelligence" -> value = intelligence;
             case "maxhealth" -> value = maxHealth;
             case "currentoverhealth" -> value = currentOverhealth;
             case "maxoverhealth" -> value = maxOverhealth;
@@ -336,12 +340,12 @@ public class Stats {
         this.attributePoints = attributePoints;
     }
 
-    public int getVitality() {
-        return vitality;
+    public int getConstitution() {
+        return constitution;
     }
 
-    public void setVitality(int vitality) {
-        this.vitality = vitality;
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
     }
 
     public int getStrength() {
@@ -352,20 +356,20 @@ public class Stats {
         this.strength = strength;
     }
 
-    public int getDeft() {
-        return deft;
+    public int getDexterity() {
+        return dexterity;
     }
 
-    public void setDeft(int deft) {
-        this.deft = deft;
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
     }
 
-    public int getArcane() {
-        return arcane;
+    public int getIntelligence() {
+        return intelligence;
     }
 
-    public void setArcane(int arcane) {
-        this.arcane = arcane;
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
     }
 
     public double getCurrentEnergy() {
@@ -622,5 +626,13 @@ public class Stats {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
+
+    public void setCharisma(int charisma) {
+        this.charisma = charisma;
     }
 }

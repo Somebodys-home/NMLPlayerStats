@@ -39,10 +39,11 @@ public class ProfileManager {
             UUID uuid = UUID.fromString(id);
 
             int attributePoints = config.getInt(id + ".stats.attributePoints");
-            int vitality = config.getInt(id + ".stats.vitality");
+            int constitution = config.getInt(id + ".stats.constitution");
             int strength = config.getInt(id + ".stats.strength");
-            int deft = config.getInt(id + ".stats.deft");
-            int arcane = config.getInt(id + ".stats.arcane");
+            int dexterity = config.getInt(id + ".stats.dexterity");
+            int intelligence = config.getInt(id + ".stats.intelligence");
+            int charisma = config.getInt(id + ".stats.charisma");
 
             double maxHealth = config.getDouble(id + ".stats.maxHealth");
             double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
@@ -82,7 +83,7 @@ public class ProfileManager {
             int speed = config.getInt(id + ".stats.speed");
 
             Stats stats = new Stats(
-                    attributePoints, vitality, strength, deft, arcane,
+                    attributePoints, constitution, strength, dexterity, intelligence, charisma,
                     maxHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
                     elementalDamage, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
@@ -97,14 +98,14 @@ public class ProfileManager {
     public void saveProfilesToConfig() {
         for (UUID uuid : profileMap.keySet()) {
             String id = uuid.toString();
-            Profile profile = profileMap.get(uuid);
-            Stats stats = profile.getStats();
+            Stats stats = profileMap.get(uuid).getStats();
 
             config.set(id + ".stats.attributePoints", stats.getAttributePoints());
-            config.set(id + ".stats.vitality", stats.getVitality());
+            config.set(id + ".stats.constitution", stats.getConstitution());
             config.set(id + ".stats.strength", stats.getStrength());
-            config.set(id + ".stats.deft", stats.getDeft());
-            config.set(id + ".stats.arcane", stats.getArcane());
+            config.set(id + ".stats.dexterity", stats.getDexterity());
+            config.set(id + ".stats.intelligence", stats.getIntelligence());
+            config.set(id + ".stats.charisma", stats.getCharisma());
 
             config.set(id + ".stats.maxHealth", stats.getmaxHealth());
             config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
@@ -147,14 +148,14 @@ public class ProfileManager {
 
     public void saveAProfileToConfig(Player player) {
         String id = player.getUniqueId().toString();
-        Profile profile = profileMap.get(player.getUniqueId());
-        Stats stats = profile.getStats();
+        Stats stats = profileMap.get(player.getUniqueId()).getStats();
 
         config.set(id + ".stats.attributePoints", stats.getAttributePoints());
-        config.set(id + ".stats.vitality", stats.getVitality());
+        config.set(id + ".stats.constitution", stats.getConstitution());
         config.set(id + ".stats.strength", stats.getStrength());
-        config.set(id + ".stats.deft", stats.getDeft());
-        config.set(id + ".stats.arcane", stats.getArcane());
+        config.set(id + ".stats.dexterity", stats.getDexterity());
+        config.set(id + ".stats.intelligence", stats.getIntelligence());
+        config.set(id + ".stats.charisma", stats.getCharisma());
 
         config.set(id + ".stats.maxHealth", stats.getmaxHealth());
         config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
