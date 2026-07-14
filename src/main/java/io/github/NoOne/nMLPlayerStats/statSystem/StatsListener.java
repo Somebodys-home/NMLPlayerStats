@@ -21,15 +21,18 @@ public class StatsListener implements Listener {
         double change = event.getChange();
         Stats stats = profileManager.getPlayerProfile(player.getUniqueId()).getStats();
 
-        if (change == 0) {
-            event.setCancelled(true);
-        } else if (change < 0) {
+        if (change == 0 || event.isCancelled()) {
+            return;
+        }
+
+        if (change < 0) {
             stats.removeFromStat(event.getStat(), Math.abs(change));
         } else {
             stats.add2Stat(event.getStat(), change);
         }
 
         switch (event.getStat()) {
+            case "health" -> player.setHealth(player.getHealth() + change);
             case "maxhealth" -> player.setMaxHealth(player.getMaxHealth() + change);
             case "speed" -> player.setWalkSpeed((float) (.2 * (stats.getSpeed() / 100.0)));
         }

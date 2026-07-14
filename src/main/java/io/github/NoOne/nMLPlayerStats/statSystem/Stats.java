@@ -121,8 +121,9 @@ public class Stats {
                 100);
     }
 
+    // synced with Itemstat.toString()
     public void add2Stat(String stat, double amount) {
-        switch (stat.toLowerCase()) {
+        switch (stat.toLowerCase().replaceAll(".", "").replaceAll(" ", "")) {
             case "attributepoints" -> attributePoints += (int) amount;
             case "constitution" -> constitution += (int) amount;
             case "strength" -> strength += (int) amount;
@@ -141,28 +142,28 @@ public class Stats {
             }
             case "maxenergy" -> maxEnergy += amount;
             case "elementaldamage" -> elementalDamage += (int) amount;
-            case "physicaldamage" -> physicalDamage += (int) amount;
+            case "physdamage" -> physicalDamage += (int) amount;
             case "firedamage" -> fireDamage += (int) amount;
             case "colddamage" -> coldDamage += (int) amount;
             case "earthdamage" -> earthDamage += (int) amount;
-            case "lightningdamage" -> lightningDamage += (int) amount;
+            case "lightdamage" -> lightningDamage += (int) amount;
             case "airdamage" -> airDamage += (int) amount;
-            case "radiantdamage" -> radiantDamage += (int) amount;
-            case "necroticdamage" -> necroticDamage += (int) amount;
+            case "raddamage" -> radiantDamage += (int) amount;
+            case "necrodamage" -> necroticDamage += (int) amount;
             case "puredamage" -> pureDamage += (int) amount;
             case "critchance" -> critChance += amount;
             case "critdamage" -> critDamage += (int) amount;
             case "evasion" -> evasion += (int) amount;
             case "defense" -> defense += (int) amount;
             case "guard" -> guard += (int) amount;
-            case "physicalresist" -> physicalResist += (int) amount;
+            case "physresist" -> physicalResist += (int) amount;
             case "fireresist" -> fireResist += (int) amount;
             case "coldresist" -> coldResist += (int) amount;
             case "earthresist" -> earthResist += (int) amount;
-            case "lightningresist" -> lightningResist += (int) amount;
+            case "lightresist" -> lightningResist += (int) amount;
             case "airresist" -> airResist += (int) amount;
-            case "radiantresist" -> radiantResist += (int) amount;
-            case "necroticresist" -> necroticResist += (int) amount;
+            case "radresist" -> radiantResist += (int) amount;
+            case "necroresist" -> necroticResist += (int) amount;
             case "yield" -> yield += (int) amount;
             case "harvest" -> harvest += (int) amount;
             case "acre" -> acre += (int) amount;
@@ -171,7 +172,7 @@ public class Stats {
     }
 
     public void removeFromStat(String stat, double amount) {
-        switch (stat.toLowerCase()) {
+        switch (stat.toLowerCase().replaceAll(".", "").replaceAll(" ", "")) {
             case "attributepoints" -> attributePoints -= (int) amount;
             case "constitution" -> constitution -= (int) amount;
             case "strength" -> strength -= (int) amount;
@@ -194,28 +195,28 @@ public class Stats {
                 if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
             }
             case "elementaldamage" -> elementalDamage -= (int) amount;
-            case "physicaldamage" -> physicalDamage -= (int) amount;
+            case "physdamage" -> physicalDamage -= (int) amount;
             case "firedamage" -> fireDamage -= (int) amount;
             case "colddamage" -> coldDamage -= (int) amount;
             case "earthdamage" -> earthDamage -= (int) amount;
-            case "lightningdamage" -> lightningDamage -= (int) amount;
+            case "lightdamage" -> lightningDamage -= (int) amount;
             case "airdamage" -> airDamage -= (int) amount;
-            case "radiantdamage" -> radiantDamage -= (int) amount;
-            case "necroticdamage" -> necroticDamage -= (int) amount;
+            case "raddamage" -> radiantDamage -= (int) amount;
+            case "necrodamage" -> necroticDamage -= (int) amount;
             case "puredamage" -> pureDamage -= (int) amount;
             case "critchance" -> critChance -= amount;
             case "critdamage" -> critDamage -= (int) amount;
             case "evasion" -> evasion -= (int) amount;
             case "defense" -> defense -= (int) amount;
             case "guard" -> guard -= (int) amount;
-            case "physicalresist" -> physicalResist -= (int) amount;
+            case "physresist" -> physicalResist -= (int) amount;
             case "fireresist" -> fireResist -= (int) amount;
             case "coldresist" -> coldResist -= (int) amount;
             case "earthresist" -> earthResist -= (int) amount;
-            case "lightningresist" -> lightningResist -= (int) amount;
+            case "lightresist" -> lightningResist -= (int) amount;
             case "airresist" -> airResist -= (int) amount;
-            case "radiantresist" -> radiantResist -= (int) amount;
-            case "necroticresist" -> necroticResist -= (int) amount;
+            case "radresist" -> radiantResist -= (int) amount;
+            case "necroresist" -> necroticResist -= (int) amount;
             case "yield" -> yield -= (int) amount;
             case "harvest" -> harvest -= (int) amount;
             case "acre" -> acre -= (int) amount;
