@@ -11,19 +11,28 @@ public class StatChangeEvent extends Event implements Cancellable {
     private final Player player;
     private final String stat;
     private final double change;
+    private boolean cancelled;
 
     public StatChangeEvent(@NotNull Player player, String stat, double change) {
         this.player = player;
         this.stat = stat;
         this.change = change;
+        cancelled = false;
     }
 
     @Override
-    public HandlerList getHandlers() { return handlers; }
+    public HandlerList getHandlers() {
+        return handlers;
+    }
 
-    public static HandlerList getHandlerList() { return handlers; } // deleting this breaks things, apparently
+    // deleting this breaks things, apparently
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
 
-    public Player getPlayer() { return player; }
+    public Player getPlayer() {
+        return player;
+    }
 
     public String getStat() {
         return stat;
@@ -35,11 +44,11 @@ public class StatChangeEvent extends Event implements Cancellable {
 
     @Override
     public boolean isCancelled() {
-        return false;
+        return cancelled;
     }
 
     @Override
-    public void setCancelled(boolean b) {
-
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }

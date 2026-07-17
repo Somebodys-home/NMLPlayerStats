@@ -19,7 +19,7 @@ public class StatsListener implements Listener {
     public void statChange(StatChangeEvent event) {
         Player player = event.getPlayer();
         double change = event.getChange();
-        String stat = event.getStat();
+        String stat = event.getStat().toLowerCase().replace(".", "").replace(" ", "");
         Stats stats = profileManager.getPlayerProfile(player.getUniqueId()).getStats();
 
         if (change == 0 || event.isCancelled()) {
@@ -33,7 +33,7 @@ public class StatsListener implements Listener {
         }
 
         switch (stat) {
-            case "health" -> player.setHealth(player.getHealth() + change);
+            case "health" -> player.setHealth(Math.min(player.getHealth() + change, player.getMaxHealth()));
             case "maxhealth" -> player.setMaxHealth(player.getMaxHealth() + change);
             case "speed" -> player.setWalkSpeed((float) (.2 * (stats.getSpeed() / 100.0)));
         }
