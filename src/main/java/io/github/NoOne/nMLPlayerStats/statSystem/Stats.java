@@ -172,7 +172,7 @@ public class Stats {
     }
 
     public void removeFromStat(String stat, double amount) {
-        switch (stat) {
+        switch (stat.toLowerCase().replace(".", "").replace(" ", "")) {
             case "attributepoints" -> attributePoints -= (int) amount;
             case "constitution" -> constitution -= (int) amount;
             case "strength" -> strength -= (int) amount;
