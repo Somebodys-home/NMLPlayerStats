@@ -123,7 +123,7 @@ public class Stats {
 
     // synced with Itemstat.toString()
     public void add2Stat(String stat, double amount) {
-        switch (stat) {
+        switch (stat.toLowerCase().replace(".", "").replace(" ", "")) {
             case "attributepoints" -> attributePoints += (int) amount;
             case "constitution" -> constitution += (int) amount;
             case "strength" -> strength += (int) amount;
