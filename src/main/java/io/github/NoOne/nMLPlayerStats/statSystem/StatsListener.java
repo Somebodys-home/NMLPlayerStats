@@ -24,9 +24,7 @@ public class StatsListener implements Listener {
 
         if (change == 0 || event.isCancelled()) {
             return;
-        }
-
-        if (change < 0) {
+        } else if (change < 0) {
             stats.removeFromStat(stat, Math.abs(change));
         } else {
             stats.add2Stat(stat, change);

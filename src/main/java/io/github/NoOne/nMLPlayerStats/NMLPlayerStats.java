@@ -4,9 +4,9 @@ import io.github.NoOne.menuSystem.MenuListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileConfig;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
-import io.github.NoOne.nMLPlayerStats.statSystem.commands.ResetStatsCommand;
+import io.github.NoOne.nMLPlayerStats.commands.ResetStatsCommand;
 import io.github.NoOne.nMLPlayerStats.statSystem.StatsListener;
-import io.github.NoOne.nMLPlayerStats.statSystem.commands.StatsCommand;
+import io.github.NoOne.nMLPlayerStats.commands.StatsCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NMLPlayerStats extends JavaPlugin {

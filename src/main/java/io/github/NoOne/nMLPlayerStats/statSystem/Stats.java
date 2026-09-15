@@ -16,7 +16,7 @@ public class Stats {
 
     // hotbar stats
     private double maxHealth;
-    private double currentOverhealth;
+    private double overhealth;
     private double maxOverhealth;
     private double currentEnergy;
     private double maxEnergy;
@@ -57,7 +57,7 @@ public class Stats {
     private int speed;
 
     public Stats(int attributePoints, int constitution, int strength, int dexterity, int intelligence, int charisma,
-                 double maxHealth, double currentOverhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
+                 double maxHealth, double overhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int elementalDamage, int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage,
                  int necroticDamage, int pureDamage,
                  double critChance, int critDamage,
@@ -74,7 +74,7 @@ public class Stats {
         this.charisma = charisma;
 
         this.maxHealth = maxHealth;
-        this.currentOverhealth = currentOverhealth;
+        this.overhealth = overhealth;
         this.maxOverhealth = maxOverhealth;
         this.currentEnergy = currentEnergy;
         this.maxEnergy = maxEnergy;
@@ -131,9 +131,9 @@ public class Stats {
             case "intelligence" -> intelligence += (int) amount;
             case "charisma" -> charisma += (int) amount;
             case "maxhealth" -> maxHealth += (int) amount;
-            case "currentoverhealth" -> {
-                currentOverhealth += amount;
-                if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
+            case "overhealth" -> {
+                overhealth += amount;
+                if (overhealth > maxOverhealth) overhealth = maxOverhealth;
             }
             case "maxoverhealth" -> maxOverhealth += amount;
             case "currentenergy" -> {
@@ -180,11 +180,11 @@ public class Stats {
             case "intelligence" -> intelligence -= (int) amount;
             case "charisma" -> charisma -= (int) amount;
             case "maxhealth" -> maxHealth -= (int) amount;
-            case "currentoverhealth" -> currentOverhealth -= amount;
+            case "overhealth" -> overhealth -= amount;
             case "maxoverhealth" -> {
                 maxOverhealth -= amount;
                 if (maxOverhealth < 0) maxOverhealth = 0;
-                if (currentOverhealth > maxOverhealth) currentOverhealth = maxOverhealth;
+                if (overhealth > maxOverhealth) overhealth = maxOverhealth;
             }
             case "currentenergy" -> {
                 currentEnergy -= amount;
@@ -293,7 +293,7 @@ public class Stats {
             case "dexterity" -> value = dexterity;
             case "intelligence" -> value = intelligence;
             case "maxhealth" -> value = maxHealth;
-            case "currentoverhealth" -> value = currentOverhealth;
+            case "overhealth" -> value = overhealth;
             case "maxoverhealth" -> value = maxOverhealth;
             case "currentenergy" -> value = currentEnergy;
             case "maxenergy" -> value = maxEnergy;
@@ -384,12 +384,12 @@ public class Stats {
         this.maxEnergy = maxEnergy;
     }
 
-    public double getCurrentOverhealth() {
-        return currentOverhealth;
+    public double getOverhealth() {
+        return overhealth;
     }
 
-    public void setCurrentOverhealth(double currentOverhealth) {
-        this.currentOverhealth = currentOverhealth;
+    public void setOverhealth(double overhealth) {
+        this.overhealth = getOverhealth();
     }
 
     public double getMaxOverhealth() {

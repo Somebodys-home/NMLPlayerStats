@@ -1,4 +1,4 @@
-package io.github.NoOne.nMLPlayerStats.statSystem.commands;
+package io.github.NoOne.nMLPlayerStats.commands;
 
 import io.github.NoOne.menuSystem.MenuSystem;
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;

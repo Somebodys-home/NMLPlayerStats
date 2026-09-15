@@ -48,7 +48,7 @@ public class ProfileManager {
             double maxHealth = config.getDouble(id + ".stats.maxHealth");
             double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
             double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
-            double currentOverhealth = config.getDouble(id + ".stats.currentOverhealth");
+            double overhealth = config.getDouble(id + ".stats.overhealth");
             double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
 
             int physicalDamage = config.getInt(id + ".stats.physicalDamage");
@@ -84,7 +84,7 @@ public class ProfileManager {
 
             Stats stats = new Stats(
                     attributePoints, constitution, strength, dexterity, intelligence, charisma,
-                    maxHealth, currentOverhealth, maxOverhealth, currentEnergy, maxEnergy,
+                    maxHealth, overhealth, maxOverhealth, currentEnergy, maxEnergy,
                     elementalDamage, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist,
@@ -110,7 +110,7 @@ public class ProfileManager {
             config.set(id + ".stats.maxHealth", stats.getMaxHealth());
             config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
             config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
-            config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
+            config.set(id + ".stats.overhealth", stats.getOverhealth());
             config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
 
             config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
@@ -160,7 +160,7 @@ public class ProfileManager {
         config.set(id + ".stats.maxHealth", stats.getMaxHealth());
         config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
         config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
-        config.set(id + ".stats.currentOverhealth", stats.getCurrentOverhealth());
+        config.set(id + ".stats.overhealth", stats.getOverhealth());
         config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
 
         config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
