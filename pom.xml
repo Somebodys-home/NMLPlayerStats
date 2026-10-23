@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.NoOne</groupId>
-    <artifactId>nmlplayerstats</artifactId>
+    <artifactId>NMLPlayerStats</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>nmlplayerstats</name>
+    <name>NMLPlayerStats</name>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -31,7 +31,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.1</version>
                 <configuration>
                     <outputDirectory>C:\No Man's Land\plugins</outputDirectory>
                 </configuration>
@@ -78,7 +78,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21.8-R0.1-SNAPSHOT</version>
+            <version>[26.3.build,)</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
