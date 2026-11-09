@@ -24,7 +24,7 @@ public class StatsMenu extends Menu {
         super(playerMenuUtility);
 
         player = playerMenuUtility.getOwner();
-        stats = nmlPlayerStats.getProfileManager().getPlayerProfile(player.getUniqueId()).getStats();
+        stats = nmlPlayerStats.getProfileManager().getStats(player.getUniqueId());
     }
 
     @Override
@@ -116,7 +116,7 @@ public class StatsMenu extends Menu {
         ArrayList<String> lore = new ArrayList<>();
         String damageLine = "";
         List<Map.Entry<String, Integer>> damageMap = new ArrayList<>(getDamageStats().entrySet());
-        int elementalDamage = stats.getElementalDamage();
+        int elementalDamage = stats.getIntStatValue(PlayerStat.ELEMENTAL_DAMAGE);
         boolean elementalBonusApplied = false;
         boolean hasElementalDamage = false;
 
@@ -174,10 +174,10 @@ public class StatsMenu extends Menu {
         }
 
         lore.add("§7────────────────");
-        lore.add("§cMax Energy: §6" + (int) stats.getMaxEnergy() + " ⚡");
-        lore.add("§cCrit Chance: §9" + (int) (Math.round(stats.getCritChance() * 10.0) / 10.0) + "% ☠");
-        lore.add("§cCrit Damage: §9" + stats.getCritDamage() + "% ☠");
-        lore.add("§cSpeed: §f" + stats.getSpeed() + "% ✦");
+        lore.add("§cMax Energy: §6" + (int) stats.getStatValue(PlayerStat.MAX_ENERGY) + " ⚡");
+        lore.add("§cCrit Chance: §9" + (int) (Math.round(stats.getIntStatValue(PlayerStat.CRIT_CHANCE) * 10.0) / 10.0) + "% ☠");
+        lore.add("§cCrit Damage: §9" + stats.getIntStatValue(PlayerStat.CRIT_DAMAGE) + "% ☠");
+        lore.add("§cSpeed: §f" + stats.getIntStatValue(PlayerStat.SPEED) + "% ✦");
 
         meta.setLore(lore);
         offenseStats.setItemMeta(meta);
@@ -222,8 +222,8 @@ public class StatsMenu extends Menu {
 
         lore.add("§7────────────────");
         lore.add("§aMax Health: §c" + (int) player.getMaxHealth() + " ❤");
-        lore.add("§aMax Overhealth: §1" + (int) stats.getMaxOverhealth() + " \uD83D\uDC99");
-        lore.add("§aGuard: §f" + stats.getGuard() + " ⛨");
+        lore.add("§aMax Overhealth: §1" + (int) stats.getStatValue(PlayerStat.MAX_OVERHEALTH) + " \uD83D\uDC99");
+        lore.add("§aGuard: §f" + stats.getIntStatValue(PlayerStat.GUARD) + " ⛨");
 
         meta.setLore(lore);
         defenseStats.setItemMeta(meta);
@@ -238,43 +238,31 @@ public class StatsMenu extends Menu {
         gatheringMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         gatheringLore.add("§7────────────────");
-        gatheringLore.add("§bYield: §a" + stats.getYield() + " \uD83E\uDD55");
-        gatheringLore.add("§bHarvest: §a" + stats.getHarvest() + " \uD83E\uDEB4");
-        gatheringLore.add("§bAcre: §a" + stats.getAcre() + " ⚂");
+        gatheringLore.add("§bYield: §a" + stats.getIntStatValue(PlayerStat.YIELD) + " \uD83E\uDD55");
+        gatheringLore.add("§bHarvest: §a" + stats.getIntStatValue(PlayerStat.HARVEST) + " \uD83E\uDEB4");
+        gatheringLore.add("§bAcre: §a" + stats.getIntStatValue(PlayerStat.ACRE) + " ⚂");
 
         gatheringMeta.setLore(gatheringLore);
         gatheringStats.setItemMeta(gatheringMeta);
     }
 
     public HashMap<String, Integer> getDamageStats() {
-        HashMap<String, Integer> damageStats = new HashMap<>();
+        HashMap<String, Integer> damageStats = stats.getAllDamages();
 
-        if (stats.getPhysicalDamage() != 0) damageStats.put("physical", stats.getPhysicalDamage());
-        if (stats.getFireDamage() != 0) damageStats.put("fire", stats.getFireDamage());
-        if (stats.getColdDamage() != 0) damageStats.put("cold", stats.getColdDamage());
-        if (stats.getEarthDamage() != 0) damageStats.put("earth", stats.getEarthDamage());
-        if (stats.getLightningDamage() != 0) damageStats.put("lightning", stats.getLightningDamage());
-        if (stats.getAirDamage() != 0) damageStats.put("air", stats.getAirDamage());
-        if (stats.getRadiantDamage() != 0) damageStats.put("radiant", stats.getRadiantDamage());
-        if (stats.getNecroticDamage() != 0) damageStats.put("necrotic", stats.getNecroticDamage());
-        if (stats.getPureDamage() != 0) damageStats.put("pure", stats.getPureDamage());
+        for (Map.Entry<String, Integer> entry : damageStats.entrySet()) {
+            damageStats.put(entry.getKey().replace("damage", ""), entry.getValue());
+        }
 
         return damageStats;
     }
 
     public HashMap<String, Integer> getDefenseStats() {
-        HashMap<String, Integer> defenseStats = new HashMap<>();
-        
-        if (stats.getDefense() != 0) defenseStats.put("defense", stats.getDefense());
-        if (stats.getEvasion() != 0) defenseStats.put("evasion", stats.getEvasion());
-        if (stats.getPhysicalResist() != 0) defenseStats.put("physical", stats.getPhysicalResist());
-        if (stats.getFireResist() != 0) defenseStats.put("fire", stats.getFireResist());
-        if (stats.getColdResist() != 0) defenseStats.put("cold", stats.getColdResist());
-        if (stats.getEarthResist() != 0) defenseStats.put("earth", stats.getEarthResist());
-        if (stats.getLightningResist() != 0) defenseStats.put("lightning", stats.getLightningResist());
-        if (stats.getAirResist() != 0) defenseStats.put("air", stats.getAirResist());
-        if (stats.getRadiantResist() != 0) defenseStats.put("radiant", stats.getRadiantResist());
-        if (stats.getNecroticResist() != 0) defenseStats.put("necrotic", stats.getNecroticResist());
+        HashMap<String, Integer> defenseStats = stats.getAllResists();
+        int defense = stats.getIntStatValue(PlayerStat.DEFENSE);
+        int evasion = stats.getIntStatValue(PlayerStat.EVASION);
+
+        if (defense != 0) defenseStats.put("defense", defense);
+        if (evasion != 0) defenseStats.put("evasion", evasion);
 
         return defenseStats;
     }

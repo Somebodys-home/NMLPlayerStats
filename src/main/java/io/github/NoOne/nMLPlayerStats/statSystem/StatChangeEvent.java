@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class StatChangeEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private final Player player;
-    private final String stat;
-    private final double change;
+    private Player player;
+    private String stat;
+    private double change;
     private boolean cancelled;
 
     public StatChangeEvent(@NotNull Player player, String stat, double change) {

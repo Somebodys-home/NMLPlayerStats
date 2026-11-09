@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class StatsCommand implements CommandExecutor {
-    private final NMLPlayerStats nmlPlayerStats;
+    private NMLPlayerStats nmlPlayerStats;
 
     public StatsCommand(NMLPlayerStats nmlPlayerStats) {
         this.nmlPlayerStats = nmlPlayerStats;

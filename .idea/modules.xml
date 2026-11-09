@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/nmlplayerstats.iml" filepath="$PROJECT_DIR$/nmlplayerstats.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/NMLPlayerStats.iml" filepath="$PROJECT_DIR$/.idea/NMLPlayerStats.iml" />
     </modules>
   </component>
 </project>

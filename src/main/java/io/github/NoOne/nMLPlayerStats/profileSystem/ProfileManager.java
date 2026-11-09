@@ -1,6 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.profileSystem;
 
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
+import io.github.NoOne.nMLPlayerStats.statSystem.PlayerStat;
 import io.github.NoOne.nMLPlayerStats.statSystem.ResetStatsEvent;
 import io.github.NoOne.nMLPlayerStats.statSystem.Stats;
 import org.bukkit.Bukkit;
@@ -12,7 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class ProfileManager {
-    private static Map<UUID, Profile> profileMap = new HashMap<>(); // hashmap of all the profiles of all the players online atm
+    private static Map<UUID, Stats> statMap = new HashMap<>(); // map of all the stats of the players online atm
     private FileConfiguration config;
     private ProfileConfig profileConfig;
 
@@ -21,24 +22,22 @@ public class ProfileManager {
         config = profileConfig.getConfig();
     }
 
-    public Profile createNewbieProfile(Player player) {
-        Profile profile = new Profile(Stats.generateNewbieStats());
+    public void saveNewbieStats(Player player) {
+        Stats stats = Stats.generateNewbieStats();
 
-        profileMap.put(player.getUniqueId(), profile);
+        statMap.put(player.getUniqueId(), stats);
         Bukkit.getPluginManager().callEvent(new ResetStatsEvent(player));
-
-        return profile;
     }
 
-    public Profile getPlayerProfile(UUID uuid) {
-        return profileMap.get(uuid);
+    public Stats getStats(UUID uuid) {
+        return statMap.get(uuid);
     }
 
-    public void loadProfilesFromConfig() {
+    public void loadStatsFromConfig() {
         for (String id : config.getConfigurationSection("").getKeys(false)) {
             UUID uuid = UUID.fromString(id);
 
-            int attributePoints = config.getInt(id + ".stats.attributePoints");
+            int attributePoints = config.getInt(id + ".stats." + PlayerStat.ATTRIBUTE_POINTS);
             int constitution = config.getInt(id + ".stats.constitution");
             int strength = config.getInt(id + ".stats.strength");
             int dexterity = config.getInt(id + ".stats.dexterity");
@@ -89,109 +88,42 @@ public class ProfileManager {
                     critchance, critdamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist,
                     yield, harvest, acre,
-                    speed);
-            Profile profile = new Profile(stats);
-            profileMap.put(uuid, profile);
+                    speed
+            );
+
+            statMap.put(uuid, stats);
         }
     }
 
     public void saveProfilesToConfig() {
-        for (UUID uuid : profileMap.keySet()) {
+        for (UUID uuid : statMap.keySet()) {
             String id = uuid.toString();
-            Stats stats = profileMap.get(uuid).getStats();
+            Stats stats = statMap.get(uuid);
 
-            config.set(id + ".stats.attributePoints", stats.getAttributePoints());
-            config.set(id + ".stats.constitution", stats.getConstitution());
-            config.set(id + ".stats.strength", stats.getStrength());
-            config.set(id + ".stats.dexterity", stats.getDexterity());
-            config.set(id + ".stats.intelligence", stats.getIntelligence());
-            config.set(id + ".stats.charisma", stats.getCharisma());
+            for (Map.Entry<PlayerStat, Double> entry : stats.getPlayerStats().entrySet()) {
+                PlayerStat playerStat = entry.getKey();
 
-            config.set(id + ".stats.maxHealth", stats.getMaxHealth());
-            config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
-            config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
-            config.set(id + ".stats.overhealth", stats.getOverhealth());
-            config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
-
-            config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
-            config.set(id + ".stats.elementalDamage", stats.getElementalDamage());
-            config.set(id + ".stats.fireDamage", stats.getFireDamage());
-            config.set(id + ".stats.coldDamage", stats.getColdDamage());
-            config.set(id + ".stats.earthDamage", stats.getEarthDamage());
-            config.set(id + ".stats.lightningDamage", stats.getLightningDamage());
-            config.set(id + ".stats.airDamage", stats.getAirDamage());
-            config.set(id + ".stats.radiantDamage", stats.getRadiantDamage());
-            config.set(id + ".stats.necroticDamage", stats.getNecroticDamage());
-            config.set(id + ".stats.pureDamage", stats.getPureDamage());
-            config.set(id + ".stats.critchance", stats.getCritChance());
-            config.set(id + ".stats.critdamage", stats.getCritDamage());
-
-            config.set(id + ".stats.evasion", stats.getEvasion());
-            config.set(id + ".stats.defense", stats.getDefense());
-            config.set(id + ".stats.guard", stats.getGuard());
-            config.set(id + ".stats.physicalResist", stats.getPhysicalResist());
-            config.set(id + ".stats.fireResist", stats.getFireResist());
-            config.set(id + ".stats.coldResist", stats.getColdResist());
-            config.set(id + ".stats.earthResist", stats.getEarthResist());
-            config.set(id + ".stats.lightningResist", stats.getLightningResist());
-            config.set(id + ".stats.airResist", stats.getAirResist());
-            config.set(id + ".stats.radiantResist", stats.getRadiantResist());
-            config.set(id + ".stats.necroticResist", stats.getNecroticResist());
-
-            config.set(id + ".stats.yield", stats.getYield());
-            config.set(id + ".stats.harvest", stats.getHarvest());
-            config.set(id + ".stats.acre", stats.getAcre());
-
-            config.set(id + ".stats.speed", stats.getSpeed());
+                if (PlayerStat.getDoubleStats().contains(playerStat)) {
+                    config.set(id + ".stats." + playerStat.toString(), stats.getStatValue(playerStat));
+                } else {
+                    config.set(id + ".stats." + playerStat.toString(), stats.getIntStatValue(playerStat));
+                }
+            }
         }
     }
 
     public void saveAProfileToConfig(Player player) {
         String id = player.getUniqueId().toString();
-        Stats stats = profileMap.get(player.getUniqueId()).getStats();
+        Stats stats = statMap.get(player.getUniqueId());
 
-        config.set(id + ".stats.attributePoints", stats.getAttributePoints());
-        config.set(id + ".stats.constitution", stats.getConstitution());
-        config.set(id + ".stats.strength", stats.getStrength());
-        config.set(id + ".stats.dexterity", stats.getDexterity());
-        config.set(id + ".stats.intelligence", stats.getIntelligence());
-        config.set(id + ".stats.charisma", stats.getCharisma());
+        for (Map.Entry<PlayerStat, Double> entry : stats.getPlayerStats().entrySet()) {
+            PlayerStat playerStat = entry.getKey();
 
-        config.set(id + ".stats.maxHealth", stats.getMaxHealth());
-        config.set(id + ".stats.currentEnergy", stats.getCurrentEnergy());
-        config.set(id + ".stats.maxEnergy", stats.getMaxEnergy());
-        config.set(id + ".stats.overhealth", stats.getOverhealth());
-        config.set(id + ".stats.maxOverhealth", stats.getMaxOverhealth());
-
-        config.set(id + ".stats.physicalDamage", stats.getPhysicalDamage());
-        config.set(id + ".stats.elementalDamage", stats.getElementalDamage());
-        config.set(id + ".stats.fireDamage", stats.getFireDamage());
-        config.set(id + ".stats.coldDamage", stats.getColdDamage());
-        config.set(id + ".stats.earthDamage", stats.getEarthDamage());
-        config.set(id + ".stats.lightningDamage", stats.getLightningDamage());
-        config.set(id + ".stats.airDamage", stats.getAirDamage());
-        config.set(id + ".stats.radiantDamage", stats.getRadiantDamage());
-        config.set(id + ".stats.necroticDamage", stats.getNecroticDamage());
-        config.set(id + ".stats.pureDamage", stats.getPureDamage());
-        config.set(id + ".stats.critchance", stats.getCritChance());
-        config.set(id + ".stats.critdamage", stats.getCritDamage());
-
-        config.set(id + ".stats.evasion", stats.getEvasion());
-        config.set(id + ".stats.defense", stats.getDefense());
-        config.set(id + ".stats.guard", stats.getGuard());
-        config.set(id + ".stats.physicalResist", stats.getPhysicalResist());
-        config.set(id + ".stats.fireResist", stats.getFireResist());
-        config.set(id + ".stats.coldResist", stats.getColdResist());
-        config.set(id + ".stats.earthResist", stats.getEarthResist());
-        config.set(id + ".stats.lightningResist", stats.getLightningResist());
-        config.set(id + ".stats.airResist", stats.getAirResist());
-        config.set(id + ".stats.radiantResist", stats.getRadiantResist());
-        config.set(id + ".stats.necroticResist", stats.getNecroticResist());
-
-        config.set(id + ".stats.yield", stats.getYield());
-        config.set(id + ".stats.harvest", stats.getHarvest());
-        config.set(id + ".stats.acre", stats.getAcre());
-
-        config.set(id + ".stats.speed", stats.getSpeed());
+            if (PlayerStat.getDoubleStats().contains(playerStat)) {
+                config.set(id + ".stats." + playerStat.toString(), stats.getStatValue(playerStat));
+            } else {
+                config.set(id + ".stats." + playerStat.toString(), stats.getIntStatValue(playerStat));
+            }
+        }
     }
 }

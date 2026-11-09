@@ -1,6 +1,7 @@
 package io.github.NoOne.nMLPlayerStats;
 
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
+import io.github.NoOne.nMLPlayerStats.statSystem.PlayerStat;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -18,16 +19,16 @@ public class PlayerActionBar {
     }
 
     public String[] setPlayerActionBarParts(Player player) {
-        double totalhealth = player.getHealth() + player.getAbsorptionAmount();
+        double totalHealth = player.getHealth() + player.getAbsorptionAmount();
         char healthColor = 'c';
-        double currentEnergy = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getCurrentEnergy();
-        double maxEnergy = profileManager.getPlayerProfile(player.getUniqueId()).getStats().getMaxEnergy();
+        double currentEnergy = profileManager.getStats(player.getUniqueId()).getStatValue(PlayerStat.CURRENT_ENERGY);
+        double maxEnergy = profileManager.getStats(player.getUniqueId()).getStatValue(PlayerStat.MAX_ENERGY);
 
         if (player.getAbsorptionAmount() > 0) {
             healthColor = '9';
         }
 
-        String health = (ChatColor.translateAlternateColorCodes('&', "&" + healthColor + "❤ " + (int) totalhealth + " / " + (int) player.getMaxHealth() + " ❤"));
+        String health = (ChatColor.translateAlternateColorCodes('&', "&" + healthColor + "❤ " + (int) totalHealth + " / " + (int) player.getMaxHealth() + " ❤"));
         String energy = (ChatColor.translateAlternateColorCodes('&', "&6⚡ " +  (int) currentEnergy + " / " + (int) maxEnergy) + " ⚡");
 
         return new String[]{health, energy};
@@ -39,7 +40,7 @@ public class PlayerActionBar {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     String[] actionBar = setPlayerActionBarParts(player);
 
-                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(actionBar[0] + "       " + actionBar[1]));
+                    player.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(actionBar[0] + "       " + actionBar[1]));
                 }
             }
         }.runTaskTimer(nmlPlayerStats, 0, 5L);

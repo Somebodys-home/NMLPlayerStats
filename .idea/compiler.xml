@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="nmlplayerstats (1)" />
+        <module name="NMLPlayerStats" />
         <module name="nmlplayerstats" />
       </profile>
     </annotationProcessing>

@@ -1,6 +1,7 @@
 package io.github.NoOne.nMLPlayerStats;
 
 import io.github.NoOne.menuSystem.MenuListener;
+import io.github.NoOne.nMLPlayerStats.commands.SetStatCommand;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileConfig;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
@@ -23,13 +24,14 @@ public final class NMLPlayerStats extends JavaPlugin {
         profileConfig.loadConfig();
 
         profileManager = new ProfileManager(this);
-        profileManager.loadProfilesFromConfig();
+        profileManager.loadStatsFromConfig();
 
         playerActionBar = new PlayerActionBar(this);
         playerActionBar.actionBarsTask();
 
         getCommand("resetStats").setExecutor(new ResetStatsCommand());
         getCommand("stats").setExecutor(new StatsCommand(this));
+        getCommand("setStat").setExecutor(new SetStatCommand(this));
         getServer().getPluginManager().registerEvents(new ProfileListener(this), this);
         getServer().getPluginManager().registerEvents(new StatsListener(this), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);

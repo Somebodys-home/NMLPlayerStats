@@ -7,34 +7,34 @@ cf942050-e942-4990-a113-e3df70b289be:
     intelligence: 1
     charisma: 1
     maxHealth: 0.0
-    currentEnergy: 100.0
-    maxEnergy: 100.0
     overhealth: 0.0
     maxOverhealth: 0.0
-    physicalDamage: 0
+    currentEnergy: 100.0
+    maxEnergy: 100.0
     elementalDamage: 0
+    physicalDamage: 0
     fireDamage: 0
     coldDamage: 0
     earthDamage: 0
     lightningDamage: 0
     airDamage: 0
     radiantDamage: 0
-    necroticDamage: 2
+    necroticDamage: 0
     pureDamage: 0
-    critchance: 10.0
-    critdamage: 150
+    critChance: 10
+    critDamage: 150
     evasion: 0
     defense: 0
-    guard: 15
+    guard: 0
     physicalResist: 0
     fireResist: 0
     coldResist: 0
     earthResist: 0
-    lightningResist: 0
+    lightResist: 0
     airResist: 0
-    radiantResist: 0
-    necroticResist: 0
-    harvest: 31
-    yield: 31
-    acre: 41
+    radResist: 0
+    necroResist: 0
+    yield: 0
+    harvest: 0
+    acre: 10
     speed: 100

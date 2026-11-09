@@ -14,3 +14,6 @@ commands:
   resetStats:
     description: Resets your stats
     usage: /<command>
+  setStat:
+    description: Sets one of your stats to a value
+    usage: /<command> <stat> <value>

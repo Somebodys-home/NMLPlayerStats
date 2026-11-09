@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ResetStatsEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
-    private final Player player;
+    private Player player;
 
     public ResetStatsEvent(@NotNull Player player) {
         this.player = player;
