@@ -3,7 +3,6 @@ package io.github.NoOne.nMLPlayerStats;
 import io.github.NoOne.menuSystem.MenuListener;
 import io.github.NoOne.nMLPlayerStats.commands.SetStatCommand;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileConfig;
-import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileListener;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
 import io.github.NoOne.nMLPlayerStats.commands.ResetStatsCommand;
 import io.github.NoOne.nMLPlayerStats.statSystem.StatsListener;
@@ -20,7 +19,7 @@ public final class NMLPlayerStats extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        profileConfig = new ProfileConfig(this, "profiles");
+        profileConfig = new ProfileConfig(this, "stats");
         profileConfig.loadConfig();
 
         profileManager = new ProfileManager(this);
@@ -32,7 +31,6 @@ public final class NMLPlayerStats extends JavaPlugin {
         getCommand("resetStats").setExecutor(new ResetStatsCommand());
         getCommand("stats").setExecutor(new StatsCommand(this));
         getCommand("setStat").setExecutor(new SetStatCommand(this));
-        getServer().getPluginManager().registerEvents(new ProfileListener(this), this);
         getServer().getPluginManager().registerEvents(new StatsListener(this), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
     }

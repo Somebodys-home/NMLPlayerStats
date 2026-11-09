@@ -115,53 +115,56 @@ public class StatsMenu extends Menu {
         ItemMeta meta = offenseStats.getItemMeta();
         ArrayList<String> lore = new ArrayList<>();
         String damageLine = "";
-        List<Map.Entry<String, Integer>> damageMap = new ArrayList<>(getDamageStats().entrySet());
+        ArrayList<Map.Entry<String, Integer>> damageList = new ArrayList<>(stats.getAllDamages().entrySet());
         int elementalDamage = stats.getIntStatValue(PlayerStat.ELEMENTAL_DAMAGE);
-        boolean elementalBonusApplied = false;
-        boolean hasElementalDamage = false;
+        boolean elementalBonusApplied = false; // elemental damage bonus is applied to the highest elemental damage ONLY
 
         meta.setDisplayName("§4§lDamage Stats:");
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        damageMap.sort((a, b) -> b.getValue().compareTo(a.getValue())); // highest to lowest
+        damageList.sort((a, b) -> b.getValue().compareTo(a.getValue()));
+        // sort highest to lowest, to figure out which element should have the elemental damage bonus applied
 
-        for (int i = 0; i < damageMap.size(); i++) {
-            Map.Entry<String, Integer> entry = damageMap.get(i);
-            String key = entry.getKey();
+        for (int i = 0; i < damageList.size(); i++) {
+            Map.Entry<String, Integer> entry = damageList.get(i);
+            String stat = entry.getKey();
             int value = entry.getValue();
-            boolean isElemental = key.equals("fire") || key.equals("cold") || key.equals("earth") || key.equals("lightning") || key.equals("air") ||
-                    key.equals("radiant") || key.equals("necrotic");
+            boolean isElemental = !stat.equals(PlayerStat.PHYSICAL_DAMAGE.toString());
 
-            if (isElemental) hasElementalDamage = true;
             if (isElemental && !elementalBonusApplied && elementalDamage > 0) {
-                switch (key) {
-                    case "fire" -> damageLine += "§c" + value + "§d+" + elementalDamage + " §c🔥§d✰";
-                    case "cold" -> damageLine += "§b" + value + "§d+" + elementalDamage + " §b❄§d✰";
-                    case "earth" -> damageLine += "§2" + value + "§d+" + elementalDamage + " §2🪨§d✰";
-                    case "lightning" -> damageLine += "§e" + value + "§d+" + elementalDamage + " §b🗲§d✰";
-                    case "air" -> damageLine += "§7" + value + "§d+" + elementalDamage + " §7☁§d✰";
-                    case "radiant" -> damageLine += "§f" + value + "§d+" + elementalDamage + " §f✦§d✰";
-                    case "necrotic" -> damageLine += "§5" + value + "§d+" + elementalDamage + " §5🌀§d✰";
+                switch (PlayerStat.fromString(stat)) {
+                    case FIRE_DAMAGE -> damageLine += "§c" + value + "§d+" + elementalDamage + " §c🔥§d✰";
+                    case COLD_DAMAGE -> damageLine += "§b" + value + "§d+" + elementalDamage + " §b❄§d✰";
+                    case EARTH_DAMAGE -> damageLine += "§2" + value + "§d+" + elementalDamage + " §2🪨§d✰";
+                    case LIGHTNING_DAMAGE -> damageLine += "§e" + value + "§d+" + elementalDamage + " §b🗲§d✰";
+                    case AIR_DAMAGE -> damageLine += "§7" + value + "§d+" + elementalDamage + " §7☁§d✰";
+                    case RADIANT_DAMAGE -> damageLine += "§f" + value + "§d+" + elementalDamage + " §f✦§d✰";
+                    case NECROTIC_DAMAGE -> damageLine += "§5" + value + "§d+" + elementalDamage + " §5🌀§d✰";
+                    case null, default -> damageLine += stat;
                 }
 
                 elementalBonusApplied = true;
             } else {
-                switch (key) {
-                    case "physical" -> damageLine += "§4" + value + " ⚔";
-                    case "fire" -> damageLine += "§c" + value + " 🔥";
-                    case "cold" -> damageLine += "§b" + value + " ❄";
-                    case "earth" -> damageLine += "§2" + value + " 🪨";
-                    case "lightning" -> damageLine += "§e" + value + " 🗲";
-                    case "air" -> damageLine += "§7" + value + " ☁";
-                    case "radiant" -> damageLine += "§f" + value + " ✦";
-                    case "necrotic" -> damageLine += "§5" + value + " 🌀";
-                    case "pure" -> damageLine += "§f" + value + " 💢";
+                switch (PlayerStat.fromString(stat)) {
+                    case PHYSICAL_DAMAGE -> damageLine += "§4" + value + " ⚔";
+                    case FIRE_DAMAGE -> damageLine += "§c" + value + " 🔥";
+                    case COLD_DAMAGE -> damageLine += "§b" + value + " ❄";
+                    case EARTH_DAMAGE -> damageLine += "§2" + value + " 🪨";
+                    case LIGHTNING_DAMAGE -> damageLine += "§e" + value + " 🗲";
+                    case AIR_DAMAGE -> damageLine += "§7" + value + " ☁";
+                    case RADIANT_DAMAGE -> damageLine += "§f" + value + " ✦";
+                    case NECROTIC_DAMAGE -> damageLine += "§5" + value + " 🌀";
+                    case PURE_DAMAGE -> damageLine += "§f" + value + " 💢";
+                    case null, default -> damageLine += "pluh";
                 }
             }
 
-            if (i != damageMap.size() - 1) damageLine += "  ";
+            if (i != damageList.size() - 1) damageLine += "  ";
         }
 
-        if (!hasElementalDamage && elementalDamage > 0) {
+        // if the player doesnt have any elemental damage stats, then just show the raw elemental damage value
+        damageList.removeIf(stringIntegerEntry -> stringIntegerEntry.getKey().equals(PlayerStat.PHYSICAL_DAMAGE.toString()));
+
+        if (damageList.isEmpty() && elementalDamage > 0) {
             if (!damageLine.isEmpty()) damageLine += "  ";
 
             damageLine += "§d" + elementalDamage + " ✰";
@@ -193,7 +196,7 @@ public class StatsMenu extends Menu {
 
         String line = "";
         List<Map.Entry<String, Integer>> defenseMap = new ArrayList<>(getDefenseStats().entrySet());
-        defenseMap.sort((a, b) -> b.getValue().compareTo(a.getValue()));
+        defenseMap.sort((a, b) -> b.getValue().compareTo(a.getValue())); // sort from highest to lowest
 
         for (int i = 0; i < defenseMap.size(); i++) {
             Map.Entry<String, Integer> defenseEntry = defenseMap.get(i);
@@ -215,14 +218,14 @@ public class StatsMenu extends Menu {
         }
 
         if (line.isEmpty()) {
-            lore.add("§7A mosquito bite kills you. Pathetic.");
+            lore.add("§7A bug bite kills you. Damn.");
         } else {
             lore.add(line);
         }
 
         lore.add("§7────────────────");
         lore.add("§aMax Health: §c" + (int) player.getMaxHealth() + " ❤");
-        lore.add("§aMax Overhealth: §1" + (int) stats.getStatValue(PlayerStat.MAX_OVERHEALTH) + " \uD83D\uDC99");
+        lore.add("§aMax Overhealth: §9" + (int) stats.getStatValue(PlayerStat.MAX_OVERHEALTH) + " \uD83D\uDC99");
         lore.add("§aGuard: §f" + stats.getIntStatValue(PlayerStat.GUARD) + " ⛨");
 
         meta.setLore(lore);
@@ -244,16 +247,6 @@ public class StatsMenu extends Menu {
 
         gatheringMeta.setLore(gatheringLore);
         gatheringStats.setItemMeta(gatheringMeta);
-    }
-
-    public HashMap<String, Integer> getDamageStats() {
-        HashMap<String, Integer> damageStats = stats.getAllDamages();
-
-        for (Map.Entry<String, Integer> entry : damageStats.entrySet()) {
-            damageStats.put(entry.getKey().replace("damage", ""), entry.getValue());
-        }
-
-        return damageStats;
     }
 
     public HashMap<String, Integer> getDefenseStats() {

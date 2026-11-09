@@ -66,7 +66,7 @@ public class Stats {
 
     public static Stats generateNewbieStats() {
         return new Stats(0, 1, 1, 1, 1, 1,
-                0, 0, 0, 100, 100,
+                20, 0, 0, 100, 100,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 10, 150,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

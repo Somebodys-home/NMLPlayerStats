@@ -23,9 +23,7 @@ public class ProfileManager {
     }
 
     public void saveNewbieStats(Player player) {
-        Stats stats = Stats.generateNewbieStats();
-
-        statMap.put(player.getUniqueId(), stats);
+        statMap.put(player.getUniqueId(), Stats.generateNewbieStats());
         Bukkit.getPluginManager().callEvent(new ResetStatsEvent(player));
     }
 
@@ -38,54 +36,54 @@ public class ProfileManager {
             UUID uuid = UUID.fromString(id);
 
             int attributePoints = config.getInt(id + ".stats." + PlayerStat.ATTRIBUTE_POINTS);
-            int constitution = config.getInt(id + ".stats.constitution");
-            int strength = config.getInt(id + ".stats.strength");
-            int dexterity = config.getInt(id + ".stats.dexterity");
-            int intelligence = config.getInt(id + ".stats.intelligence");
-            int charisma = config.getInt(id + ".stats.charisma");
+            int constitution = config.getInt(id + ".stats." + PlayerStat.CONSTITUTION);
+            int strength = config.getInt(id + ".stats." + PlayerStat.STRENGTH);
+            int dexterity = config.getInt(id + ".stats." + PlayerStat.DEXTERITY);
+            int intelligence = config.getInt(id + ".stats." + PlayerStat.INTELLIGENCE);
+            int charisma = config.getInt(id + ".stats." + PlayerStat.CHARISMA);
 
-            double maxHealth = config.getDouble(id + ".stats.maxHealth");
-            double currentEnergy = config.getDouble(id + ".stats.currentEnergy");
-            double maxEnergy = config.getDouble(id + ".stats.maxEnergy");
-            double overhealth = config.getDouble(id + ".stats.overhealth");
-            double maxOverhealth = config.getDouble(id + ".stats.maxOverhealth");
+            double maxHealth = config.getDouble(id + ".stats." + PlayerStat.MAX_HEALTH);
+            double currentEnergy = config.getDouble(id + ".stats." + PlayerStat.CURRENT_ENERGY);
+            double maxEnergy = config.getDouble(id + ".stats." + PlayerStat.MAX_ENERGY);
+            double overhealth = config.getDouble(id + ".stats." + PlayerStat.OVERHEALTH);
+            double maxOverhealth = config.getDouble(id + ".stats." + PlayerStat.MAX_OVERHEALTH);
 
-            int physicalDamage = config.getInt(id + ".stats.physicalDamage");
-            int elementalDamage = config.getInt(id + ".stats.elementalDamage");
-            int fireDamage = config.getInt(id + ".stats.fireDamage");
-            int coldDamage = config.getInt(id + ".stats.coldDamage");
-            int earthDamage = config.getInt(id + ".stats.earthDamage");
-            int lightningDamage = config.getInt(id + ".stats.lightningDamage");
-            int airDamage = config.getInt(id + ".stats.airDamage");
-            int radiantDamage = config.getInt(id + ".stats.radiantDamage");
-            int necroticDamage = config.getInt(id + ".stats.necroticDamage");
-            int pureDamage = config.getInt(id + ".stats.pureDamage");
-            double critchance = config.getDouble(id + ".stats.critchance");
-            int critdamage = config.getInt(id + ".stats.critdamage");
+            int physicalDamage = config.getInt(id + ".stats." + PlayerStat.PHYSICAL_DAMAGE);
+            int elementalDamage = config.getInt(id + ".stats." + PlayerStat.ELEMENTAL_DAMAGE);
+            int fireDamage = config.getInt(id + ".stats." + PlayerStat.FIRE_DAMAGE);
+            int coldDamage = config.getInt(id + ".stats." + PlayerStat.COLD_DAMAGE);
+            int earthDamage = config.getInt(id + ".stats." + PlayerStat.EARTH_DAMAGE);
+            int lightningDamage = config.getInt(id + ".stats." + PlayerStat.LIGHTNING_DAMAGE);
+            int airDamage = config.getInt(id + ".stats." + PlayerStat.AIR_DAMAGE);
+            int radiantDamage = config.getInt(id + ".stats." + PlayerStat.RADIANT_DAMAGE);
+            int necroticDamage = config.getInt(id + ".stats." + PlayerStat.NECROTIC_DAMAGE);
+            int pureDamage = config.getInt(id + ".stats." + PlayerStat.PURE_DAMAGE);
+            double critChance = config.getDouble(id + ".stats." + PlayerStat.CRIT_CHANCE);
+            int critDamage = config.getInt(id + ".stats." + PlayerStat.CRIT_DAMAGE);
 
-            int evasion = config.getInt(id + ".stats.evasion");
-            int defense = config.getInt(id + ".stats.defense");
-            int guard = config.getInt(id + ".stats.guard");
-            int physicalResist = config.getInt(id + ".stats.physicalResist");
-            int fireResist = config.getInt(id + ".stats.fireResist");
-            int coldResist = config.getInt(id + ".stats.coldResist");
-            int earthResist = config.getInt(id + ".stats.earthResist");
-            int lightningResist = config.getInt(id + ".stats.lightningResist");
-            int airResist = config.getInt(id + ".stats.airResist");
-            int radiantResist = config.getInt(id + ".stats.radiantResist");
-            int necroticResist = config.getInt(id + ".stats.necroticResist");
+            int evasion = config.getInt(id + ".stats." + PlayerStat.EVASION);
+            int defense = config.getInt(id + ".stats." + PlayerStat.DEFENSE);
+            int guard = config.getInt(id + ".stats." + PlayerStat.GUARD);
+            int physicalResist = config.getInt(id + ".stats." + PlayerStat.PHYSICAL_RESIST);
+            int fireResist = config.getInt(id + ".stats." + PlayerStat.FIRE_RESIST);
+            int coldResist = config.getInt(id + ".stats." + PlayerStat.COLD_RESIST);
+            int earthResist = config.getInt(id + ".stats." + PlayerStat.EARTH_RESIST);
+            int lightningResist = config.getInt(id + ".stats." + PlayerStat.LIGHTNING_RESIST);
+            int airResist = config.getInt(id + ".stats." + PlayerStat.AIR_RESIST);
+            int radiantResist = config.getInt(id + ".stats." + PlayerStat.RADIANT_RESIST);
+            int necroticResist = config.getInt(id + ".stats." + PlayerStat.NECROTIC_RESIST);
 
-            int yield = config.getInt(id + ".stats.yield");
-            int harvest = config.getInt(id + ".stats.harvest");
-            int acre = config.getInt(id + ".stats.acre");
+            int yield = config.getInt(id + ".stats." + PlayerStat.YIELD);
+            int harvest = config.getInt(id + ".stats." + PlayerStat.HARVEST);
+            int acre = config.getInt(id + ".stats." + PlayerStat.ACRE);
 
-            int speed = config.getInt(id + ".stats.speed");
+            int speed = config.getInt(id + ".stats." + PlayerStat.SPEED);
 
             Stats stats = new Stats(
                     attributePoints, constitution, strength, dexterity, intelligence, charisma,
                     maxHealth, overhealth, maxOverhealth, currentEnergy, maxEnergy,
                     elementalDamage, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
-                    critchance, critdamage,
+                    critChance, critDamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist,
                     yield, harvest, acre,
                     speed

@@ -4,6 +4,7 @@ import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
@@ -14,7 +15,7 @@ public class StatsListener implements Listener {
         profileManager = nmlPlayerStats.getProfileManager();
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGHEST)
     public void statChange(StatChangeEvent event) {
         Player player = event.getPlayer();
         double change = event.getChange();
@@ -44,15 +45,19 @@ public class StatsListener implements Listener {
         stats.resetStats();
         profileManager.saveAProfileToConfig(player);
         player.setMaxHealth(20);
+        player.setWalkSpeed((float) (.2 * (stats.getStatValue(PlayerStat.SPEED) / 100.0)));
     }
 
     @EventHandler
-    public void setStatEffectsOnJoin(PlayerJoinEvent event) {
+    public void setStatsOnJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         Stats stats = profileManager.getStats(player.getUniqueId());
-        double maxHealth = stats.getStatValue(PlayerStat.MAX_HEALTH);
 
-        player.setMaxHealth(20 + maxHealth);
-        player.setWalkSpeed((float) (.2 * (stats.getStatValue(PlayerStat.SPEED) / 100.0)));
+        if (stats == null) {
+            profileManager.saveNewbieStats(player);
+        } else {
+            player.setMaxHealth(stats.getStatValue(PlayerStat.MAX_HEALTH));
+            player.setWalkSpeed((float) (.2 * (stats.getStatValue(PlayerStat.SPEED) / 100.0)));
+        }
     }
 }
