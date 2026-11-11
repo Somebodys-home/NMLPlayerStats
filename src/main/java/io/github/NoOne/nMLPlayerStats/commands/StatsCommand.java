@@ -18,7 +18,7 @@ public class StatsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player) {
-            new StatsMenu(MenuSystem.getPlayerMenuUtility(player), nmlPlayerStats).open();
+            new StatsMenu(player, nmlPlayerStats).open();
         }
 
         return true;

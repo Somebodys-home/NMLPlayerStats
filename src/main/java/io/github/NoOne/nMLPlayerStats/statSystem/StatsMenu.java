@@ -1,29 +1,23 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 import io.github.NoOne.menuSystem.Menu;
-import io.github.NoOne.menuSystem.PlayerMenuUtility;
+import io.github.NoOne.nMLItems.ItemCreator;
+import io.github.NoOne.nMLItems.enums.ItemStat;
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
 public class StatsMenu extends Menu {
-    private Player player;
     private Stats stats;
 
-    private ItemStack offenseStats;
-    private ItemStack defenseStats;
-    private ItemStack gatheringStats;
+    public StatsMenu(Player player, NMLPlayerStats nmlPlayerStats) {
+        super(player);
 
-    public StatsMenu(PlayerMenuUtility playerMenuUtility, NMLPlayerStats nmlPlayerStats) {
-        super(playerMenuUtility);
-
-        player = playerMenuUtility.getOwner();
         stats = nmlPlayerStats.getProfileManager().getStats(player.getUniqueId());
     }
 
@@ -49,9 +43,9 @@ public class StatsMenu extends Menu {
 
     @Override
     public void setMenuItems() {
-        setOffenseItem();
-        setDefenseItem();
-        setGatheringItem();
+        ItemStack offenseStats = setOffenseItem();
+        ItemStack defenseStats = setDefenseItem();
+        ItemStack gatheringStats = setGatheringItem();
 
         inventory.setItem(0, defenseStats);
         inventory.setItem(9, defenseStats);
@@ -109,56 +103,36 @@ public class StatsMenu extends Menu {
         inventory.setItem(53, gatheringStats);
     }
 
-    public void setOffenseItem() {
-        offenseStats = new ItemStack(Material.NETHERITE_SWORD);
-
-        ItemMeta meta = offenseStats.getItemMeta();
+    private ItemStack setOffenseItem() {
         ArrayList<String> lore = new ArrayList<>();
-        String damageLine = "";
         ArrayList<Map.Entry<String, Integer>> damageList = new ArrayList<>(stats.getAllDamages().entrySet());
         int elementalDamage = stats.getIntStatValue(PlayerStat.ELEMENTAL_DAMAGE);
         boolean elementalBonusApplied = false; // elemental damage bonus is applied to the highest elemental damage ONLY
+        String damageLine = "";
 
-        meta.setDisplayName("§4§lDamage Stats:");
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         damageList.sort((a, b) -> b.getValue().compareTo(a.getValue()));
         // sort highest to lowest, to figure out which element should have the elemental damage bonus applied
 
         for (int i = 0; i < damageList.size(); i++) {
             Map.Entry<String, Integer> entry = damageList.get(i);
-            String stat = entry.getKey();
+            PlayerStat stat = PlayerStat.fromString(entry.getKey());
             int value = entry.getValue();
-            boolean isElemental = !stat.equals(PlayerStat.PHYSICAL_DAMAGE.toString());
+            boolean isElemental = !stat.equals(PlayerStat.PHYSICAL_DAMAGE);
+            String color = stat.toItemStat().toChatColor();
+            String emoji = stat.toItemStat().toEmoji();
 
-            if (isElemental && !elementalBonusApplied && elementalDamage > 0) {
-                switch (PlayerStat.fromString(stat)) {
-                    case FIRE_DAMAGE -> damageLine += "§c" + value + "§d+" + elementalDamage + " §c🔥§d✰";
-                    case COLD_DAMAGE -> damageLine += "§b" + value + "§d+" + elementalDamage + " §b❄§d✰";
-                    case EARTH_DAMAGE -> damageLine += "§2" + value + "§d+" + elementalDamage + " §2🪨§d✰";
-                    case LIGHTNING_DAMAGE -> damageLine += "§e" + value + "§d+" + elementalDamage + " §b🗲§d✰";
-                    case AIR_DAMAGE -> damageLine += "§7" + value + "§d+" + elementalDamage + " §7☁§d✰";
-                    case RADIANT_DAMAGE -> damageLine += "§f" + value + "§d+" + elementalDamage + " §f✦§d✰";
-                    case NECROTIC_DAMAGE -> damageLine += "§5" + value + "§d+" + elementalDamage + " §5🌀§d✰";
-                    case null, default -> damageLine += stat;
-                }
+            if (elementalDamage > 0 && isElemental && !elementalBonusApplied) {
+                String elementalColor = "§d";
 
+                damageLine += color + value + elementalColor + "+" + elementalDamage + " " + color + emoji + elementalColor + "✰";
                 elementalBonusApplied = true;
             } else {
-                switch (PlayerStat.fromString(stat)) {
-                    case PHYSICAL_DAMAGE -> damageLine += "§4" + value + " ⚔";
-                    case FIRE_DAMAGE -> damageLine += "§c" + value + " 🔥";
-                    case COLD_DAMAGE -> damageLine += "§b" + value + " ❄";
-                    case EARTH_DAMAGE -> damageLine += "§2" + value + " 🪨";
-                    case LIGHTNING_DAMAGE -> damageLine += "§e" + value + " 🗲";
-                    case AIR_DAMAGE -> damageLine += "§7" + value + " ☁";
-                    case RADIANT_DAMAGE -> damageLine += "§f" + value + " ✦";
-                    case NECROTIC_DAMAGE -> damageLine += "§5" + value + " 🌀";
-                    case PURE_DAMAGE -> damageLine += "§f" + value + " 💢";
-                    case null, default -> damageLine += "pluh";
-                }
+                damageLine += color + value + " " + emoji;
             }
 
-            if (i != damageList.size() - 1) damageLine += "  ";
+            if (i != damageList.size() - 1) {
+                damageLine += "  ";
+            }
         }
 
         // if the player doesnt have any elemental damage stats, then just show the raw elemental damage value
@@ -176,45 +150,36 @@ public class StatsMenu extends Menu {
             lore.add(damageLine);
         }
 
-        lore.add("§7────────────────");
-        lore.add("§cMax Energy: §6" + (int) stats.getStatValue(PlayerStat.MAX_ENERGY) + " ⚡");
-        lore.add("§cCrit Chance: §9" + (int) (Math.round(stats.getIntStatValue(PlayerStat.CRIT_CHANCE) * 10.0) / 10.0) + "% ☠");
-        lore.add("§cCrit Damage: §9" + stats.getIntStatValue(PlayerStat.CRIT_DAMAGE) + "% ☠");
-        lore.add("§cSpeed: §f" + stats.getIntStatValue(PlayerStat.SPEED) + "% ✦");
+        lore.addAll(List.of(
+                "§7────────────────",
+                "§cMax Energy: §6" + (int) stats.getStatValue(PlayerStat.MAX_ENERGY) + " ⚡",
+                "§cCrit Chance: §9" + (int) (Math.round(stats.getIntStatValue(PlayerStat.CRIT_CHANCE) * 10.0) / 10.0) + "% ☠",
+                "§cCrit Damage: §9" + stats.getIntStatValue(PlayerStat.CRIT_DAMAGE) + "% ☠",
+                "§cSpeed: §f" + stats.getIntStatValue(PlayerStat.SPEED) + "% ✦"
+        ));
 
-        meta.setLore(lore);
-        offenseStats.setItemMeta(meta);
+        ItemStack offenseStats = ItemCreator.createItem(Material.NETHERITE_SWORD, "§4§lOffensive Stats:", lore);
+
+        offenseStats.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        return offenseStats;
     }
 
-    public void setDefenseItem() {
-        defenseStats = new ItemStack(Material.IRON_CHESTPLATE);
-        ItemMeta meta = defenseStats.getItemMeta();
+    private ItemStack setDefenseItem() {
         ArrayList<String> lore = new ArrayList<>();
-
-        meta.setDisplayName("§2§lDefense Stats:");
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
+        ArrayList<Map.Entry<String, Integer>> defenseMap = new ArrayList<>(getDefenseStats().entrySet());
         String line = "";
-        List<Map.Entry<String, Integer>> defenseMap = new ArrayList<>(getDefenseStats().entrySet());
+
         defenseMap.sort((a, b) -> b.getValue().compareTo(a.getValue())); // sort from highest to lowest
 
         for (int i = 0; i < defenseMap.size(); i++) {
             Map.Entry<String, Integer> defenseEntry = defenseMap.get(i);
+            ItemStat itemStat = PlayerStat.fromString(defenseEntry.getKey()).toItemStat();
 
-            switch (defenseEntry.getKey()) {
-                case "defense" -> line += "§a" + defenseEntry.getValue() + " \uD83D\uDEE1";
-                case "evasion" -> line += "§f" + defenseEntry.getValue() + " \uD83D\uDCA8";
-                case "physical" -> line += "§4" + defenseEntry.getValue() + " ⚔";
-                case "fire" -> line += "§c" + defenseEntry.getValue() + " \uD83D\uDD25";
-                case "cold" -> line += "§b" + defenseEntry.getValue() + " ❄";
-                case "earth" -> line += "§2" + defenseEntry.getValue() + " \uD83E\uDEA8";
-                case "lightning" -> line += "§e" + defenseEntry.getValue() + " \uD83D\uDDF2";
-                case "air" -> line += "§7" + defenseEntry.getValue() + " ☁";
-                case "radiant" -> line += "§f" + defenseEntry.getValue() + " ✦";
-                case "necrotic" -> line += "§5" + defenseEntry.getValue() + " \uD83C\uDF00";
+            line += itemStat.toChatColor() + defenseEntry.getValue() + " " + itemStat.toEmoji();
+
+            if (i != defenseMap.size() - 1) {
+                line += "  ";
             }
-
-            if (i != defenseMap.size() - 1) line += "  ";
         }
 
         if (line.isEmpty()) {
@@ -223,30 +188,33 @@ public class StatsMenu extends Menu {
             lore.add(line);
         }
 
-        lore.add("§7────────────────");
-        lore.add("§aMax Health: §c" + (int) player.getMaxHealth() + " ❤");
-        lore.add("§aMax Overhealth: §9" + (int) stats.getStatValue(PlayerStat.MAX_OVERHEALTH) + " \uD83D\uDC99");
-        lore.add("§aGuard: §f" + stats.getIntStatValue(PlayerStat.GUARD) + " ⛨");
+        lore.addAll(List.of(
+                "§7────────────────",
+                "§aMax Health: §c" + (int) player.getMaxHealth() + " ❤",
+                "§aMax Overhealth: §9" + (int) stats.getStatValue(PlayerStat.MAX_OVERHEALTH) + " \uD83D\uDC99",
+                "§aGuard: §f" + stats.getIntStatValue(PlayerStat.GUARD) + " ⛨"
+        ));
 
-        meta.setLore(lore);
-        defenseStats.setItemMeta(meta);
+        ItemStack defenseStats = ItemCreator.createItem(Material.IRON_CHESTPLATE, "§2§lDefense Stats:", lore);
+
+        defenseStats.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        return defenseStats;
     }
 
-    public void setGatheringItem() {
-        gatheringStats = new ItemStack(Material.DIAMOND_PICKAXE);
-        ItemMeta gatheringMeta = gatheringStats.getItemMeta();
-        ArrayList<String> gatheringLore = new ArrayList<>();
+    private ItemStack setGatheringItem() {
+        ItemStack gatheringStats = ItemCreator.createItem(
+                Material.DIAMOND_PICKAXE,
+                "§3§lGathering Stats:",
+                List.of(
+                        "§7────────────────",
+                        "§bYield: §a" + stats.getIntStatValue(PlayerStat.YIELD) + " \uD83E\uDD55",
+                        "§bHarvest: §a" + stats.getIntStatValue(PlayerStat.HARVEST) + " \uD83E\uDEB4",
+                        "§bAcre: §a" + stats.getIntStatValue(PlayerStat.ACRE) + " ⚂"
+                )
+        );
 
-        gatheringMeta.setDisplayName("§3§lGathering Stats:");
-        gatheringMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        gatheringLore.add("§7────────────────");
-        gatheringLore.add("§bYield: §a" + stats.getIntStatValue(PlayerStat.YIELD) + " \uD83E\uDD55");
-        gatheringLore.add("§bHarvest: §a" + stats.getIntStatValue(PlayerStat.HARVEST) + " \uD83E\uDEB4");
-        gatheringLore.add("§bAcre: §a" + stats.getIntStatValue(PlayerStat.ACRE) + " ⚂");
-
-        gatheringMeta.setLore(gatheringLore);
-        gatheringStats.setItemMeta(gatheringMeta);
+        gatheringStats.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        return gatheringStats;
     }
 
     public HashMap<String, Integer> getDefenseStats() {

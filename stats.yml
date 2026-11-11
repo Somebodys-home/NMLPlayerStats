@@ -11,7 +11,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     maxOverhealth: 0.0
     currentEnergy: 100.0
     maxEnergy: 100.0
-    elementalDamage: 10
+    elementalDamage: 1
     physicalDamage: 0
     fireDamage: 0
     coldDamage: 0
@@ -27,11 +27,11 @@ cf942050-e942-4990-a113-e3df70b289be:
     defense: 0
     guard: 0
     physicalResist: 0
-    fireResist: 0
+    fireResist: 10
     coldResist: 0
     earthResist: 0
     lightResist: 0
-    airResist: 0
+    airResist: 10
     radResist: 0
     necroResist: 0
     yield: 0

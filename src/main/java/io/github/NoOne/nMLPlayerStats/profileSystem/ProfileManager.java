@@ -15,11 +15,9 @@ import java.util.UUID;
 public class ProfileManager {
     private static Map<UUID, Stats> statMap = new HashMap<>(); // map of all the stats of the players online atm
     private FileConfiguration config;
-    private ProfileConfig profileConfig;
 
     public ProfileManager(NMLPlayerStats nmlPlayerStats) {
-        profileConfig = nmlPlayerStats.getProfileConfig();
-        config = profileConfig.getConfig();
+        config = nmlPlayerStats.getProfileConfig().getConfig();
     }
 
     public void saveNewbieStats(Player player) {

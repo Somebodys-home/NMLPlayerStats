@@ -19,6 +19,18 @@ public class PlayerActionBar {
         profileManager = this.nmlPlayerStats.getProfileManager();
     }
 
+    public void actionBarsTask() {
+        new BukkitRunnable() {
+            public void run() {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    String[] actionBar = setPlayerActionBarParts(player);
+
+                    player.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(actionBar[0] + "       " + actionBar[1]));
+                }
+            }
+        }.runTaskTimer(nmlPlayerStats, 0, 5L);
+    }
+
     public String[] setPlayerActionBarParts(Player player) {
         Stats stats = profileManager.getStats(player.getUniqueId());
         int currentEnergy = (int) stats.getStatValue(PlayerStat.CURRENT_ENERGY);
@@ -37,17 +49,5 @@ public class PlayerActionBar {
         String energy = "§6⚡ " + currentEnergy + " / " + maxEnergy + " ⚡";
 
         return new String[]{health, energy};
-    }
-
-    public void actionBarsTask() {
-        new BukkitRunnable() {
-            public void run() {
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    String[] actionBar = setPlayerActionBarParts(player);
-
-                    player.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(actionBar[0] + "       " + actionBar[1]));
-                }
-            }
-        }.runTaskTimer(nmlPlayerStats, 0, 5L);
     }
 }

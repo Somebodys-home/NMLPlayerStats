@@ -1,5 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
+import io.github.NoOne.nMLItems.enums.ItemStat;
+
 import java.util.List;
 
 public enum PlayerStat {
@@ -99,6 +101,40 @@ public enum PlayerStat {
             case ACRE -> "acre";
 
             case SPEED -> "speed";
+        };
+    }
+
+    public ItemStat toItemStat() {
+        return switch (this) {
+            case MAX_HEALTH -> ItemStat.MAX_HEALTH;
+            case MAX_OVERHEALTH -> ItemStat.OVERHEALTH;
+            case PHYSICAL_DAMAGE -> ItemStat.PHYSICAL_DAMAGE;
+            case FIRE_DAMAGE -> ItemStat.FIRE_DAMAGE;
+            case COLD_DAMAGE -> ItemStat.COLD_DAMAGE;
+            case EARTH_DAMAGE -> ItemStat.EARTH_DAMAGE;
+            case LIGHTNING_DAMAGE -> ItemStat.LIGHTNING_DAMAGE;
+            case AIR_DAMAGE -> ItemStat.AIR_DAMAGE;
+            case RADIANT_DAMAGE -> ItemStat.RADIANT_DAMAGE;
+            case NECROTIC_DAMAGE -> ItemStat.NECROTIC_DAMAGE;
+            case PURE_DAMAGE -> ItemStat.PURE_DAMAGE;
+            case CRIT_CHANCE -> ItemStat.CRIT_CHANCE;
+            case CRIT_DAMAGE -> ItemStat.CRIT_DAMAGE;
+            case EVASION -> ItemStat.EVASION;
+            case DEFENSE -> ItemStat.DEFENSE;
+            case GUARD -> ItemStat.GUARD;
+            case PHYSICAL_RESIST -> ItemStat.PHYSICAL_RESIST;
+            case FIRE_RESIST -> ItemStat.FIRE_RESIST;
+            case COLD_RESIST -> ItemStat.COLD_RESIST;
+            case EARTH_RESIST -> ItemStat.EARTH_RESIST;
+            case LIGHTNING_RESIST -> ItemStat.LIGHTNING_RESIST;
+            case AIR_RESIST -> ItemStat.AIR_RESIST;
+            case RADIANT_RESIST -> ItemStat.RADIANT_RESIST;
+            case NECROTIC_RESIST -> ItemStat.NECROTIC_RESIST;
+            case YIELD -> ItemStat.YIELD;
+            case HARVEST -> ItemStat.HARVEST;
+            case ACRE -> ItemStat.ACRE;
+            case SPEED -> ItemStat.SPEED;
+            default -> null;
         };
     }
 
