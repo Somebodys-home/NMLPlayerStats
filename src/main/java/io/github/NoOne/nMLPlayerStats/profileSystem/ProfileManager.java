@@ -40,6 +40,7 @@ public class ProfileManager {
             int intelligence = config.getInt(id + ".stats." + PlayerStat.INTELLIGENCE);
             int charisma = config.getInt(id + ".stats." + PlayerStat.CHARISMA);
 
+            double health = config.getDouble(id + ".stats." + PlayerStat.HEALTH);
             double maxHealth = config.getDouble(id + ".stats." + PlayerStat.MAX_HEALTH);
             double currentEnergy = config.getDouble(id + ".stats." + PlayerStat.CURRENT_ENERGY);
             double maxEnergy = config.getDouble(id + ".stats." + PlayerStat.MAX_ENERGY);
@@ -79,7 +80,7 @@ public class ProfileManager {
 
             Stats stats = new Stats(
                     attributePoints, constitution, strength, dexterity, intelligence, charisma,
-                    maxHealth, overhealth, maxOverhealth, currentEnergy, maxEnergy,
+                    health, maxHealth, overhealth, maxOverhealth, currentEnergy, maxEnergy,
                     elementalDamage, physicalDamage, fireDamage, coldDamage, earthDamage, lightningDamage, airDamage, radiantDamage, necroticDamage, pureDamage,
                     critChance, critDamage,
                     evasion, defense, guard, physicalResist, fireResist, coldResist, earthResist, lightningResist, airResist, radiantResist, necroticResist,

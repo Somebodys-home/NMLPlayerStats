@@ -3,6 +3,7 @@ io\github\NoOne\nMLPlayerStats\PlayerActionBar.class
 io\github\NoOne\nMLPlayerStats\commands\ResetStatsCommand.class
 io\github\NoOne\nMLPlayerStats\PlayerActionBar$1.class
 io\github\NoOne\nMLPlayerStats\statSystem\StatsMenu.class
+io\github\NoOne\nMLPlayerStats\statSystem\StatsListener$1.class
 io\github\NoOne\nMLPlayerStats\commands\SetStatCommand$1.class
 io\github\NoOne\nMLPlayerStats\statSystem\Stats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileManager.class

@@ -1,19 +1,18 @@
 package io.github.NoOne.nMLPlayerStats;
 
 import io.github.NoOne.menuSystem.MenuListener;
+import io.github.NoOne.nMLPlayerStats.commands.ResetStatsCommand;
 import io.github.NoOne.nMLPlayerStats.commands.SetStatCommand;
+import io.github.NoOne.nMLPlayerStats.commands.StatsCommand;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileConfig;
 import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
-import io.github.NoOne.nMLPlayerStats.commands.ResetStatsCommand;
 import io.github.NoOne.nMLPlayerStats.statSystem.StatsListener;
-import io.github.NoOne.nMLPlayerStats.commands.StatsCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NMLPlayerStats extends JavaPlugin {
-    private NMLPlayerStats instance;
+    private static NMLPlayerStats instance;
     private ProfileManager profileManager;
     private ProfileConfig profileConfig;
-    private PlayerActionBar playerActionBar;
 
     @Override
     public void onEnable() {
@@ -25,8 +24,7 @@ public final class NMLPlayerStats extends JavaPlugin {
         profileManager = new ProfileManager(this);
         profileManager.loadStatsFromConfig();
 
-        playerActionBar = new PlayerActionBar(this);
-        playerActionBar.actionBarsTask();
+        PlayerActionBar.startActionBarsTask();
 
         getCommand("resetStats").setExecutor(new ResetStatsCommand());
         getCommand("stats").setExecutor(new StatsCommand(this));
@@ -42,7 +40,7 @@ public final class NMLPlayerStats extends JavaPlugin {
         profileConfig.saveConfig();
     }
 
-    public NMLPlayerStats getInstance() {
+    public static NMLPlayerStats getInstance() {
         return instance;
     }
 

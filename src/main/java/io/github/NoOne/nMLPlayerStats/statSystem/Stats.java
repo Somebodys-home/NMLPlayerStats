@@ -8,7 +8,7 @@ public class Stats {
     private LinkedHashMap<PlayerStat, Double> playerStats;
 
     public Stats(int attributePoints, int constitution, int strength, int dexterity, int intelligence, int charisma,
-                 double maxHealth, double overhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
+                 double health, double maxHealth, double overhealth, double maxOverhealth, double currentEnergy, double maxEnergy,
                  int elementalDamage, int physicalDamage, int fireDamage, int coldDamage, int earthDamage, int lightningDamage, int airDamage, int radiantDamage,
                  int necroticDamage, int pureDamage,
                  double critChance, int critDamage,
@@ -25,6 +25,7 @@ public class Stats {
             put(INTELLIGENCE, (double) intelligence);
             put(CHARISMA, (double) charisma);
 
+            put(HEALTH, health);
             put(MAX_HEALTH, maxHealth);
             put(OVERHEALTH, overhealth);
             put(MAX_OVERHEALTH, maxOverhealth);
@@ -66,7 +67,7 @@ public class Stats {
 
     public static Stats generateNewbieStats() {
         return new Stats(0, 1, 1, 1, 1, 1,
-                20, 0, 0, 100, 100,
+                20, 20, 0, 0, 100, 100,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 10, 150,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

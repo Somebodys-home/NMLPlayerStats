@@ -9,13 +9,13 @@ import org.jetbrains.annotations.NotNull;
 public class StatChangeEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private Player player;
-    private String stat;
+    private PlayerStat playerStat;
     private double change;
     private boolean cancelled;
 
-    public StatChangeEvent(@NotNull Player player, String stat, double change) {
+    public StatChangeEvent(@NotNull Player player, PlayerStat playerStat, double change) {
         this.player = player;
-        this.stat = stat;
+        this.playerStat = playerStat;
         this.change = change;
         cancelled = false;
     }
@@ -34,8 +34,8 @@ public class StatChangeEvent extends Event implements Cancellable {
         return player;
     }
 
-    public String getStat() {
-        return stat;
+    public PlayerStat getPlayerStat() {
+        return playerStat;
     }
 
     public double getChange() {

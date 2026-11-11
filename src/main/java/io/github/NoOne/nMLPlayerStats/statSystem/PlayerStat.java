@@ -14,6 +14,7 @@ public enum PlayerStat {
     CHARISMA,
 
     // action bar stats
+    HEALTH,
     MAX_HEALTH,
     OVERHEALTH,
     MAX_OVERHEALTH,
@@ -65,6 +66,7 @@ public enum PlayerStat {
             case INTELLIGENCE -> "intelligence";
             case CHARISMA -> "charisma";
 
+            case HEALTH -> "health";
             case MAX_HEALTH -> "maxHealth";
             case OVERHEALTH -> "overhealth";
             case MAX_OVERHEALTH -> "maxOverhealth";
@@ -106,6 +108,7 @@ public enum PlayerStat {
 
     public ItemStat toItemStat() {
         return switch (this) {
+            case HEALTH -> ItemStat.HEALTH;
             case MAX_HEALTH -> ItemStat.MAX_HEALTH;
             case MAX_OVERHEALTH -> ItemStat.OVERHEALTH;
             case PHYSICAL_DAMAGE -> ItemStat.PHYSICAL_DAMAGE;
@@ -147,6 +150,7 @@ public enum PlayerStat {
             case "intelligence" -> INTELLIGENCE;
             case "charisma" -> CHARISMA;
 
+            case "health" -> HEALTH;
             case "maxhealth" -> MAX_HEALTH;
             case "overhealth" -> OVERHEALTH;
             case "maxoverhealth" -> MAX_OVERHEALTH;
@@ -188,6 +192,6 @@ public enum PlayerStat {
     // returns a list of player stats that are saved as doubles
     // assume stats not on this list are integers
     public static List<PlayerStat> getDoubleStats() {
-        return List.of(MAX_HEALTH, OVERHEALTH, MAX_OVERHEALTH, CURRENT_ENERGY, MAX_ENERGY);
+        return List.of(HEALTH, MAX_HEALTH, OVERHEALTH, MAX_OVERHEALTH, CURRENT_ENERGY, MAX_ENERGY);
     }
 }
