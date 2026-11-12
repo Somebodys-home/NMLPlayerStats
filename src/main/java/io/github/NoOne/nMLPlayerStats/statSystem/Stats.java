@@ -76,11 +76,19 @@ public class Stats {
     }
 
     public void addToStat(PlayerStat playerStat, double amount) {
-        playerStats.put(playerStat, playerStats.get(playerStat) + amount);
+        switch (playerStat) {
+            case CURRENT_ENERGY -> playerStats.put(playerStat, Math.min(playerStats.get(MAX_ENERGY), playerStats.get(playerStat) + amount));
+            case OVERHEALTH -> playerStats.put(playerStat, Math.min(playerStats.get(MAX_OVERHEALTH), playerStats.get(playerStat) + amount));
+            case HEALTH -> playerStats.put(playerStat, Math.min(playerStats.get(MAX_HEALTH), playerStats.get(playerStat) + amount));
+            default -> playerStats.put(playerStat, playerStats.get(playerStat) + amount);
+        }
     }
 
     public void removeFromStat(PlayerStat playerStat, double amount) {
-        playerStats.put(playerStat, playerStats.get(playerStat) - amount);
+        switch (playerStat) {
+            case CURRENT_ENERGY -> playerStats.put(playerStat, Math.max(0, playerStats.get(playerStat) - amount));
+            default -> playerStats.put(playerStat, playerStats.get(playerStat) - amount);
+        }
     }
 
     public void resetStats() {

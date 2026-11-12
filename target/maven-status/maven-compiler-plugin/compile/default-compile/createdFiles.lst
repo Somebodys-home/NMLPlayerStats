@@ -1,4 +1,5 @@
 io\github\NoOne\nMLPlayerStats\commands\StatsCommand.class
+io\github\NoOne\nMLPlayerStats\statSystem\Stats$4.class
 io\github\NoOne\nMLPlayerStats\PlayerActionBar.class
 io\github\NoOne\nMLPlayerStats\commands\ResetStatsCommand.class
 io\github\NoOne\nMLPlayerStats\PlayerActionBar$1.class

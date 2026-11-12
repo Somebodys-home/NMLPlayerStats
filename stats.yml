@@ -6,13 +6,13 @@ cf942050-e942-4990-a113-e3df70b289be:
     dexterity: 1
     intelligence: 1
     charisma: 1
-    health: 10.0
+    health: 27.0
     maxHealth: 20.0
     overhealth: 0.0
     maxOverhealth: 0.0
-    currentEnergy: 100.0
+    currentEnergy: 106.16666666666664
     maxEnergy: 100.0
-    elementalDamage: 1
+    elementalDamage: 0
     physicalDamage: 0
     fireDamage: 0
     coldDamage: 0
@@ -28,11 +28,11 @@ cf942050-e942-4990-a113-e3df70b289be:
     defense: 0
     guard: 0
     physicalResist: 0
-    fireResist: 10
+    fireResist: 0
     coldResist: 0
     earthResist: 0
     lightResist: 0
-    airResist: 10
+    airResist: 0
     radResist: 0
     necroResist: 0
     yield: 0
