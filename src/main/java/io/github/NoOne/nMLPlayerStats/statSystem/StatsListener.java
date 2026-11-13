@@ -22,18 +22,18 @@ public class StatsListener implements Listener {
     public void statChange(StatChangeEvent event) {
         Player player = event.getPlayer();
         double change = event.getChange();
-        PlayerStat playerStat = event.getPlayerStat();
+        PlayerStat stat = event.getStat();
         Stats stats = profileManager.getStats(player.getUniqueId());
 
         if (change == 0 || event.isCancelled()) {
             return;
         } else if (change < 0) {
-            stats.removeFromStat(playerStat, Math.abs(change));
+            stats.removeFromStat(stat, Math.abs(change));
         } else {
-            stats.addToStat(playerStat, change);
+            stats.addToStat(stat, change);
         }
 
-        switch (playerStat) {
+        switch (stat) {
             case HEALTH -> {
                 if (change > 0) { // only wanna do this for when health changes positively, mc can handle setting the players health when it goes down
                     player.setHealth(Math.min(player.getHealth() + change, player.getMaxHealth()));
