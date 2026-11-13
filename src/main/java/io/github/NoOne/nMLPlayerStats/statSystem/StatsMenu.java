@@ -10,7 +10,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class StatsMenu extends Menu {
     private Stats stats;
@@ -105,7 +108,7 @@ public class StatsMenu extends Menu {
 
     private ItemStack setOffenseItem() {
         ArrayList<String> lore = new ArrayList<>();
-        ArrayList<Map.Entry<String, Integer>> damageList = new ArrayList<>(stats.getAllDamages().entrySet());
+        ArrayList<Map.Entry<PlayerStat, Integer>> damageList = new ArrayList<>(stats.getAllDamages().entrySet());
         int elementalDamage = stats.getIntStatValue(PlayerStat.ELEMENTAL_DAMAGE);
         boolean elementalBonusApplied = false; // elemental damage bonus is applied to the highest elemental damage ONLY
         String damageLine = "";
@@ -114,8 +117,8 @@ public class StatsMenu extends Menu {
         // sort highest to lowest, to figure out which element should have the elemental damage bonus applied
 
         for (int i = 0; i < damageList.size(); i++) {
-            Map.Entry<String, Integer> entry = damageList.get(i);
-            PlayerStat stat = PlayerStat.fromString(entry.getKey());
+            Map.Entry<PlayerStat, Integer> entry = damageList.get(i);
+            PlayerStat stat = entry.getKey();
             int value = entry.getValue();
             boolean isElemental = !stat.equals(PlayerStat.PHYSICAL_DAMAGE);
             String color = stat.toItemStat().toChatColor();
