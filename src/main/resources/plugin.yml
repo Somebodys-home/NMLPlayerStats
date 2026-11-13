@@ -9,6 +9,7 @@ loadbefore:
   - NMLWeapons
 depends:
   - NMLItems
+  - NMLDamages
 commands:
   stats:
     description: Opens your stat menu

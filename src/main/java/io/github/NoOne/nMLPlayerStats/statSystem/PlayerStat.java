@@ -1,5 +1,6 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
+import io.github.NoOne.nMLDamages.enums.DamageType;
 import io.github.NoOne.nMLItems.enums.ItemStat;
 
 import java.util.List;
@@ -137,6 +138,21 @@ public enum PlayerStat {
             case HARVEST -> ItemStat.HARVEST;
             case ACRE -> ItemStat.ACRE;
             case SPEED -> ItemStat.SPEED;
+            default -> null;
+        };
+    }
+
+    public DamageType toDamageType() {
+        return switch (this) {
+            case PHYSICAL_DAMAGE -> DamageType.PHYSICAL;
+            case FIRE_DAMAGE -> DamageType.FIRE;
+            case COLD_DAMAGE -> DamageType.COLD;
+            case EARTH_DAMAGE -> DamageType.EARTH;
+            case LIGHTNING_DAMAGE -> DamageType.LIGHTNING;
+            case AIR_DAMAGE -> DamageType.AIR;
+            case RADIANT_DAMAGE -> DamageType.RADIANT;
+            case NECROTIC_DAMAGE -> DamageType.NECROTIC;
+            case PURE_DAMAGE -> DamageType.PURE;
             default -> null;
         };
     }

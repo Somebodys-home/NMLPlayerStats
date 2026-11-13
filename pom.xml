@@ -92,5 +92,11 @@
             <version>24303c2175</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.Somebodys-home</groupId>
+            <artifactId>NMLDamages</artifactId>
+            <version>36032b87c7</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

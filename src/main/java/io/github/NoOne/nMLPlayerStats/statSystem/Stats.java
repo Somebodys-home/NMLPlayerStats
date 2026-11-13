@@ -99,6 +99,15 @@ public class Stats {
         playerStats.put(playerStat, PlayerStat.getDoubleStats().contains(playerStat) ? amount : (int) amount);
     }
 
+    // returns either the actual value or Integer.MIN_VALUE if that stat is stored as an int in the stat map
+    public int getIntStatValue(PlayerStat playerStat) {
+        return !PlayerStat.getDoubleStats().contains(playerStat) ? playerStats.get(playerStat).intValue() : Integer.MIN_VALUE;
+    }
+
+    public double getStatValue(PlayerStat playerStat) {
+        return playerStats.get(playerStat);
+    }
+
     public boolean hasStat(PlayerStat playerStat) {
         return playerStats.containsKey(playerStat);
     }
@@ -138,15 +147,6 @@ public class Stats {
 
     public HashMap<PlayerStat, Double> getPlayerStats() {
         return playerStats;
-    }
-
-    // returns either the actual value or Integer.MIN_VALUE if that stat is stored as an int in the stat map
-    public int getIntStatValue(PlayerStat playerStat) {
-        return !PlayerStat.getDoubleStats().contains(playerStat) ? playerStats.get(playerStat).intValue() : Integer.MIN_VALUE;
-    }
-
-    public double getStatValue(PlayerStat playerStat) {
-        return playerStats.get(playerStat);
     }
 
 //    public int getAttributePoints() {
