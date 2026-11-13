@@ -99,6 +99,10 @@ public class Stats {
         playerStats.put(playerStat, PlayerStat.getDoubleStats().contains(playerStat) ? amount : (int) amount);
     }
 
+    public boolean hasStat(PlayerStat playerStat) {
+        return playerStats.containsKey(playerStat);
+    }
+
     public HashMap<PlayerStat, Integer> getAllDamages() {
         HashMap<PlayerStat, Integer> damages = new HashMap<>() {{
             List<PlayerStat> damageStats = List.of(PHYSICAL_DAMAGE, FIRE_DAMAGE, COLD_DAMAGE, EARTH_DAMAGE, LIGHTNING_DAMAGE, AIR_DAMAGE, RADIANT_DAMAGE, NECROTIC_DAMAGE, PURE_DAMAGE);
