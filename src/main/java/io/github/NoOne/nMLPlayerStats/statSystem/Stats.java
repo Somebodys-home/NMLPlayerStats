@@ -65,6 +65,11 @@ public class Stats {
         }};
     }
 
+    // the default constructor, used for nml mobs
+    public Stats(LinkedHashMap<PlayerStat, Double> playerStats) {
+        this.playerStats = playerStats;
+    }
+
     public static Stats generateNewbieStats() {
         return new Stats(0, 1, 1, 1, 1, 1,
                 20, 20, 0, 0, 100, 100,
