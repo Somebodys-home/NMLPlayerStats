@@ -10,6 +10,7 @@ io\github\NoOne\nMLPlayerStats\statSystem\Stats.class
 io\github\NoOne\nMLPlayerStats\profileSystem\ProfileManager.class
 io\github\NoOne\nMLPlayerStats\statSystem\PlayerStat.class
 io\github\NoOne\nMLPlayerStats\statSystem\Stats$2.class
+io\github\NoOne\nMLPlayerStats\statSystem\StatsMenu$1.class
 io\github\NoOne\nMLPlayerStats\statSystem\StatsListener.class
 io\github\NoOne\nMLPlayerStats\statSystem\Stats$1.class
 io\github\NoOne\nMLPlayerStats\commands\SetStatCommand.class

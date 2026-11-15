@@ -108,7 +108,7 @@ public class StatsMenu extends Menu {
 
     private ItemStack setOffenseItem() {
         ArrayList<String> lore = new ArrayList<>();
-        ArrayList<Map.Entry<PlayerStat, Integer>> damageList = new ArrayList<>(stats.getAllDamages().entrySet());
+        ArrayList<Map.Entry<PlayerStat, Integer>> damageList = new ArrayList<>(getDamageStats().entrySet());
         int elementalDamage = stats.getIntStatValue(PlayerStat.ELEMENTAL_DAMAGE);
         boolean elementalBonusApplied = false; // elemental damage bonus is applied to the highest elemental damage ONLY
         String damageLine = "";
@@ -220,7 +220,19 @@ public class StatsMenu extends Menu {
         return gatheringStats;
     }
 
-    public HashMap<String, Integer> getDefenseStats() {
+    private HashMap<PlayerStat, Integer> getDamageStats() {
+        return new HashMap<>() {{
+            for (PlayerStat playerStat : List.of(PlayerStat.PHYSICAL_DAMAGE, PlayerStat.FIRE_DAMAGE, PlayerStat.COLD_DAMAGE, PlayerStat.EARTH_DAMAGE, PlayerStat.LIGHTNING_DAMAGE,
+                    PlayerStat.AIR_DAMAGE, PlayerStat.RADIANT_DAMAGE, PlayerStat.NECROTIC_DAMAGE, PlayerStat.PURE_DAMAGE)) {
+
+                if (stats.getIntStatValue(playerStat) != 0) {
+                    put(playerStat, stats.getIntStatValue(playerStat));
+                }
+            }
+        }};
+    }
+
+    private HashMap<String, Integer> getDefenseStats() {
         HashMap<String, Integer> defenseStats = stats.getAllResists();
         int defense = stats.getIntStatValue(PlayerStat.DEFENSE);
         int evasion = stats.getIntStatValue(PlayerStat.EVASION);
