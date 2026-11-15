@@ -29,8 +29,8 @@ public class PlayerActionBar {
         Stats stats = profileManager.getStats(player.getUniqueId());
         int currentEnergy = (int) stats.getStatValue(PlayerStat.CURRENT_ENERGY);
         int maxEnergy = (int) stats.getStatValue(PlayerStat.MAX_ENERGY);
-        double overhealth = stats.getStatValue(PlayerStat.OVERHEALTH);
-        int totalHealth = (int) (stats.getStatValue(PlayerStat.HEALTH) + overhealth);
+        double overhealth = player.getAbsorptionAmount();
+        int totalHealth = (int) (player.getHealth() + overhealth);
         String healthColor;
 
         if (overhealth > 0) {
