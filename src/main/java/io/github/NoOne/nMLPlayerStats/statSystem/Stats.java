@@ -89,10 +89,22 @@ public class Stats {
         }
     }
 
+    public void addToStats(Map<PlayerStat, Double> playerStats) {
+        for (Map.Entry<PlayerStat, Double> entry : playerStats.entrySet()) {
+            addToStat(entry.getKey(), entry.getValue());
+        }
+    }
+
     public void removeFromStat(PlayerStat playerStat, double amount) {
         switch (playerStat) {
             case CURRENT_ENERGY -> playerStats.put(playerStat, Math.max(0, playerStats.get(playerStat) - amount));
             default -> playerStats.put(playerStat, playerStats.get(playerStat) - amount);
+        }
+    }
+
+    public void removeFromStats(Map<PlayerStat, Double> playerStats) {
+        for (Map.Entry<PlayerStat, Double> entry : playerStats.entrySet()) {
+            removeFromStat(entry.getKey(), entry.getValue());
         }
     }
 
