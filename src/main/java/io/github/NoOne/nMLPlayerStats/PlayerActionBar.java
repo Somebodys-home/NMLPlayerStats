@@ -1,6 +1,5 @@
 package io.github.NoOne.nMLPlayerStats;
 
-import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
 import io.github.NoOne.nMLPlayerStats.statSystem.PlayerStat;
 import io.github.NoOne.nMLPlayerStats.statSystem.Stats;
 import net.md_5.bungee.api.ChatMessageType;
@@ -11,7 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class PlayerActionBar {
     private static NMLPlayerStats nmlPlayerStats = NMLPlayerStats.getInstance();
-    private static ProfileManager profileManager = nmlPlayerStats.getProfileManager();
+    private static StatConfigManager statConfigManager = nmlPlayerStats.getProfileManager();
 
     public static void startActionBarsTask() {
         new BukkitRunnable() {
@@ -26,7 +25,7 @@ public class PlayerActionBar {
     }
 
     private static String[] setPlayerActionBarParts(Player player) {
-        Stats stats = profileManager.getStats(player.getUniqueId());
+        Stats stats = statConfigManager.getStats(player.getUniqueId());
         int currentEnergy = (int) stats.getStatValue(PlayerStat.CURRENT_ENERGY);
         int maxEnergy = (int) stats.getStatValue(PlayerStat.MAX_ENERGY);
         double overhealth = player.getAbsorptionAmount();

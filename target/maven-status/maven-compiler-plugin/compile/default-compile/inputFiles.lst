@@ -3,8 +3,7 @@ C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerS
 C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\commands\StatsCommand.java
 C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\NMLPlayerStats.java
 C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\PlayerActionBar.java
-C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\profileSystem\ProfileConfig.java
-C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\profileSystem\ProfileManager.java
+C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\StatConfigManager.java
 C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\statSystem\PlayerStat.java
 C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\statSystem\ResetStatsEvent.java
 C:\No Man's Land\plugins\NMLPlayerStats\src\main\java\io\github\NoOne\nMLPlayerStats\statSystem\StatChangeEvent.java

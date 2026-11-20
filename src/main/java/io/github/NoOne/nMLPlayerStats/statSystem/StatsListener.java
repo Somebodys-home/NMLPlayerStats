@@ -1,7 +1,7 @@
 package io.github.NoOne.nMLPlayerStats.statSystem;
 
 import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
-import io.github.NoOne.nMLPlayerStats.profileSystem.ProfileManager;
+import io.github.NoOne.nMLPlayerStats.StatConfigManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,10 +12,10 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class StatsListener implements Listener {
-    private ProfileManager profileManager;
+    private StatConfigManager statConfigManager;
 
     public StatsListener(NMLPlayerStats nmlPlayerStats) {
-        profileManager = nmlPlayerStats.getProfileManager();
+        statConfigManager = nmlPlayerStats.getProfileManager();
     }
 
     @EventHandler (priority = EventPriority.HIGHEST)
@@ -23,7 +23,7 @@ public class StatsListener implements Listener {
         Player player = event.getPlayer();
         double change = event.getChange();
         PlayerStat stat = event.getStat();
-        Stats stats = profileManager.getStats(player.getUniqueId());
+        Stats stats = statConfigManager.getStats(player.getUniqueId());
 
         if (change == 0 || event.isCancelled()) {
             return;
@@ -47,10 +47,10 @@ public class StatsListener implements Listener {
     @EventHandler
     public void resetStats(ResetStatsEvent event) {
         Player player = event.getPlayer();
-        Stats stats = profileManager.getStats(player.getUniqueId());
+        Stats stats = statConfigManager.getStats(player.getUniqueId());
 
         stats.resetStats();
-        profileManager.saveAProfileToConfig(player);
+        statConfigManager.saveAProfileToConfig(player);
         player.setMaxHealth(20);
         player.setWalkSpeed((float) (.2 * (stats.getStatValue(PlayerStat.SPEED) / 100.0)));
     }
@@ -58,10 +58,10 @@ public class StatsListener implements Listener {
     @EventHandler
     public void setStatsOnJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        Stats stats = profileManager.getStats(player.getUniqueId());
+        Stats stats = statConfigManager.getStats(player.getUniqueId());
 
         if (stats == null) {
-            profileManager.saveNewbieStats(player);
+            statConfigManager.saveNewbieStats(player);
         } else {
             player.setMaxHealth(stats.getStatValue(PlayerStat.MAX_HEALTH));
             player.setWalkSpeed((float) (.2 * (stats.getStatValue(PlayerStat.SPEED) / 100.0)));

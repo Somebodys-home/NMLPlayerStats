@@ -88,6 +88,11 @@
         </dependency>
         <dependency>
             <groupId>com.github.Somebodys-home</groupId>
+            <artifactId>NMLConfig</artifactId>
+            <version>4460f2fe0e</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.Somebodys-home</groupId>
             <artifactId>NMLItems</artifactId>
             <version>24303c2175</version>
             <scope>provided</scope>

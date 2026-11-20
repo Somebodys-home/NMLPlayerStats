@@ -1,23 +1,21 @@
-package io.github.NoOne.nMLPlayerStats.profileSystem;
+package io.github.NoOne.nMLPlayerStats;
 
-import io.github.NoOne.nMLPlayerStats.NMLPlayerStats;
+import io.github.NoOne.nMLConfig.ConfigManager;
 import io.github.NoOne.nMLPlayerStats.statSystem.PlayerStat;
 import io.github.NoOne.nMLPlayerStats.statSystem.ResetStatsEvent;
 import io.github.NoOne.nMLPlayerStats.statSystem.Stats;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class ProfileManager {
+public class StatConfigManager extends ConfigManager {
     private static Map<UUID, Stats> statMap = new HashMap<>(); // map of all the stats of the players online atm
-    private FileConfiguration config;
 
-    public ProfileManager(NMLPlayerStats nmlPlayerStats) {
-        config = nmlPlayerStats.getProfileConfig().getConfig();
+    public StatConfigManager(NMLPlayerStats nmlPlayerStats) {
+        super(nmlPlayerStats.getConfigTemplate());
     }
 
     public void saveNewbieStats(Player player) {
