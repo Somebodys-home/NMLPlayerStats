@@ -29,7 +29,7 @@ public class SetStatCommand implements CommandExecutor, TabCompleter {
         if (sender instanceof Player player) {
             String stat = args[0];
             double value = Double.parseDouble(args[1]);
-            Stats stats = nmlPlayerStats.getProfileManager().getStats(player.getUniqueId());
+            Stats stats = nmlPlayerStats.getStatConfigManager().getStats(player.getUniqueId());
             PlayerStat playerStat = PlayerStat.fromString(stat);
 
             if (playerStat == null) {

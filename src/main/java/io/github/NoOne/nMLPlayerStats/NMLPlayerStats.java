@@ -42,7 +42,7 @@ public final class NMLPlayerStats extends JavaPlugin {
         return instance;
     }
 
-    public StatConfigManager getProfileManager() {
+    public StatConfigManager getStatConfigManager() {
         return statConfigManager;
     }
 

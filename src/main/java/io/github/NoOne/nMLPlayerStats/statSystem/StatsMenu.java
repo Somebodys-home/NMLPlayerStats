@@ -21,7 +21,7 @@ public class StatsMenu extends Menu {
     public StatsMenu(Player player, NMLPlayerStats nmlPlayerStats) {
         super(player);
 
-        stats = nmlPlayerStats.getProfileManager().getStats(player.getUniqueId());
+        stats = nmlPlayerStats.getStatConfigManager().getStats(player.getUniqueId());
     }
 
     @Override

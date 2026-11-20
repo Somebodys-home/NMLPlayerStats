@@ -15,7 +15,7 @@ public class StatsListener implements Listener {
     private StatConfigManager statConfigManager;
 
     public StatsListener(NMLPlayerStats nmlPlayerStats) {
-        statConfigManager = nmlPlayerStats.getProfileManager();
+        statConfigManager = nmlPlayerStats.getStatConfigManager();
     }
 
     @EventHandler (priority = EventPriority.HIGHEST)

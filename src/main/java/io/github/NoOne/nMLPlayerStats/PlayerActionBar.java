@@ -10,7 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class PlayerActionBar {
     private static NMLPlayerStats nmlPlayerStats = NMLPlayerStats.getInstance();
-    private static StatConfigManager statConfigManager = nmlPlayerStats.getProfileManager();
+    private static StatConfigManager statConfigManager = nmlPlayerStats.getStatConfigManager();
 
     public static void startActionBarsTask() {
         new BukkitRunnable() {
